@@ -1,0 +1,25 @@
+{
+  "name": "tape-sync",
+  "version": "1.0.0",
+  "description": "watch videos together with your friends",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Meleeman",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "dotenv": "^10.0.0",
+    "fscreen": "^1.2.0",
+    "ip": "^1.1.5",
+    "koa": "^2.13.1",
+    "m3u8-parser": "^4.7.0",
+    "mflx": "^1.1.7",
+    "svelte": "^3.38.2",
+    "yargs-parser": "^20.2.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0"
+  }
+}
