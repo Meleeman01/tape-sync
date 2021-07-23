@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>tape-sync</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wetfish Sync</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<h1>TapeSync</h1>
+<svg class="icon">
+    <use xlink:href="regular.svg#play-circle"></use>
+</svg>
+<h3 id="socket-success" style="color:green;">we're up</h3>
+<h3 id="socket-fail" style="color:red;">fix it again tony.</h3>
+<!-- Frameworks and Libraries -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="module">
+            import fscreen from '/fscreen.js';
+
+            window.fscreen = fscreen;
+        </script>
+        <script>
+        	const socket = io();
+        	socket.on('connect', () => {
+    document.getElementById('socket-fail').style.visibility = "hidden";
+    document.getElementById('socket-success').style.visibility = "visible";
+});
+
+socket.on('disconnect', () => {
+    //document.getElementById('socket-success').style.visibility = "hidden";
+    //document.getElementById('socket-fail').style.visibility = "visible";
+});
+        </script>
+</body>
+</html>
