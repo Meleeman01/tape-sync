@@ -2,6 +2,8 @@ const Koa = require('koa');
 const serve = require('koa-static');
 const Router = require('koa-router');
 const send = require('koa-send');
+//=========^koa stuffs =========================================//
+
 require('dotenv').config();
 const argv = require('yargs-parser');
 
@@ -9,19 +11,15 @@ const argv = require('yargs-parser');
 const app = new Koa();
 const router = new Router();
 
-
- 
-// svg Sprites from Font Awesome
-
 app
 	.use(router.routes())
 	.use(router.allowedMethods())
-	.use(serve(__dirname + '/node_modules/@fortawesome/fontawesome-free/sprites'))
+	.use(serve(__dirname + '/node_modules/@fortawesome/fontawesome-free/sprites')) //load svg sprites from font awesome
 	.use(serve(__dirname + '/public'));
 
-	const server = require('http').createServer(app.callback());
-	const io = require('socket.io')(server);
-	
+const server = require('http').createServer(app.callback());
+const io = require('socket.io')(server);
+
 router.get('/', async (ctx) => {
 	await send(ctx,'/public/index.html');
 });
