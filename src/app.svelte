@@ -1,31 +1,34 @@
 
 
 <script>
-    import Video from './video.svelte';
+    import Video from './components/video.svelte';
+    import Sound from './components/music.svelte';
+    import Controls from './components/controls.svelte';
     export let name; //used as a prop for the app.
+
+
 </script>
 
 <main>
-    <h1>Hello {name}!</h1>
-    <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+    
+    <Controls timestamp = {50} duration = {100}/>
+    <Video url = '/media/Ted-Kasyncski-unabomber-anime.mp4' /> 
 </main>
 
 <style>
+    
     main {
         text-align: center;
         padding: 1em;
         max-width: 240px;
         margin: 0 auto;
+        background: black;
     }
-    h1 {
-        color: #ff3e00;
-        text-transform: uppercase;
-        font-size: 4em;
-        font-weight: 100;
-    }
+    
     @media (min-width: 640px) {
         main {
             max-width: none;
         }
     }
+    
 </style>

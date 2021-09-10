@@ -9,6 +9,15 @@ module.exports = {
 		'ecmaVersion': 12,
 		'sourceType': 'module'
 	},
+	'plugins': [
+		'svelte3'
+	],
+	'overrides': [
+		{
+			'files': ['*.svelte'],
+			'processor': 'svelte3/svelte3'
+		}
+	],
 	'rules': {
 		'indent': [
 			'error',

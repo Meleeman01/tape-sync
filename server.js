@@ -2,6 +2,7 @@ const Koa = require('koa');
 const serve = require('koa-static');
 const Router = require('koa-router');
 const send = require('koa-send');
+const mediaPlayer = require('./mediaplayer');
 //=========^koa stuffs =========================================//
 
 require('dotenv').config();
