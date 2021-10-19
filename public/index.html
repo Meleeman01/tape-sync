@@ -8,7 +8,6 @@
 </head>
 <body>
 <noscript>tapeSync requires javascript to werk silly!  ¯\_(ツ)_/¯</noscript>
-<h1>TapeSync</h1>
 
 <h3 id="socket-success" style="color:green;">we're up</h3>
 <h3 id="socket-fail" style="color:red;">fix it again tony.</h3>
@@ -20,16 +19,27 @@
             window.fscreen = fscreen;
         </script>
         <script>
-        	const socket = io();
+        const socket = io();
         	socket.on('connect', () => {
-    document.getElementById('socket-fail').style.visibility = "hidden";
-    document.getElementById('socket-success').style.visibility = "visible";
-});
+                document.getElementById('socket-fail').style.visibility = "hidden";
+                document.getElementById('socket-success').style.visibility = "visible";
+        });
 
-socket.on('disconnect', () => {
-    //document.getElementById('socket-success').style.visibility = "hidden";
-    //document.getElementById('socket-fail').style.visibility = "visible";
-});
+        socket.on('disconnect', () => {
+            //document.getElementById('socket-success').style.visibility = "hidden";
+            //document.getElementById('socket-fail').style.visibility = "visible";
+        });
+        // Server emits event when media ends
+        socket.on('newMedia', (data) => {
+            console.log('newMedia detected!');
+            console.log(data);
+        });
+        // Server sends timestamp every three seconds
+        // Calculate latency and update Vue component
+        socket.on('timestamp', (data) => {
+            console.log('timestamp');
+            console.log(data);
+        });
         </script>
         <script src="js/main.js"></script>
 </body>

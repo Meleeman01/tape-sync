@@ -2,8 +2,9 @@ const Koa = require('koa');
 const serve = require('koa-static');
 const Router = require('koa-router');
 const send = require('koa-send');
-const mediaPlayer = require('./mediaplayer');
-//=========^koa stuffs =========================================//
+
+
+//============^koa stuffs^===================//
 
 require('dotenv').config();
 const argv = require('yargs-parser');
@@ -20,6 +21,8 @@ app
 
 const server = require('http').createServer(app.callback());
 const io = require('socket.io')(server);
+const repeat = process.env.REPEAT;
+const playlistUrl = process.env.URL || 'http://localhost:3000';
 
 router.get('/', async (ctx) => {
 	await send(ctx,'/public/index.html');
@@ -28,12 +31,12 @@ router.get('/', async (ctx) => {
 router.get('/fscreen.js', async (ctx) =>  await send(ctx,'/node_modules/fscreen/dist/fscreen.esm.js'));
 
 
+const mediaPlayer = require('./mediaplayer');
+let player = new mediaPlayer(io,repeat,playlistUrl);
+console.log(player);
 
-io.on('connection', (client) => {
-	console.log('client connected!');
-	client.on('event', (data) => {console.log('hi there!');});
-	client.on('disconnect', () => {console.log('client left'); });
-});
+
+
 
 server.listen(3000);
 console.log('listening on port 3000');
