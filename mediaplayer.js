@@ -177,6 +177,7 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 	//connection stuffs
 	this.io.on('connection', (client) => {
 		let index = this.mediaIndex;
+		let url = `${playlistUrl}${this.playlist[index]}`;
 		console.log('client connected!');
 		client.on('event', (data) => {console.log('hi there!');});
 		client.on('disconnect', () => {console.log('client left'); });
@@ -185,6 +186,13 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 		console.log(index);
 		const mediaType = this.mediaTypes[index];
 		const duration = this.mediaLengths[index];
+
+		client.emit('updateClient', {
+			mediaType: mediaType,
+			timestamp: timestamp,
+			duration: duration,
+			url: url
+		});
 	});
 	setInterval(() => {
 		console.log('timestamp emit');
