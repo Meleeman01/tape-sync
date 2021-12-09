@@ -1,20 +1,23 @@
 
-
 <script>
-	import Video from './components/video.svelte';
-	import Audio from './components/music.svelte';
-	import Sound from './components/music.svelte';
-	import Controls from './components/controls.svelte';
+	import {  onMount, afterUpdate, beforeUpdate } from 'svelte';
+	
+	
+	
 	export let name; //used as a prop for the app.
 
 	console.log('app is up');
 	let timestamp = undefined;
-	let duration = undefined;
+	let time = 0;
+
+	let duration;
 	let url = undefined;
 	let mediaType = undefined;
 	let latency = 0;
-	let isPlaying = false;
+	let paused = false;
 
+
+	let mediaControls;
 
 	const socket = io();
 
@@ -33,7 +36,6 @@
 		console.log(data);
 		url = data.url;
 		mediaType = data.mediaType;
-		isPlaying = true;
 	});
 	// Server sends timestamp every three seconds
 	// Calculate latency and update Vue component
@@ -44,27 +46,77 @@
 		timestamp = data.timestamp;
 	});
 	// Server emits event when client connects
-	socket.on('updateClient', (data) => {
+	socket.on('updateClient', async (data) => {
 		console.log('updateClient');
 		mediaType = data.mediaType;
 		timestamp = data.timestamp;
 		duration = data.duration;
 		url = data.url;
-		isPlaying = true;
 	});
 
+	function toggle(e) {
+		if (!paused) {
+			paused = true;
+			//e.target.paused = true;
+			console.log('were playing now');
+			console.log(e.target);
+		}
+		else {
+			console.log('were paused now');
+			paused = false;
+		}
+	}
+
+	function format(seconds) {
+		if (isNaN(seconds)) return '...';
+
+		const minutes = Math.floor(seconds / 60);
+		seconds = Math.floor(seconds % 60);
+		if (seconds < 10) seconds = '0' + seconds;
+
+		return `${minutes}:${seconds}`;
+	}
+	
+	onMount((e) => {
+		console.log('the component has mounted');
+		console.log(e);
+		//mediaplayer controls
+
+	});
+	afterUpdate(() => {
+		console.log('the component just updated');
+	});
+	beforeUpdate(() => {
+		console.log('justbefore update...');
+	});
 </script>
 
 <main>
 
 	{#if mediaType != undefined}
-	<Controls timestamp = {timestamp} duration = {duration} isPlaying={isPlaying}/>
-		{#if mediaType == 'video'}
-			<Video url = {url} timestamp = {timestamp} />
+		<div id="controls-container" class="">
+			<progress value={(timestamp/duration) || 0} ></progress>
+			<div class="button-container">
+		
+			<svg class="icon" on:click={toggle}>
+				{#if !paused}
+				<use xlink:href="regular.svg#play-circle"></use>
+				{:else}
+				<use xlink:href="regular.svg#pause-circle"></use>
+				{/if}
+			</svg>
+	</div>
+	{#if mediaType == 'video'}
+		<video class="media" src={url} bind:currentTime={timestamp}  bind:duration bind:paused on:click={toggle} >
+			<track kind="captions">
+		</video> 
 		{/if}
 		{#if mediaType == 'audio'}
-			<Audio url = {url} timestamp = {timestamp} />
+			<audio class="media" src={url} controls>
+				<track kind="captions">
+			</audio>
 		{/if}
+	</div>
 	{/if}
 </main>
 
@@ -76,6 +128,27 @@
 		max-width: 240px;
 		margin: 0 auto;
 		background: black;
+	}
+
+	#controls-container {
+		width: 100%;
+	}
+	.button-container {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	.icon {
+		fill:white;
+		width: 3rem;
+		height: 3rem;
+	}
+
+	.icon:hover {
+		fill:#ccc;
+	}
+	progress {
+		width: 100%;
 	}
 	
 	@media (min-width: 640px) {
