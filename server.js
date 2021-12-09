@@ -2,6 +2,7 @@ const Koa = require('koa');
 const serve = require('koa-static');
 const Router = require('koa-router');
 const send = require('koa-send');
+const range = require('koa-range');
 
 
 //============^koa stuffs^===================//
@@ -14,6 +15,7 @@ const app = new Koa();
 const router = new Router();
 
 app
+	.use(range)
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(serve(__dirname + '/node_modules/@fortawesome/fontawesome-free/sprites')) //load svg sprites from font awesome
@@ -33,7 +35,7 @@ router.get('/fscreen.js', async (ctx) =>  await send(ctx,'/node_modules/fscreen/
 
 const mediaPlayer = require('./mediaplayer');
 let player = new mediaPlayer(io,repeat,playlistUrl);
-console.log(player);
+//console.log(player);
 
 
 

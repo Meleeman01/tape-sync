@@ -14,10 +14,10 @@
 	let url = undefined;
 	let mediaType = undefined;
 	let latency = 0;
-	let paused = false;
+	let paused = true;
 
 
-	let mediaControls;
+	let media;
 
 	const socket = io();
 
@@ -31,11 +31,12 @@
 		//document.getElementById('socket-fail').style.visibility = "visible";
 	});
 	// Server emits event when media ends
-	socket.on('newMedia', (data) => {
+	socket.on('newMedia', async (data) => {
 		console.log('newMedia detected!');
 		console.log(data);
 		url = data.url;
 		mediaType = data.mediaType;
+		
 	});
 	// Server sends timestamp every three seconds
 	// Calculate latency and update Vue component
@@ -44,6 +45,7 @@
 		console.log(data);
 		mediaType = data.mediaType;
 		timestamp = data.timestamp;
+
 	});
 	// Server emits event when client connects
 	socket.on('updateClient', async (data) => {
@@ -82,12 +84,17 @@
 		console.log(e);
 		//mediaplayer controls
 
+
 	});
 	afterUpdate(() => {
 		console.log('the component just updated');
+		if (timestamp - time > 3) {
+			time = timestamp;
+		}
+
 	});
 	beforeUpdate(() => {
-		console.log('justbefore update...');
+		//console.log('justbefore update...');
 	});
 </script>
 
@@ -99,7 +106,7 @@
 			<div class="button-container">
 		
 			<svg class="icon" on:click={toggle}>
-				{#if !paused}
+				{#if paused}
 				<use xlink:href="regular.svg#play-circle"></use>
 				{:else}
 				<use xlink:href="regular.svg#pause-circle"></use>
@@ -107,12 +114,12 @@
 			</svg>
 	</div>
 	{#if mediaType == 'video'}
-		<video class="media" src={url} bind:currentTime={timestamp}  bind:duration bind:paused on:click={toggle} >
+		<video bind:this={media} src={url} bind:currentTime={time}  bind:duration bind:paused on:click={toggle} >
 			<track kind="captions">
 		</video> 
 		{/if}
 		{#if mediaType == 'audio'}
-			<audio class="media" src={url} controls>
+			<audio class="media" src={url} bind:currentTime={time} bind:duration bind:paused on:click={toggle} controls>
 				<track kind="captions">
 			</audio>
 		{/if}

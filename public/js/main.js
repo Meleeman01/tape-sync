@@ -70,7 +70,7 @@ var isNaN_1 = svelte_internal__WEBPACK_IMPORTED_MODULE_1__.globals.isNaN;
 
 function add_css(target) {
   (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append_styles)(target, "svelte-8yug8i", "main.svelte-8yug8i{text-align:center;padding:1em;max-width:240px;margin:0 auto;background:black}#controls-container.svelte-8yug8i{width:100%}.button-container.svelte-8yug8i{display:flex;justify-content:flex-start;align-items:center}.icon.svelte-8yug8i{fill:white;width:3rem;height:3rem}.icon.svelte-8yug8i:hover{fill:#ccc}progress.svelte-8yug8i{width:100%}@media(min-width: 640px){main.svelte-8yug8i{max-width:none}}");
-} // (96:1) {#if mediaType != undefined}
+} // (103:1) {#if mediaType != undefined}
 
 
 function create_if_block(ctx) {
@@ -86,9 +86,9 @@ function create_if_block(ctx) {
   var dispose;
 
   function select_block_type(ctx, dirty) {
-    if (!
+    if (
     /*paused*/
-    ctx[4]) return create_if_block_3;
+    ctx[5]) return create_if_block_3;
     return create_else_block;
   }
 
@@ -96,10 +96,10 @@ function create_if_block(ctx) {
   var if_block0 = current_block_type(ctx);
   var if_block1 =
   /*mediaType*/
-  ctx[3] == 'video' && create_if_block_2(ctx);
+  ctx[4] == 'video' && create_if_block_2(ctx);
   var if_block2 =
   /*mediaType*/
-  ctx[3] == 'audio' && create_if_block_1(ctx);
+  ctx[4] == 'audio' && create_if_block_1(ctx);
   return {
     c: function c() {
       div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
@@ -116,7 +116,7 @@ function create_if_block(ctx) {
       /*timestamp*/
       ctx[0] /
       /*duration*/
-      ctx[1] || 0;
+      ctx[2] || 0;
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(progress, "class", "svelte-8yug8i");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg, "class", "icon svelte-8yug8i");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div0, "class", "button-container svelte-8yug8i");
@@ -138,18 +138,18 @@ function create_if_block(ctx) {
       if (!mounted) {
         dispose = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(svg, "click",
         /*toggle*/
-        ctx[5]);
+        ctx[7]);
         mounted = true;
       }
     },
     p: function p(ctx, dirty) {
       if (dirty &
       /*timestamp, duration*/
-      3 && progress_value_value !== (progress_value_value =
+      5 && progress_value_value !== (progress_value_value =
       /*timestamp*/
       ctx[0] /
       /*duration*/
-      ctx[1] || 0)) {
+      ctx[2] || 0)) {
         progress.value = progress_value_value;
       }
 
@@ -165,7 +165,7 @@ function create_if_block(ctx) {
 
       if (
       /*mediaType*/
-      ctx[3] == 'video') {
+      ctx[4] == 'video') {
         if (if_block1) {
           if_block1.p(ctx, dirty);
         } else {
@@ -180,7 +180,7 @@ function create_if_block(ctx) {
 
       if (
       /*mediaType*/
-      ctx[3] == 'audio') {
+      ctx[4] == 'audio') {
         if (if_block2) {
           if_block2.p(ctx, dirty);
         } else {
@@ -202,7 +202,7 @@ function create_if_block(ctx) {
       dispose();
     }
   };
-} // (104:4) {:else}
+} // (111:4) {:else}
 
 
 function create_else_block(ctx) {
@@ -219,7 +219,7 @@ function create_else_block(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
     }
   };
-} // (102:4) {#if !paused}
+} // (109:4) {#if paused}
 
 
 function create_if_block_3(ctx) {
@@ -236,7 +236,7 @@ function create_if_block_3(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
     }
   };
-} // (109:1) {#if mediaType == 'video'}
+} // (116:1) {#if mediaType == 'video'}
 
 
 function create_if_block_2(ctx) {
@@ -259,7 +259,7 @@ function create_if_block_2(ctx) {
     /*video_timeupdate_handler*/
 
 
-    ctx[7].call(video);
+    ctx[10].call(video);
   }
 
   return {
@@ -267,78 +267,102 @@ function create_if_block_2(ctx) {
       video = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("video");
       track = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("track");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(track, "kind", "captions");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(video, "class", "media");
       if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(video.src, video_src_value =
       /*url*/
-      ctx[2])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(video, "src", video_src_value);
+      ctx[3])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(video, "src", video_src_value);
       if (
       /*duration*/
-      ctx[1] === void 0) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.add_render_callback)(function () {
+      ctx[2] === void 0) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.add_render_callback)(function () {
         return (
           /*video_durationchange_handler*/
-          ctx[8].call(video)
+          ctx[11].call(video)
         );
       });
     },
     m: function m(target, anchor) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, video, anchor);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(video, track);
+      /*video_binding*/
+
+      ctx[9](video);
 
       if (!mounted) {
         dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "timeupdate", video_timeupdate_handler), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "durationchange",
         /*video_durationchange_handler*/
-        ctx[8]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "play",
+        ctx[11]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "play",
         /*video_play_pause_handler*/
-        ctx[9]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "pause",
+        ctx[12]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "pause",
         /*video_play_pause_handler*/
-        ctx[9]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "click",
+        ctx[12]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "click",
         /*toggle*/
-        ctx[5])];
+        ctx[7])];
         mounted = true;
       }
     },
     p: function p(ctx, dirty) {
       if (dirty &
       /*url*/
-      4 && !(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(video.src, video_src_value =
+      8 && !(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(video.src, video_src_value =
       /*url*/
-      ctx[2])) {
+      ctx[3])) {
         (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(video, "src", video_src_value);
       }
 
       if (!video_updating && dirty &
-      /*timestamp*/
-      1 && !isNaN_1(
-      /*timestamp*/
-      ctx[0])) {
+      /*time*/
+      2 && !isNaN_1(
+      /*time*/
+      ctx[1])) {
         video.currentTime =
-        /*timestamp*/
-        ctx[0];
+        /*time*/
+        ctx[1];
       }
 
       video_updating = false;
 
       if (dirty &
       /*paused*/
-      16 && video_is_paused !== (video_is_paused =
+      32 && video_is_paused !== (video_is_paused =
       /*paused*/
-      ctx[4])) {
+      ctx[5])) {
         video[video_is_paused ? "pause" : "play"]();
       }
     },
     d: function d(detaching) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(video);
+      /*video_binding*/
+
+      ctx[9](null);
       mounted = false;
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.run_all)(dispose);
     }
   };
-} // (114:2) {#if mediaType == 'audio'}
+} // (121:2) {#if mediaType == 'audio'}
 
 
 function create_if_block_1(ctx) {
   var audio;
   var track;
   var audio_src_value;
+  var audio_updating = false;
+  var audio_animationframe;
+  var audio_is_paused = true;
+  var mounted;
+  var dispose;
+
+  function audio_timeupdate_handler() {
+    cancelAnimationFrame(audio_animationframe);
+
+    if (!audio.paused) {
+      audio_animationframe = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.raf)(audio_timeupdate_handler);
+      audio_updating = true;
+    }
+    /*audio_timeupdate_handler*/
+
+
+    ctx[13].call(audio);
+  }
+
   return {
     c: function c() {
       audio = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("audio");
@@ -347,24 +371,67 @@ function create_if_block_1(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "class", "media");
       if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(audio.src, audio_src_value =
       /*url*/
-      ctx[2])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "src", audio_src_value);
+      ctx[3])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "src", audio_src_value);
       audio.controls = true;
+      if (
+      /*duration*/
+      ctx[2] === void 0) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.add_render_callback)(function () {
+        return (
+          /*audio_durationchange_handler*/
+          ctx[14].call(audio)
+        );
+      });
     },
     m: function m(target, anchor) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, audio, anchor);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(audio, track);
+
+      if (!mounted) {
+        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "timeupdate", audio_timeupdate_handler), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "durationchange",
+        /*audio_durationchange_handler*/
+        ctx[14]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "play",
+        /*audio_play_pause_handler*/
+        ctx[15]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "pause",
+        /*audio_play_pause_handler*/
+        ctx[15]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "click",
+        /*toggle*/
+        ctx[7])];
+        mounted = true;
+      }
     },
     p: function p(ctx, dirty) {
       if (dirty &
       /*url*/
-      4 && !(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(audio.src, audio_src_value =
+      8 && !(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(audio.src, audio_src_value =
       /*url*/
-      ctx[2])) {
+      ctx[3])) {
         (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "src", audio_src_value);
+      }
+
+      if (!audio_updating && dirty &
+      /*time*/
+      2 && !isNaN_1(
+      /*time*/
+      ctx[1])) {
+        audio.currentTime =
+        /*time*/
+        ctx[1];
+      }
+
+      audio_updating = false;
+
+      if (dirty &
+      /*paused*/
+      32 && audio_is_paused !== (audio_is_paused =
+      /*paused*/
+      ctx[5])) {
+        audio[audio_is_paused ? "pause" : "play"]();
       }
     },
     d: function d(detaching) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(audio);
+      mounted = false;
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.run_all)(dispose);
     }
   };
 }
@@ -373,7 +440,7 @@ function create_fragment(ctx) {
   var main;
   var if_block =
   /*mediaType*/
-  ctx[3] != undefined && create_if_block(ctx);
+  ctx[4] != undefined && create_if_block(ctx);
   return {
     c: function c() {
       main = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("main");
@@ -390,7 +457,7 @@ function create_fragment(ctx) {
 
       if (
       /*mediaType*/
-      ctx[3] != undefined) {
+      ctx[4] != undefined) {
         if (if_block) {
           if_block.p(ctx, dirty);
         } else {
@@ -412,7 +479,6 @@ function create_fragment(ctx) {
   };
 }
 
-var time = 0;
 var latency = 0;
 
 function format(seconds) {
@@ -427,11 +493,12 @@ function instance($$self, $$props, $$invalidate) {
   var name = $$props.name;
   console.log('app is up');
   var timestamp = undefined;
+  var time = 0;
   var duration;
   var url = undefined;
   var mediaType = undefined;
-  var paused = false;
-  var mediaControls;
+  var paused = true;
+  var media;
   var socket = io();
   socket.on('connect', function () {
     document.getElementById('socket-fail').style.visibility = "hidden";
@@ -441,34 +508,18 @@ function instance($$self, $$props, $$invalidate) {
   //document.getElementById('socket-fail').style.visibility = "visible";
   // Server emits event when media ends
 
-  socket.on('newMedia', function (data) {
-    console.log('newMedia detected!');
-    console.log(data);
-    $$invalidate(2, url = data.url);
-    $$invalidate(3, mediaType = data.mediaType);
-  }); // Server sends timestamp every three seconds
-  // Calculate latency and update Vue component
-
-  socket.on('timestamp', function (data) {
-    console.log('timestamp');
-    console.log(data);
-    $$invalidate(3, mediaType = data.mediaType);
-    $$invalidate(0, timestamp = data.timestamp);
-  }); // Server emits event when client connects
-
-  socket.on('updateClient', /*#__PURE__*/function () {
+  socket.on('newMedia', /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              console.log('updateClient');
-              $$invalidate(3, mediaType = data.mediaType);
-              $$invalidate(0, timestamp = data.timestamp);
-              $$invalidate(1, duration = data.duration);
-              $$invalidate(2, url = data.url);
+              console.log('newMedia detected!');
+              console.log(data);
+              $$invalidate(3, url = data.url);
+              $$invalidate(4, mediaType = data.mediaType);
 
-            case 5:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -479,17 +530,50 @@ function instance($$self, $$props, $$invalidate) {
     return function (_x) {
       return _ref3.apply(this, arguments);
     };
+  }()); // Server sends timestamp every three seconds
+  // Calculate latency and update Vue component
+
+  socket.on('timestamp', function (data) {
+    console.log('timestamp');
+    console.log(data);
+    $$invalidate(4, mediaType = data.mediaType);
+    $$invalidate(0, timestamp = data.timestamp);
+  }); // Server emits event when client connects
+
+  socket.on('updateClient', /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              console.log('updateClient');
+              $$invalidate(4, mediaType = data.mediaType);
+              $$invalidate(0, timestamp = data.timestamp);
+              $$invalidate(2, duration = data.duration);
+              $$invalidate(3, url = data.url);
+
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function (_x2) {
+      return _ref4.apply(this, arguments);
+    };
   }());
 
   function toggle(e) {
     if (!paused) {
-      $$invalidate(4, paused = true); //e.target.paused = true;
+      $$invalidate(5, paused = true); //e.target.paused = true;
 
       console.log('were playing now');
       console.log(e.target);
     } else {
       console.log('were paused now');
-      $$invalidate(4, paused = false);
+      $$invalidate(5, paused = false);
     }
   }
 
@@ -500,31 +584,55 @@ function instance($$self, $$props, $$invalidate) {
 
   (0,svelte__WEBPACK_IMPORTED_MODULE_2__.afterUpdate)(function () {
     console.log('the component just updated');
+
+    if (timestamp - time > 3) {
+      $$invalidate(1, time = timestamp);
+    }
   });
-  (0,svelte__WEBPACK_IMPORTED_MODULE_2__.beforeUpdate)(function () {
-    console.log('justbefore update...');
-  });
+  (0,svelte__WEBPACK_IMPORTED_MODULE_2__.beforeUpdate)(function () {}); //console.log('justbefore update...');
+
+  function video_binding($$value) {
+    svelte_internal__WEBPACK_IMPORTED_MODULE_1__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
+      media = $$value;
+      $$invalidate(6, media);
+    });
+  }
 
   function video_timeupdate_handler() {
-    timestamp = this.currentTime;
-    $$invalidate(0, timestamp);
+    time = this.currentTime;
+    $$invalidate(1, time);
   }
 
   function video_durationchange_handler() {
     duration = this.duration;
-    $$invalidate(1, duration);
+    $$invalidate(2, duration);
   }
 
   function video_play_pause_handler() {
     paused = this.paused;
-    $$invalidate(4, paused);
+    $$invalidate(5, paused);
+  }
+
+  function audio_timeupdate_handler() {
+    time = this.currentTime;
+    $$invalidate(1, time);
+  }
+
+  function audio_durationchange_handler() {
+    duration = this.duration;
+    $$invalidate(2, duration);
+  }
+
+  function audio_play_pause_handler() {
+    paused = this.paused;
+    $$invalidate(5, paused);
   }
 
   $$self.$$set = function ($$props) {
-    if ('name' in $$props) $$invalidate(6, name = $$props.name);
+    if ('name' in $$props) $$invalidate(8, name = $$props.name);
   };
 
-  return [timestamp, duration, url, mediaType, paused, toggle, name, video_timeupdate_handler, video_durationchange_handler, video_play_pause_handler];
+  return [timestamp, time, duration, url, mediaType, paused, media, toggle, name, video_binding, video_timeupdate_handler, video_durationchange_handler, video_play_pause_handler, audio_timeupdate_handler, audio_durationchange_handler, audio_play_pause_handler];
 }
 
 var App = /*#__PURE__*/function (_SvelteComponent) {
@@ -539,7 +647,7 @@ var App = /*#__PURE__*/function (_SvelteComponent) {
 
     _this = _super.call(this);
     (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.init)(_assertThisInitialized(_this), options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_1__.safe_not_equal, {
-      name: 6
+      name: 8
     }, add_css);
     return _this;
   }
