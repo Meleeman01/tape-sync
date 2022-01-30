@@ -1,15 +1,17 @@
 
 <script>
-	import {  onMount, afterUpdate, beforeUpdate } from 'svelte';
+	import {  onMount, afterUpdate, beforeUpdate, onDestroy } from 'svelte';
 	
 	
 	
 	export let name; //used as a prop for the app.
+	// create a look event that bubbles up and cannot be canceled
+
 
 	console.log('app is up');
 	let timestamp = undefined;
 	let time = 0;
-
+	let heartBeat = undefined;
 	let duration;
 	let url = undefined;
 	let mediaType = undefined;
@@ -18,6 +20,8 @@
 
 
 	let media;
+
+
 
 	const socket = io();
 
@@ -33,10 +37,12 @@
 	// Server emits event when media ends
 	socket.on('newMedia', async (data) => {
 		console.log('newMedia detected!');
-		console.log(data);
-		url = data.url;
-		mediaType = data.mediaType;
-		
+		url = await data.url;
+		mediaType = await data.mediaType;
+		await media.load();
+		if (!paused) {
+			await media.play();
+		}
 	});
 	// Server sends timestamp every three seconds
 	// Calculate latency and update Vue component
@@ -45,26 +51,31 @@
 		console.log(data);
 		mediaType = data.mediaType;
 		timestamp = data.timestamp;
-
+		heartBeat = new Date().getTime();
+		if (paused) {
+			console.log(Math.abs(timestamp));
+			media.currentTime = Math.floor(timestamp);
+		}
 	});
 	// Server emits event when client connects
 	socket.on('updateClient', async (data) => {
 		console.log('updateClient');
-		mediaType = data.mediaType;
-		timestamp = data.timestamp;
-		duration = data.duration;
-		url = data.url;
+		mediaType = await data.mediaType;
+		timestamp = await data.timestamp;
+		duration = await data.duration;
+		url = await data.url;
+		media.currentTime = await Math.floor(timestamp) ;
 	});
 
 	function toggle(e) {
 		if (!paused) {
 			paused = true;
 			//e.target.paused = true;
-			console.log('were playing now');
+			console.log('were paused now');
 			console.log(e.target);
 		}
 		else {
-			console.log('were paused now');
+			console.log('were playing now');
 			paused = false;
 		}
 	}
@@ -78,23 +89,16 @@
 
 		return `${minutes}:${seconds}`;
 	}
+
 	
 	onMount((e) => {
 		console.log('the component has mounted');
-		console.log(e);
-		//mediaplayer controls
-
-
 	});
 	afterUpdate(() => {
 		console.log('the component just updated');
 		if (timestamp - time > 3) {
 			time = timestamp;
 		}
-
-	});
-	beforeUpdate(() => {
-		//console.log('justbefore update...');
 	});
 </script>
 
@@ -105,21 +109,21 @@
 			<progress value={(timestamp/duration) || 0} ></progress>
 			<div class="button-container">
 		
-			<svg class="icon" on:click={toggle}>
-				{#if paused}
-				<use xlink:href="regular.svg#play-circle"></use>
-				{:else}
-				<use xlink:href="regular.svg#pause-circle"></use>
-				{/if}
-			</svg>
-	</div>
+				<svg class="icon" on:click={toggle}>
+					{#if paused}
+					<use xlink:href="regular.svg#play-circle"></use>
+					{:else}
+					<use xlink:href="regular.svg#pause-circle"></use>
+					{/if}
+				</svg>
+			</div>
 	{#if mediaType == 'video'}
-		<video bind:this={media} src={url} bind:currentTime={time}  bind:duration bind:paused on:click={toggle} >
+		<video bind:this={media} src={url} currentTime={time}  bind:duration bind:paused on:click={toggle}>
 			<track kind="captions">
 		</video> 
 		{/if}
 		{#if mediaType == 'audio'}
-			<audio class="media" src={url} bind:currentTime={time} bind:duration bind:paused on:click={toggle} controls>
+			<audio bind:this={media} src={url} currentTime={time} bind:duration bind:paused on:click={toggle}>
 				<track kind="captions">
 			</audio>
 		{/if}
