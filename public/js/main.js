@@ -72,76 +72,168 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function add_css(target) {
-  (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append_styles)(target, "svelte-8yug8i", "main.svelte-8yug8i{text-align:center;padding:1em;max-width:240px;margin:0 auto;background:black}#controls-container.svelte-8yug8i{width:100%}.button-container.svelte-8yug8i{display:flex;justify-content:flex-start;align-items:center}.icon.svelte-8yug8i{fill:white;width:3rem;height:3rem}.icon.svelte-8yug8i:hover{fill:#ccc}progress.svelte-8yug8i{width:100%}@media(min-width: 640px){main.svelte-8yug8i{max-width:none}}");
-} // (107:1) {#if mediaType != undefined}
+  (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append_styles)(target, "svelte-lnwsk4", "main.svelte-lnwsk4{height:100vh;width:100vw;overflow:hidden}#controls-container.svelte-lnwsk4{width:100%;height:100px;background-color:rgba(0,0,0,0.2);position:fixed;top:0;transition:opacity 0.5s;opacity:0}.button-container.svelte-lnwsk4{display:flex;justify-content:space-between;align-items:center}.controls-left.svelte-lnwsk4{display:flex;padding:.25rem;justify-content:flex-start;align-items:center;flex-wrap:wrap}.controls-right.svelte-lnwsk4{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap}.slider.svelte-lnwsk4{margin:0 .25rem}.icon.svelte-lnwsk4{fill:white;width:3rem;height:3rem;margin:0 .25rem}.icon.svelte-lnwsk4:hover{fill:#ccc}progress.svelte-lnwsk4{width:100%}.media.svelte-lnwsk4{width:100%;object-fit:contain}@media(min-width: 640px){main.svelte-lnwsk4{max-width:none}}");
+} // (129:1) {#if mediaType != undefined}
 
 
 function create_if_block(ctx) {
-  var div1;
+  var div4;
   var progress;
   var progress_value_value;
   var t0;
-  var div0;
-  var svg;
+  var div3;
+  var div1;
+  var svg0;
   var t1;
+  var svg1;
   var t2;
+  var div0;
+  var input;
+  var t3;
+  var div2;
+  var svg2;
+  var use0;
+  var t4;
+  var svg3;
+  var use1;
+  var t5;
+  var t6;
+  var if_block3_anchor;
   var mounted;
   var dispose;
 
   function select_block_type(ctx, dirty) {
     if (
     /*paused*/
-    ctx[5]) return create_if_block_3;
+    ctx[5]) return create_if_block_7;
     return create_else_block;
   }
 
   var current_block_type = select_block_type(ctx, -1);
   var if_block0 = current_block_type(ctx);
-  var if_block1 =
+
+  function select_block_type_1(ctx, dirty) {
+    if (
+    /*muted*/
+    ctx[6]) return create_if_block_3;
+    if (
+    /*volume*/
+    ctx[7] == 0) return create_if_block_4;
+    if (
+    /*volume*/
+    ctx[7] < 0.9) return create_if_block_5;
+    if (
+    /*volume*/
+    ctx[7] > 0.9) return create_if_block_6;
+  }
+
+  var current_block_type_1 = select_block_type_1(ctx, -1);
+  var if_block1 = current_block_type_1 && current_block_type_1(ctx);
+  var if_block2 =
   /*mediaType*/
   ctx[4] == 'video' && create_if_block_2(ctx);
-  var if_block2 =
+  var if_block3 =
   /*mediaType*/
   ctx[4] == 'audio' && create_if_block_1(ctx);
   return {
     c: function c() {
-      div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
+      div4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
       progress = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("progress");
       t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      svg = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("svg");
+      div3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
+      div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
+      svg0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("svg");
       if_block0.c();
       t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
+      svg1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("svg");
       if (if_block1) if_block1.c();
       t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
+      div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
+      input = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("input");
+      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
+      div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
+      svg2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("svg");
+      use0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
+      t4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
+      svg3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("svg");
+      use1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
+      t5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
       if (if_block2) if_block2.c();
+      t6 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
+      if (if_block3) if_block3.c();
+      if_block3_anchor = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.empty)();
       progress.value = progress_value_value =
       /*timestamp*/
       ctx[0] /
       /*duration*/
       ctx[2] || 0;
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(progress, "class", "svelte-8yug8i");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg, "class", "icon svelte-8yug8i");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div0, "class", "button-container svelte-8yug8i");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div1, "id", "controls-container");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div1, "class", " svelte-8yug8i");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(progress, "class", "svelte-lnwsk4");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg0, "class", "icon svelte-lnwsk4");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg1, "class", "icon svelte-lnwsk4");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input, "class", "slider svelte-lnwsk4");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input, "type", "range");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input, "min", "0");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input, "max", "1");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input, "step", ".01");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div1, "class", "controls-left svelte-lnwsk4");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.xlink_attr)(use0, "xlink:href", "solid.svg#redo-alt");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg2, "class", "icon svelte-lnwsk4");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.xlink_attr)(use1, "xlink:href", "solid.svg#expand");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg3, "class", "icon svelte-lnwsk4");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div2, "class", "controls-right svelte-lnwsk4");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div3, "class", "button-container svelte-lnwsk4");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div4, "id", "controls-container");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div4, "class", "svelte-lnwsk4");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, div1, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, progress);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, t0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, div0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div0, svg);
-      if_block0.m(svg, null);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, div4, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div4, progress);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div4, t0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div4, div3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div3, div1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, svg0);
+      if_block0.m(svg0, null);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, t1);
-      if (if_block1) if_block1.m(div1, null);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, svg1);
+      if (if_block1) if_block1.m(svg1, null);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, t2);
-      if (if_block2) if_block2.m(div1, null);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, div0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div0, input);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_input_value)(input,
+      /*volume*/
+      ctx[7]);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div3, t3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div3, div2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div2, svg2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(svg2, use0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div2, t4);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div2, svg3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(svg3, use1);
+      /*div4_binding*/
+
+      ctx[16](div4);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, t5, anchor);
+      if (if_block2) if_block2.m(target, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, t6, anchor);
+      if (if_block3) if_block3.m(target, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, if_block3_anchor, anchor);
 
       if (!mounted) {
-        dispose = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(svg, "click",
-        /*toggle*/
-        ctx[7]);
+        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(svg0, "click",
+        /*pausePlay*/
+        ctx[11]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(svg1, "click",
+        /*toggleMute*/
+        ctx[13]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(input, "change",
+        /*input_change_input_handler*/
+        ctx[15]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(input, "input",
+        /*input_change_input_handler*/
+        ctx[15]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(svg2, "click",
+        /*resync*/
+        ctx[12]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(use1, "click", shrinkExpand), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(div4, "mouseover",
+        /*showMenu*/
+        ctx[10]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(div4, "focus",
+        /*showMenu*/
+        ctx[10])];
         mounted = true;
       }
     },
@@ -162,50 +254,79 @@ function create_if_block(ctx) {
 
         if (if_block0) {
           if_block0.c();
-          if_block0.m(svg, null);
+          if_block0.m(svg0, null);
         }
+      }
+
+      if (current_block_type_1 !== (current_block_type_1 = select_block_type_1(ctx, dirty))) {
+        if (if_block1) if_block1.d(1);
+        if_block1 = current_block_type_1 && current_block_type_1(ctx);
+
+        if (if_block1) {
+          if_block1.c();
+          if_block1.m(svg1, null);
+        }
+      }
+
+      if (dirty &
+      /*volume*/
+      128) {
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_input_value)(input,
+        /*volume*/
+        ctx[7]);
       }
 
       if (
       /*mediaType*/
       ctx[4] == 'video') {
-        if (if_block1) {
-          if_block1.p(ctx, dirty);
-        } else {
-          if_block1 = create_if_block_2(ctx);
-          if_block1.c();
-          if_block1.m(div1, t2);
-        }
-      } else if (if_block1) {
-        if_block1.d(1);
-        if_block1 = null;
-      }
-
-      if (
-      /*mediaType*/
-      ctx[4] == 'audio') {
         if (if_block2) {
           if_block2.p(ctx, dirty);
         } else {
-          if_block2 = create_if_block_1(ctx);
+          if_block2 = create_if_block_2(ctx);
           if_block2.c();
-          if_block2.m(div1, null);
+          if_block2.m(t6.parentNode, t6);
         }
       } else if (if_block2) {
         if_block2.d(1);
         if_block2 = null;
       }
+
+      if (
+      /*mediaType*/
+      ctx[4] == 'audio') {
+        if (if_block3) {
+          if_block3.p(ctx, dirty);
+        } else {
+          if_block3 = create_if_block_1(ctx);
+          if_block3.c();
+          if_block3.m(if_block3_anchor.parentNode, if_block3_anchor);
+        }
+      } else if (if_block3) {
+        if_block3.d(1);
+        if_block3 = null;
+      }
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(div1);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(div4);
       if_block0.d();
-      if (if_block1) if_block1.d();
-      if (if_block2) if_block2.d();
+
+      if (if_block1) {
+        if_block1.d();
+      }
+      /*div4_binding*/
+
+
+      ctx[16](null);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(t5);
+      if (if_block2) if_block2.d(detaching);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(t6);
+      if (if_block3) if_block3.d(detaching);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(if_block3_anchor);
       mounted = false;
-      dispose();
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.run_all)(dispose);
     }
   };
-} // (115:5) {:else}
+} // (137:6) {:else}
 
 
 function create_else_block(ctx) {
@@ -222,10 +343,10 @@ function create_else_block(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
     }
   };
-} // (113:5) {#if paused}
+} // (135:6) {#if paused}
 
 
-function create_if_block_3(ctx) {
+function create_if_block_7(ctx) {
   var use;
   return {
     c: function c() {
@@ -239,7 +360,75 @@ function create_if_block_3(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
     }
   };
-} // (120:1) {#if mediaType == 'video'}
+} // (149:33) 
+
+
+function create_if_block_6(ctx) {
+  var use;
+  return {
+    c: function c() {
+      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.xlink_attr)(use, "xlink:href", "solid.svg#volume-up");
+    },
+    m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, use, anchor);
+    },
+    d: function d(detaching) {
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
+    }
+  };
+} // (147:33) 
+
+
+function create_if_block_5(ctx) {
+  var use;
+  return {
+    c: function c() {
+      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.xlink_attr)(use, "xlink:href", "solid.svg#volume-down");
+    },
+    m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, use, anchor);
+    },
+    d: function d(detaching) {
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
+    }
+  };
+} // (145:10) {#if volume == 0}
+
+
+function create_if_block_4(ctx) {
+  var use;
+  return {
+    c: function c() {
+      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.xlink_attr)(use, "xlink:href", "solid.svg#volume-off");
+    },
+    m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, use, anchor);
+    },
+    d: function d(detaching) {
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
+    }
+  };
+} // (142:6) {#if muted}
+
+
+function create_if_block_3(ctx) {
+  var use;
+  return {
+    c: function c() {
+      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.xlink_attr)(use, "xlink:href", "solid.svg#volume-mute");
+    },
+    m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, use, anchor);
+    },
+    d: function d(detaching) {
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
+    }
+  };
+} // (170:2) {#if mediaType == 'video'}
 
 
 function create_if_block_2(ctx) {
@@ -254,6 +443,7 @@ function create_if_block_2(ctx) {
       video = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("video");
       track = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("track");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(track, "kind", "captions");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(video, "class", "media svelte-lnwsk4");
       if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(video.src, video_src_value =
       /*url*/
       ctx[3])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(video, "src", video_src_value);
@@ -265,7 +455,7 @@ function create_if_block_2(ctx) {
       ctx[2] === void 0) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.add_render_callback)(function () {
         return (
           /*video_durationchange_handler*/
-          ctx[10].call(video)
+          ctx[19].call(video)
         );
       });
     },
@@ -274,18 +464,32 @@ function create_if_block_2(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(video, track);
       /*video_binding*/
 
-      ctx[9](video);
+      ctx[17](video);
+
+      if (!isNaN(
+      /*volume*/
+      ctx[7])) {
+        video.volume =
+        /*volume*/
+        ctx[7];
+      }
+
+      video.muted =
+      /*muted*/
+      ctx[6];
 
       if (!mounted) {
-        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "durationchange",
+        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "volumechange",
+        /*video_volumechange_handler*/
+        ctx[18]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "durationchange",
         /*video_durationchange_handler*/
-        ctx[10]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "play",
+        ctx[19]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "play",
         /*video_play_pause_handler*/
-        ctx[11]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "pause",
+        ctx[20]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "pause",
         /*video_play_pause_handler*/
-        ctx[11]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "click",
-        /*toggle*/
-        ctx[7])];
+        ctx[20]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "click",
+        /*pausePlay*/
+        ctx[11])];
         mounted = true;
       }
     },
@@ -307,6 +511,24 @@ function create_if_block_2(ctx) {
       }
 
       if (dirty &
+      /*volume*/
+      128 && !isNaN(
+      /*volume*/
+      ctx[7])) {
+        video.volume =
+        /*volume*/
+        ctx[7];
+      }
+
+      if (dirty &
+      /*muted*/
+      64) {
+        video.muted =
+        /*muted*/
+        ctx[6];
+      }
+
+      if (dirty &
       /*paused*/
       32 && video_is_paused !== (video_is_paused =
       /*paused*/
@@ -318,12 +540,12 @@ function create_if_block_2(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(video);
       /*video_binding*/
 
-      ctx[9](null);
+      ctx[17](null);
       mounted = false;
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.run_all)(dispose);
     }
   };
-} // (125:2) {#if mediaType == 'audio'}
+} // (175:2) {#if mediaType == 'audio'}
 
 
 function create_if_block_1(ctx) {
@@ -338,6 +560,7 @@ function create_if_block_1(ctx) {
       audio = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("audio");
       track = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("track");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(track, "kind", "captions");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "class", "media svelte-lnwsk4");
       if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(audio.src, audio_src_value =
       /*url*/
       ctx[3])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "src", audio_src_value);
@@ -349,7 +572,7 @@ function create_if_block_1(ctx) {
       ctx[2] === void 0) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.add_render_callback)(function () {
         return (
           /*audio_durationchange_handler*/
-          ctx[13].call(audio)
+          ctx[23].call(audio)
         );
       });
     },
@@ -358,18 +581,32 @@ function create_if_block_1(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(audio, track);
       /*audio_binding*/
 
-      ctx[12](audio);
+      ctx[21](audio);
+
+      if (!isNaN(
+      /*volume*/
+      ctx[7])) {
+        audio.volume =
+        /*volume*/
+        ctx[7];
+      }
+
+      audio.muted =
+      /*muted*/
+      ctx[6];
 
       if (!mounted) {
-        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "durationchange",
+        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "volumechange",
+        /*audio_volumechange_handler*/
+        ctx[22]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "durationchange",
         /*audio_durationchange_handler*/
-        ctx[13]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "play",
+        ctx[23]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "play",
         /*audio_play_pause_handler*/
-        ctx[14]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "pause",
+        ctx[24]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "pause",
         /*audio_play_pause_handler*/
-        ctx[14]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "click",
-        /*toggle*/
-        ctx[7])];
+        ctx[24]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "click",
+        /*pausePlay*/
+        ctx[11])];
         mounted = true;
       }
     },
@@ -391,6 +628,24 @@ function create_if_block_1(ctx) {
       }
 
       if (dirty &
+      /*volume*/
+      128 && !isNaN(
+      /*volume*/
+      ctx[7])) {
+        audio.volume =
+        /*volume*/
+        ctx[7];
+      }
+
+      if (dirty &
+      /*muted*/
+      64) {
+        audio.muted =
+        /*muted*/
+        ctx[6];
+      }
+
+      if (dirty &
       /*paused*/
       32 && audio_is_paused !== (audio_is_paused =
       /*paused*/
@@ -402,7 +657,7 @@ function create_if_block_1(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(audio);
       /*audio_binding*/
 
-      ctx[12](null);
+      ctx[21](null);
       mounted = false;
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.run_all)(dispose);
     }
@@ -418,7 +673,7 @@ function create_fragment(ctx) {
     c: function c() {
       main = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("main");
       if (if_block) if_block.c();
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(main, "class", "svelte-8yug8i");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(main, "class", "svelte-lnwsk4");
     },
     m: function m(target, anchor) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, main, anchor);
@@ -454,12 +709,13 @@ function create_fragment(ctx) {
 
 var latency = 0;
 
-function format(seconds) {
-  if (isNaN(seconds)) return '...';
-  var minutes = Math.floor(seconds / 60);
-  seconds = Math.floor(seconds % 60);
-  if (seconds < 10) seconds = '0' + seconds;
-  return "".concat(minutes, ":").concat(seconds);
+function shrinkExpand(e) {
+  if (!fscreen.fullscreenElement) {
+    var video = document.querySelector('main');
+    fscreen.requestFullscreen(video);
+  } else {
+    fscreen.exitFullscreen();
+  }
 }
 
 function instance($$self, $$props, $$invalidate) {
@@ -473,12 +729,15 @@ function instance($$self, $$props, $$invalidate) {
   var url = undefined;
   var mediaType = undefined;
   var paused = true;
+  var muted = false;
+  var volume = 1.0;
+  var controls;
   var media;
+  var menuVisible;
   var socket = io();
-  socket.on('connect', function () {
-    document.getElementById('socket-fail').style.visibility = "hidden";
-    document.getElementById('socket-success').style.visibility = "visible";
-  });
+  socket.on('connect', function () {}); //document.getElementById('socket-fail').style.visibility = "hidden";
+  //document.getElementById('socket-success').style.visibility = "visible";
+
   socket.on('disconnect', function () {}); //document.getElementById('socket-success').style.visibility = "hidden";
   //document.getElementById('socket-fail').style.visibility = "visible";
   // Server emits event when media ends
@@ -538,8 +797,7 @@ function instance($$self, $$props, $$invalidate) {
     heartBeat = new Date().getTime();
 
     if (paused) {
-      console.log(Math.abs(timestamp));
-      $$invalidate(6, media.currentTime = Math.floor(timestamp), media);
+      $$invalidate(9, media.currentTime = Math.floor(timestamp), media);
     }
   }); // Server emits event when client connects
 
@@ -585,7 +843,7 @@ function instance($$self, $$props, $$invalidate) {
             case 24:
               _context2.t9 = media.currentTime = _context2.sent;
               _context2.t10 = media;
-              (0, _context2.t8)(6, _context2.t9, _context2.t10);
+              (0, _context2.t8)(9, _context2.t9, _context2.t10);
 
             case 27:
             case "end":
@@ -600,7 +858,15 @@ function instance($$self, $$props, $$invalidate) {
     };
   }());
 
-  function toggle(e) {
+  function showMenu(e) {
+    clearTimeout(menuVisible);
+    $$invalidate(8, controls.style.opacity = '1', controls);
+    menuVisible = setTimeout(function () {
+      $$invalidate(8, controls.style.opacity = "0", controls);
+    }, 4000);
+  }
+
+  function pausePlay(e) {
     if (!paused) {
       $$invalidate(5, paused = true); //e.target.paused = true;
 
@@ -609,6 +875,22 @@ function instance($$self, $$props, $$invalidate) {
     } else {
       console.log('were playing now');
       $$invalidate(5, paused = false);
+    }
+  }
+
+  function resync(e) {
+    // get the difference of the last server heart beat in seconds
+    var lastHeartBeatOffset = (new Date().getTime() - heartBeat) / 1000;
+    $$invalidate(9, media.currentTime = timestamp + lastHeartBeatOffset, media);
+  }
+
+  function toggleMute(e) {
+    if (!muted) {
+      console.log('were muting.');
+      $$invalidate(6, muted = true);
+    } else {
+      console.log('were unmuted');
+      $$invalidate(6, muted = false);
     }
   }
 
@@ -623,11 +905,30 @@ function instance($$self, $$props, $$invalidate) {
     }
   });
 
+  function input_change_input_handler() {
+    volume = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.to_number)(this.value);
+    $$invalidate(7, volume);
+  }
+
+  function div4_binding($$value) {
+    svelte_internal__WEBPACK_IMPORTED_MODULE_1__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
+      controls = $$value;
+      $$invalidate(8, controls);
+    });
+  }
+
   function video_binding($$value) {
     svelte_internal__WEBPACK_IMPORTED_MODULE_1__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
       media = $$value;
-      $$invalidate(6, media);
+      $$invalidate(9, media);
     });
+  }
+
+  function video_volumechange_handler() {
+    volume = this.volume;
+    muted = this.muted;
+    $$invalidate(7, volume);
+    $$invalidate(6, muted);
   }
 
   function video_durationchange_handler() {
@@ -643,8 +944,15 @@ function instance($$self, $$props, $$invalidate) {
   function audio_binding($$value) {
     svelte_internal__WEBPACK_IMPORTED_MODULE_1__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
       media = $$value;
-      $$invalidate(6, media);
+      $$invalidate(9, media);
     });
+  }
+
+  function audio_volumechange_handler() {
+    volume = this.volume;
+    muted = this.muted;
+    $$invalidate(7, volume);
+    $$invalidate(6, muted);
   }
 
   function audio_durationchange_handler() {
@@ -658,10 +966,10 @@ function instance($$self, $$props, $$invalidate) {
   }
 
   $$self.$$set = function ($$props) {
-    if ('name' in $$props) $$invalidate(8, name = $$props.name);
+    if ('name' in $$props) $$invalidate(14, name = $$props.name);
   };
 
-  return [timestamp, time, duration, url, mediaType, paused, media, toggle, name, video_binding, video_durationchange_handler, video_play_pause_handler, audio_binding, audio_durationchange_handler, audio_play_pause_handler];
+  return [timestamp, time, duration, url, mediaType, paused, muted, volume, controls, media, showMenu, pausePlay, resync, toggleMute, name, input_change_input_handler, div4_binding, video_binding, video_volumechange_handler, video_durationchange_handler, video_play_pause_handler, audio_binding, audio_volumechange_handler, audio_durationchange_handler, audio_play_pause_handler];
 }
 
 var App = /*#__PURE__*/function (_SvelteComponent) {
@@ -676,7 +984,7 @@ var App = /*#__PURE__*/function (_SvelteComponent) {
 
     _this = _super.call(this);
     (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.init)(_assertThisInitialized(_this), options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_1__.safe_not_equal, {
-      name: 8
+      name: 14
     }, add_css);
     return _this;
   }
