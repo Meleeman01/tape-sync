@@ -1,9 +1,6 @@
 
 <script>
-	import {  onMount, afterUpdate, beforeUpdate, onDestroy } from 'svelte';
-	
-	
-	
+	import {  onMount, afterUpdate } from 'svelte';
 	export let name; //used as a prop for the app.
 	// create a look event that bubbles up and cannot be canceled
 
@@ -17,17 +14,19 @@
 	let mediaType = undefined;
 	let latency = 0;
 	let paused = true;
+	let muted = false;
+	let volume = 1.0;
 
-
+	let controls;
 	let media;
-
+	let menuVisible;
 
 
 	const socket = io();
 
 	socket.on('connect', () => {
-		document.getElementById('socket-fail').style.visibility = "hidden";
-		document.getElementById('socket-success').style.visibility = "visible";
+		//document.getElementById('socket-fail').style.visibility = "hidden";
+		//document.getElementById('socket-success').style.visibility = "visible";
 	});
 
 	socket.on('disconnect', () => {
@@ -53,7 +52,6 @@
 		timestamp = data.timestamp;
 		heartBeat = new Date().getTime();
 		if (paused) {
-			console.log(Math.abs(timestamp));
 			media.currentTime = Math.floor(timestamp);
 		}
 	});
@@ -67,7 +65,15 @@
 		media.currentTime = await Math.floor(timestamp) ;
 	});
 
-	function toggle(e) {
+	function showMenu(e) {
+		clearTimeout(menuVisible);
+        controls.style.opacity = '1';
+        menuVisible = setTimeout(() => {
+            controls.style.opacity = "0";
+        }, 4000);
+	}
+
+	function pausePlay(e) {
 		if (!paused) {
 			paused = true;
 			//e.target.paused = true;
@@ -80,14 +86,30 @@
 		}
 	}
 
-	function format(seconds) {
-		if (isNaN(seconds)) return '...';
+	function resync(e) { 
+		// get the difference of the last server heart beat in seconds
+        let lastHeartBeatOffset = ((new Date().getTime() - heartBeat )/1000);
+        media.currentTime = timestamp+lastHeartBeatOffset;
+	}
 
-		const minutes = Math.floor(seconds / 60);
-		seconds = Math.floor(seconds % 60);
-		if (seconds < 10) seconds = '0' + seconds;
+	function shrinkExpand(e) {
+		if (!fscreen.fullscreenElement) {
+                let video = document.querySelector('main');
+                fscreen.requestFullscreen(video);
+            } else {
+                fscreen.exitFullscreen();
+            }
+	}
 
-		return `${minutes}:${seconds}`;
+	function toggleMute(e) {
+		if(!muted) {
+			console.log('were muting.');
+			muted = true;
+		}
+		else {
+			console.log('were unmuted');
+			muted = false;
+		}
 	}
 
 	
@@ -105,63 +127,112 @@
 <main>
 
 	{#if mediaType != undefined}
-		<div id="controls-container" class="">
+		<div id="controls-container" bind:this={controls} on:mouseover={showMenu} on:focus={showMenu}>
 			<progress value={(timestamp/duration) || 0} ></progress>
 			<div class="button-container">
-		
-				<svg class="icon" on:click={toggle}>
-					{#if paused}
-					<use xlink:href="regular.svg#play-circle"></use>
-					{:else}
-					<use xlink:href="regular.svg#pause-circle"></use>
-					{/if}
-				</svg>
+				<div class="controls-left">
+					<svg class="icon" on:click={pausePlay}>
+						{#if paused}
+						<use xlink:href="regular.svg#play-circle"></use>
+						{:else}
+						<use xlink:href="regular.svg#pause-circle"></use>
+						{/if}
+					</svg>
+					<svg class="icon" on:click={toggleMute}>
+						{#if muted}
+						<use xlink:href="solid.svg#volume-mute"></use>
+						{:else}
+						    {#if volume == 0}
+						    <use xlink:href="solid.svg#volume-off"></use>
+						    {:else if volume < 0.9}
+						    <use xlink:href="solid.svg#volume-down"></use>
+						    {:else if volume > 0.9}
+						    <use xlink:href="solid.svg#volume-up"></use>
+						    {/if}
+						{/if}
+					</svg>
+					<div>
+						<input class="slider" type="range" min="0" max="1" step=".01"
+                     bind:value={volume}/>
+					</div>
+				</div>
+				
+				<div class="controls-right">
+					<svg class="icon" on:click={resync}>
+						<use xlink:href="solid.svg#redo-alt"></use>
+					</svg>
+					<svg class="icon">
+						<use xlink:href="solid.svg#expand" on:click={shrinkExpand}></use>
+					</svg>
+				</div>
 			</div>
-	{#if mediaType == 'video'}
-		<video bind:this={media} src={url} currentTime={time}  bind:duration bind:paused on:click={toggle}>
+		</div>
+		{#if mediaType == 'video'}
+		<video class="media" bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click={pausePlay}>
 			<track kind="captions">
 		</video> 
 		{/if}
 		{#if mediaType == 'audio'}
-			<audio bind:this={media} src={url} currentTime={time} bind:duration bind:paused on:click={toggle}>
+			<audio class="media" bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click={pausePlay}>
 				<track kind="captions">
 			</audio>
 		{/if}
-	</div>
+		
 	{/if}
 </main>
 
 <style>
-	
 	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-		background: black;
+		height: 100vh;
+    	width: 100vw;
+    	overflow: hidden;
 	}
-
 	#controls-container {
 		width: 100%;
+    	height: 100px;
+    	background-color: rgba(0,0,0,0.2);
+    	position: fixed;
+    	top: 0;
+    	transition: opacity 0.5s;
+    	opacity: 0;
 	}
 	.button-container {
 		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.controls-left {
+		display: flex;	
+		padding: .25rem;
 		justify-content: flex-start;
 		align-items: center;
+		flex-wrap: wrap;
+	}
+	.controls-right {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	.slider {
+		margin: 0 .25rem;
 	}
 	.icon {
 		fill:white;
 		width: 3rem;
 		height: 3rem;
+		margin: 0 .25rem;
 	}
-
 	.icon:hover {
 		fill:#ccc;
 	}
 	progress {
 		width: 100%;
 	}
-	
+	.media {
+		width: 100%;
+		object-fit: contain;
+	}
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
