@@ -190,6 +190,7 @@
 	#controls-container {
 		width: 100%;
     	height: 100px;
+        z-index:2;
     	background-color: rgba(0,0,0,0.2);
     	position: fixed;
     	top: 0;
@@ -230,6 +231,7 @@
 		width: 100%;
 	}
 	.media {
+                height:100%;
 		width: 100%;
 		object-fit: contain;
 	}
