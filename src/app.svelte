@@ -174,7 +174,8 @@
 		</video> 
 		{/if}
 		{#if mediaType == 'audio'}
-			<audio class="media" bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click={pausePlay}>
+			<img class="media" src="images/kikiRadio.gif" alt="black cat with his hair standing up." />
+			<audio class="" bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click={pausePlay}>
 				<track kind="captions">
 			</audio>
 		{/if}

@@ -69,7 +69,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function add_css(target) {
   (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append_styles)(target, "svelte-ty8i40", "main.svelte-ty8i40{height:100vh;width:100vw;overflow:hidden}#controls-container.svelte-ty8i40{width:100%;height:100px;z-index:2;background-color:rgba(0,0,0,0.2);position:fixed;top:0;transition:opacity 0.5s;opacity:0}.button-container.svelte-ty8i40{display:flex;justify-content:space-between;align-items:center}.controls-left.svelte-ty8i40{display:flex;padding:.25rem;justify-content:flex-start;align-items:center;flex-wrap:wrap}.controls-right.svelte-ty8i40{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap}.slider.svelte-ty8i40{margin:0 .25rem}.icon.svelte-ty8i40{fill:white;width:3rem;height:3rem;margin:0 .25rem}.icon.svelte-ty8i40:hover{fill:#ccc}progress.svelte-ty8i40{width:100%}.media.svelte-ty8i40{height:100%;width:100%;object-fit:contain}@media(min-width: 640px){main.svelte-ty8i40{max-width:none}}");
-} // (181:1) {:else}
+} // (182:1) {:else}
 
 
 function create_else_block_1(ctx) {
@@ -566,6 +566,9 @@ function create_if_block_2(ctx) {
 
 
 function create_if_block_1(ctx) {
+  var img;
+  var img_src_value;
+  var t;
   var audio;
   var track;
   var audio_src_value;
@@ -574,10 +577,15 @@ function create_if_block_1(ctx) {
   var dispose;
   return {
     c: function c() {
+      img = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("img");
+      t = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
       audio = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("audio");
       track = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("track");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(img, "class", "media svelte-ty8i40");
+      if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(img.src, img_src_value = "images/kikiRadio.gif")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(img, "src", img_src_value);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(img, "alt", "black cat with his hair standing up.");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(track, "kind", "captions");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "class", "media svelte-ty8i40");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "class", "");
       if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(audio.src, audio_src_value =
       /*url*/
       ctx[3])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "src", audio_src_value);
@@ -594,6 +602,8 @@ function create_if_block_1(ctx) {
       });
     },
     m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, img, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, t, anchor);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, audio, anchor);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(audio, track);
       /*audio_binding*/
@@ -671,6 +681,8 @@ function create_if_block_1(ctx) {
       }
     },
     d: function d(detaching) {
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(img);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(t);
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(audio);
       /*audio_binding*/
 
