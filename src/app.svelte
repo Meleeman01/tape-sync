@@ -127,6 +127,7 @@
 <main>
 
 	{#if mediaType != undefined}
+		
 		<div id="controls-container" bind:this={controls} on:mouseover={showMenu} on:focus={showMenu}>
 			<progress value={(timestamp/duration) || 0} ></progress>
 			<div class="button-container">
@@ -161,8 +162,8 @@
 					<svg class="icon" on:click={resync}>
 						<use xlink:href="solid.svg#redo-alt"></use>
 					</svg>
-					<svg class="icon">
-						<use xlink:href="solid.svg#expand" on:click={shrinkExpand}></use>
+					<svg class="icon" on:click={shrinkExpand}>
+						<use xlink:href="solid.svg#expand" ></use>
 					</svg>
 				</div>
 			</div>
@@ -177,7 +178,8 @@
 				<track kind="captions">
 			</audio>
 		{/if}
-		
+	{:else}
+		<img class="media" src="images/scaredyCat.gif" alt="black cat with his hair standing up." />
 	{/if}
 </main>
 
