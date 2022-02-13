@@ -30,22 +30,88 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 	this.filesProcessed = 0;
 	this.playlistCount = 0;
 
-	this.playlist = fs.readdirSync('./public/media').filter(isValidMediaFile).map(function(file){
-		return '/media/'+file;
-	});
+	function importM3U(file) {
+
+		const parser = new m3uParser.Parser();
+
+		let parsedFile = fs.readFileSync(file).toString();
+		parser.push(parsedFile);
+		parser.end();
+		return parser.manifest.segments;
+	}
+	this.processM3U = (file) => {
+		//check file duration
+		if (file.duration) {
+			//check for a file uri
+			if (file.uri) {
+				//get the name of the file which will be the title of the media
+				let name = path.parse(file.uri).name;
+
+				return {
+					duration:file.duration,
+					url: file.uri,
+					name: name,
+				};
+			}
+			console.warn(`Weird. Somehow one of your files in your playlist is missing a path`);
+		}
+		else {
+			if (file.uri) {
+				//get the name of the file which will be the title of the media
+				let name = path.parse(file.uri).name;
+				const shellCommand = 'ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1';
+				const execute = require('child_process').execSync;
+				let duration = execute(`${shellCommand} "./public${file.uri}"`).toString();
+				//return an object with relevant information 
+				return {
+					duration: parseFloat(duration),
+					url: file.uri,
+					name: name,
+				};
+			}
+			console.warn(`one of your files in your playlist ${file.uri} is missing a duration`);
+		}
+	};
+	//do something diff with m3u
+	if (argv.m3u) {
+		this.playlist = importM3U(argv.m3u).map(this.processM3U).filter(isValidMediaFile);
+	}
+	else {
+		this.playlist = fs.readdirSync('./public/media').filter(isValidMediaFile).map(function(file){
+			return '/media/'+file;
+		});
+	}	
 
 	console.log("Loaded playlist:", this.playlist);
 
 	this.breakpoints = new Array(this.playlist.length);
 	this.mediaLengths = new Array(this.playlist.length);
-	
-	console.log(this.io);
 
 	function isValidMediaFile (file) {
-		const validExtensions = new Set([...videoTypes, ...audioTypes, ...ambiguousTypes]);
-		const extension = path.parse('./'+ file).ext.toLowerCase();
+		let validExtensions = new Set([...videoTypes, ...audioTypes, ...ambiguousTypes]);
+		let extension = path.parse('./'+ file).ext.toLowerCase();
+		//if file happens to be an object and has the property url, parse it differently.
+		if (file.hasOwnProperty('url')) {
+			validExtensions = new Set([...videoTypes, ...audioTypes]);
+			extension = path.parse('./'+ file.url).ext.toLowerCase();
+			if(validExtensions.has(extension)) {
+				return file;
+			}
+			else {
+				console.warn(`file ${file.url} has an unsupported file extension. skipping...`);
+			}
+		}
 		return (validExtensions.has(extension));
 	}
+	//this is for playist
+	this.getPlaylistMediaTypes = () => {
+		//m3u playlists will not support ambiguous file types for the moment.
+		this.playlist.forEach((file)=>{
+			let extension = path.parse(file.url).ext.toLowerCase();
+			if (audioTypes.has(extension)) this.mediaTypes.push('audio');
+			else if (videoTypes.has(extension)) this.mediaTypes.push('video');
+		});
+	};
 
 	// Determine whether files are audio, video, or unsupported
 	this.getMediaTypes = () => {
@@ -110,7 +176,17 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 			
 			let url = `${playlistUrl}${this.playlist[this.mediaIndex]}`;
 			//if were in m3u mode were passing an object so we have to fetch the url from the object
-
+			if (argv.m3u) {
+				//check the url for a remote http string
+				if (this.playlist[this.mediaIndex]['url'].startsWith('http')) {
+					url = `${this.playlist[this.mediaIndex]['url']}`;
+				}
+				else {
+					//else its a local file 
+					url = `${playlistUrl}${this.playlist[this.mediaIndex]['url']}`;
+				}
+				
+			}
 			const mediaType = this.mediaTypes[this.mediaIndex];
 			const duration = this.mediaLengths[this.mediaIndex];
 			const data = {
@@ -135,7 +211,6 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 	this.getMediaLength = (url, index) => {
 		const shellCommand = 'ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1';
 		const execute = require('child_process').exec;
-
 		execute(`${shellCommand} "./public${url}"`, (err, stdout) => {
 			let duration = stdout.split('\n')[0]; // Remove \n
 			this.mediaLengths[index] = parseFloat(duration);
@@ -146,14 +221,31 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 			}
 		});
 	};
+	//register media lengths from M3U playlist
+	this.registerMediaLength = (file, index) => {
+		this.mediaLengths[index] = file.duration;
+		this.filesProcessed++;
+		if (this.filesProcessed === this.mediaLengths.length) {
+			this.setBreakpoints();
+			this.startTimers();
+		}
+	};
 
 	// Initialize by parsing media
 	this.init = () => {
-		this.getMediaTypes();
-		this.playlist.forEach((fileUrl, index) => {
-			console.log(fileUrl);
-			this.getMediaLength(fileUrl, index);
-		});
+		if (argv.m3u) {
+			this.getPlaylistMediaTypes();
+			this.playlist.forEach((file, index)=>{
+				this.registerMediaLength(file,index);
+			});
+		}
+		else {
+			this.getMediaTypes();
+			this.playlist.forEach((fileUrl, index) => {
+				this.getMediaLength(fileUrl, index);
+			});
+		}
+		
 	};
 
 	this.getTimestamp = () => {
@@ -163,7 +255,22 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 				let videoStartTime = this.breakpoints[index - 1] || 0;
 				let timestamp = timePassed - videoStartTime;
 				
-				console.log(`watching file ${playlistUrl}${this.playlist[index]}; ${timestamp}s`);
+				//if were in m3u mode were passing an object so we have to fetch the url from the object
+				if (argv.m3u) {
+					//check if the url is remote
+					if (this.playlist[index]['url'].startsWith('http')) {
+						console.log(`watching file ${this.playlist[index]['url']}; ${timestamp}s`);
+					}
+					//else include localhost for the person watching the backend of this app.
+					
+					else {
+						//this assumes all files will be in the public folder.
+						console.log(`watching file ${playlistUrl}${this.playlist[index]['url']}; ${timestamp}s`);
+					}
+				}
+				else {
+					console.log(`watching file ${playlistUrl}${this.playlist[index]}; ${timestamp}s`);
+				}
 				
 
 				return timestamp;
@@ -178,12 +285,22 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 	this.io.on('connection', (client) => {
 		let index = this.mediaIndex;
 		let url = `${playlistUrl}${this.playlist[index]}`;
+		if (argv.m3u) {
+		//if the url is remote, don't append the project root url
+			if (url.startsWith('http')) {
+				url = `${this.playlist[index]['url']}`;
+			}
+			else {
+				url = `${playlistUrl} ${this.playlist[index]['url'].substring(6)}`;
+				console.log(url);
+			}
+		}
+		else url = `${playlistUrl}${this.playlist[index]}`;
 		console.log('client connected!');
 		client.on('event', (data) => {console.log('hi there!');});
 		client.on('disconnect', () => {console.log('client left'); });
 
 		const timestamp = this.getTimestamp;
-		console.log(index);
 		const mediaType = this.mediaTypes[index];
 		const duration = this.mediaLengths[index];
 
