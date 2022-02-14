@@ -21,17 +21,16 @@
 	let media;
 	let menuVisible;
 
+	let peopleCount = 0;
 
 	const socket = io();
 
 	socket.on('connect', () => {
-		//document.getElementById('socket-fail').style.visibility = "hidden";
-		//document.getElementById('socket-success').style.visibility = "visible";
+		peopleCount++;
 	});
 
 	socket.on('disconnect', () => {
-		//document.getElementById('socket-success').style.visibility = "hidden";
-		//document.getElementById('socket-fail').style.visibility = "visible";
+		peopleCount--;
 	});
 	// Server emits event when media ends
 	socket.on('newMedia', async (data) => {
@@ -182,6 +181,7 @@
 	{:else}
 		<img class="media" src="images/scaredyCat.gif" alt="black cat with his hair standing up." />
 	{/if}
+
 </main>
 
 <style>
