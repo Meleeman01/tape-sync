@@ -16,3 +16,15 @@ M3U support
 -the m3u file can be located anywhere on the system, however the files it refrences must be in the public directory. otherwise you'll have a black screen, and a file name that says it's playing on the server backend.
 
 -.webm and .ogg are unsupported filetypes if using the m3u option.
+
+setup requires nginx setup for the icons to work, make sure you put this location block here.
+
+location /icons/ {
+             sendfile           on;
+             sendfile_max_chunk 1m;
+            autoindex on;
+            try_files $uri /icons/regular.svg /icons/solid.svg;
+        }
+}
+
+alternatively just use the images in the public folder listed as svg

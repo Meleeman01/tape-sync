@@ -133,21 +133,21 @@
 				<div class="controls-left">
 					<svg class="icon" on:click={pausePlay}>
 						{#if paused}
-						<use xlink:href="regular.svg#play-circle"></use>
+						<use xlink:href="../icons/regular.svg#play-circle"></use>
 						{:else}
-						<use xlink:href="regular.svg#pause-circle"></use>
+						<use xlink:href="../icons/regular.svg#pause-circle"></use>
 						{/if}
 					</svg>
 					<svg class="icon" on:click={toggleMute}>
 						{#if muted}
-						<use xlink:href="solid.svg#volume-mute"></use>
+						<use xlink:href="../icons/solid.svg#volume-mute"></use>
 						{:else}
 						    {#if volume == 0}
-						    <use xlink:href="solid.svg#volume-off"></use>
+						    <use xlink:href="../icons/solid.svg#volume-off"></use>
 						    {:else if volume < 0.9}
-						    <use xlink:href="solid.svg#volume-down"></use>
+						    <use xlink:href="../icons/solid.svg#volume-down"></use>
 						    {:else if volume > 0.9}
-						    <use xlink:href="solid.svg#volume-up"></use>
+						    <use xlink:href="../icons/solid.svg#volume-up"></use>
 						    {/if}
 						{/if}
 					</svg>
@@ -159,10 +159,10 @@
 				
 				<div class="controls-right">
 					<svg class="icon" on:click={resync}>
-						<use xlink:href="solid.svg#redo-alt"></use>
+						<use xlink:href="../icons/solid.svg#redo-alt"></use>
 					</svg>
 					<svg class="icon" on:click={shrinkExpand}>
-						<use xlink:href="solid.svg#expand" ></use>
+						<use xlink:href="../icons/solid.svg#expand" ></use>
 					</svg>
 				</div>
 			</div>
