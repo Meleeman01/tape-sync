@@ -17,14 +17,33 @@ M3U support
 
 -.webm and .ogg are unsupported filetypes if using the m3u option.
 
-setup requires nginx setup for the icons to work, make sure you put this location block here.
-
-location /icons/ {
-             sendfile           on;
-             sendfile_max_chunk 1m;
-            autoindex on;
-            try_files $uri /icons/regular.svg /icons/solid.svg;
-        }
+designed for setup on nginx servers, you should have your nginx in this configuration for decent results
+```
+upstream backend {
+server localhost:3000;
 }
 
-alternatively just use the images in the public folder listed as svg
+server {
+listen 80;
+server_name example.com;
+
+root /home/username/tape-sync/public;
+
+location / {
+try_files $uri @backend;
+}
+
+location @backend {
+    proxy_pass http://backend;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # Following is necessary for Websocket support
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    }
+}
+```
+
+also works with certbot, although i changed the config after i ran certbot.
