@@ -25,13 +25,6 @@
 
 	const socket = io();
 
-	socket.on('connect', () => {
-		peopleCount++;
-	});
-
-	socket.on('disconnect', () => {
-		peopleCount--;
-	});
 	// Server emits event when media ends
 	socket.on('newMedia', async (data) => {
 		console.log('newMedia detected!');
@@ -50,6 +43,7 @@
 		mediaType = data.mediaType;
 		timestamp = data.timestamp;
 		heartBeat = new Date().getTime();
+		peopleCount = data.clientCount;
 		if (paused) {
 			media.currentTime = Math.floor(timestamp);
 		}

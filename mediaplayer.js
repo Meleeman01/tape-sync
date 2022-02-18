@@ -29,6 +29,7 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 	this.startTime = null;
 	this.filesProcessed = 0;
 	this.playlistCount = 0;
+	this.clientCount = 0;
 
 	function importM3U(file) {
 
@@ -283,6 +284,7 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 	
 	//connection stuffs
 	this.io.on('connection', (client) => {
+		this.clientCount++;
 		let index = this.mediaIndex;
 		let url = `${playlistUrl}${this.playlist[index]}`;
 		if (argv.m3u) {
@@ -297,8 +299,10 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 		}
 		else url = `${playlistUrl}${this.playlist[index]}`;
 		console.log('client connected!');
-		client.on('event', (data) => {console.log('hi there!');});
-		client.on('disconnect', () => {console.log('client left'); });
+		client.on('disconnect', () => {
+			console.log('client left');
+			this.clientCount--; 
+		});
 
 		const timestamp = this.getTimestamp;
 		const mediaType = this.mediaTypes[index];
@@ -318,11 +322,13 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 		let timestamp = this.getTimestamp();
 		let mediaType = this.mediaTypes[index];
 		let playlistCount = this.playlistCount;
+		let count = this.clientCount;
 		let data = {
 			humanReadableIndex: index + 1,
 			mediaType: mediaType,
 			timestamp: timestamp,
-			totalFiles: total
+			totalFiles: total,
+			clientCount: count
 		};
 		checkRepeat(repeat,playlistCount);
 		io.sockets.emit('timestamp', data);
