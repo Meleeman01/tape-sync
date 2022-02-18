@@ -12,15 +12,15 @@
 	let duration;
 	let url = undefined;
 	let mediaType = undefined;
-	let latency = 0;
 	let paused = true;
 	let muted = false;
 	let volume = 1.0;
 
 	let controls;
 	let media;
+	let infoPanel;
 	let menuVisible;
-
+	let infoVisible;
 	let peopleCount = 0;
 
 	const socket = io();
@@ -66,10 +66,15 @@
 
 	function showMenu(e) {
 		clearTimeout(menuVisible);
-        controls.style.opacity = '1';
-        menuVisible = setTimeout(() => {
-            controls.style.opacity = "0";
-        }, 4000);
+		clearTimeout(infoVisible);
+		controls.style.opacity = '1';
+		infoPanel.style.opacity = '1';
+		menuVisible = setTimeout(() => {
+			controls.style.opacity = '0';
+		}, 4000);
+		infoVisible = setTimeout(()=>{
+			infoPanel.style.opacity = '0';
+		},4000);
 	}
 
 	function pausePlay(e) {
@@ -87,17 +92,17 @@
 
 	function resync(e) { 
 		// get the difference of the last server heart beat in seconds
-        let lastHeartBeatOffset = ((new Date().getTime() - heartBeat )/1000);
-        media.currentTime = timestamp+lastHeartBeatOffset;
+		let lastHeartBeatOffset = ((new Date().getTime() - heartBeat )/1000);
+		media.currentTime = timestamp+lastHeartBeatOffset;
 	}
 
 	function shrinkExpand(e) {
 		if (!fscreen.fullscreenElement) {
-                let video = document.querySelector('main');
-                fscreen.requestFullscreen(video);
-            } else {
-                fscreen.exitFullscreen();
-            }
+			let video = document.querySelector('main');
+			fscreen.requestFullscreen(video);
+		} else {
+			fscreen.exitFullscreen();
+		}
 	}
 
 	function toggleMute(e) {
@@ -142,18 +147,18 @@
 						{#if muted}
 						<use href="images/solid.svg#volume-mute"></use>
 						{:else}
-						    {#if volume == 0}
-						    <use href="images/solid.svg#volume-off"></use>
-						    {:else if volume < 0.9}
-						    <use href="images/solid.svg#volume-down"></use>
-						    {:else if volume > 0.9}
-						    <use href="images/solid.svg#volume-up"></use>
-						    {/if}
+							{#if volume == 0}
+							<use href="images/solid.svg#volume-off"></use>
+							{:else if volume < 0.9}
+							<use href="images/solid.svg#volume-down"></use>
+							{:else if volume > 0.9}
+							<use href="images/solid.svg#volume-up"></use>
+							{/if}
 						{/if}
 					</svg>
 					<div>
 						<input class="slider" type="range" min="0" max="1" step=".01"
-                     bind:value={volume}/>
+					 bind:value={volume}/>
 					</div>
 				</div>
 				
@@ -173,7 +178,7 @@
 		</video> 
 		{/if}
 		{#if mediaType == 'audio'}
-			<img class="media" src="images/kikiRadio.gif" alt="black cat with his hair standing up." />
+			<img class="media" src="images/kikiRadio.gif" alt="black cat with his hair standing up." on:click={pausePlay}/>
 			<audio bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click={pausePlay}>
 				<track kind="captions">
 			</audio>
@@ -181,24 +186,49 @@
 	{:else}
 		<img class="media" src="images/scaredyCat.gif" alt="black cat with his hair standing up." />
 	{/if}
-
+	<div bind:this={infoPanel} class="info" on:mouseover={showMenu} on:focus={showMenu}>
+		<svg id="people">
+			<use xlink:href="images/solid.svg#users"></use>
+		</svg>
+		<b style="color:white; font-family: sans;">{peopleCount}</b>
+	</div>
 </main>
 
 <style>
 	main {
 		height: 100vh;
-    	width: 100vw;
-    	overflow: hidden;
+		width: 100vw;
+		overflow: hidden;
 	}
 	#controls-container {
 		width: 100%;
-    	height: 100px;
-        z-index:2;
-    	background-color: rgba(0,0,0,0.2);
-    	position: fixed;
-    	top: 0;
-    	transition: opacity 0.5s;
-    	opacity: 0;
+		height: 100px;
+		z-index:2;
+		background-color: rgba(0,0,0,0.2);
+		position: fixed;
+		top: 0;
+		transition: opacity 0.5s;
+		opacity: 0;
+	}
+	#people {
+		fill:white;
+		width: 2rem;
+		height: 2rem;
+		margin-right: .2rem;
+	}
+	.info {
+		display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	position: fixed;
+	z-index: 2;
+	bottom: 0;
+	border-radius: 7%;
+	height: 50px;
+	padding: 0.5rem;
+	background-color: rgba(0,0,0,0.2);
+	transition: opacity 0.5s;
+		opacity: 0;
 	}
 	.button-container {
 		display: flex;
@@ -216,7 +246,6 @@
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
-		flex-wrap: wrap;
 	}
 	.slider {
 		margin: 0 .25rem;
@@ -234,7 +263,7 @@
 		width: 100%;
 	}
 	.media {
-                height:100%;
+				height:100%;
 		width: 100%;
 		object-fit: contain;
 	}
