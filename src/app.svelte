@@ -14,8 +14,7 @@
 	let mediaType = undefined;
 	let paused = true;
 	let muted = false;
-	let volume = 1.0;
-
+	let volume = 0.5;
 	let controls;
 	let media;
 	let infoPanel;
@@ -63,6 +62,7 @@
 		clearTimeout(infoVisible);
 		controls.style.opacity = '1';
 		infoPanel.style.opacity = '1';
+
 		menuVisible = setTimeout(() => {
 			controls.style.opacity = '0';
 		}, 4000);
@@ -126,7 +126,7 @@
 
 	{#if mediaType != undefined}
 		
-		<div id="controls-container" bind:this={controls} on:mouseover={showMenu} on:focus={showMenu}>
+		<div id="controls-container" bind:this={controls} on:touch={showMenu} on:mouseover={showMenu} on:focus={showMenu}>
 			<progress value={(timestamp/duration) || 0} ></progress>
 			<div class="button-container">
 				<div class="controls-left">
@@ -167,12 +167,12 @@
 			</div>
 		</div>
 		{#if mediaType == 'video'}
-		<video class="media" bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click={pausePlay}>
+		<video class="media" bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click|once={pausePlay} on:click={showMenu}>
 			<track kind="captions">
 		</video> 
 		{/if}
 		{#if mediaType == 'audio'}
-			<img class="media" src="images/kikiRadio.gif" alt="black cat with his hair standing up." on:click={pausePlay}/>
+			<img class="media" src="images/kikiRadio.gif" alt="black cat with his hair standing up." on:click|once={pausePlay} on:click={showMenu}/>
 			<audio bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click={pausePlay}>
 				<track kind="captions">
 			</audio>
@@ -257,13 +257,17 @@
 		width: 100%;
 	}
 	.media {
-				height:100%;
+		height:100%;
 		width: 100%;
 		object-fit: contain;
 	}
-	@media (min-width: 640px) {
+	@media (max-width: 640px) {
 		main {
 			max-width: none;
+		}
+		.icon {
+			width: 2rem;
+			height: 2rem;
 		}
 	}
 	
