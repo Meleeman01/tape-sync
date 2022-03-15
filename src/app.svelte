@@ -58,16 +58,20 @@
 	});
 
 	function showMenu(e) {
+		console.log(e.target.style);
 		clearTimeout(menuVisible);
 		clearTimeout(infoVisible);
+		e.target.style.cursor = '';
 		controls.style.opacity = '1';
 		infoPanel.style.opacity = '1';
 
 		menuVisible = setTimeout(() => {
 			controls.style.opacity = '0';
+			e.target.style.cursor = 'none';
 		}, 4000);
 		infoVisible = setTimeout(()=>{
 			infoPanel.style.opacity = '0';
+			e.target.style.cursor = 'none';
 		},4000);
 	}
 
@@ -122,11 +126,11 @@
 	});
 </script>
 
-<main>
+<main on:mousemove={showMenu} on:touch={showMenu} >
 
 	{#if mediaType != undefined}
 		
-		<div id="controls-container" bind:this={controls} on:touch={showMenu} on:mouseover={showMenu} on:focus={showMenu}>
+		<div id="controls-container" bind:this={controls}  >
 			<progress value={(timestamp/duration) || 0} ></progress>
 			<div class="button-container">
 				<div class="controls-left">
@@ -167,7 +171,7 @@
 			</div>
 		</div>
 		{#if mediaType == 'video'}
-		<video class="media" bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click|once={pausePlay} on:click={showMenu}>
+		<video class="media" bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click|once={pausePlay} on:click={pausePlay}>
 			<track kind="captions">
 		</video> 
 		{/if}
@@ -180,7 +184,7 @@
 	{:else}
 		<img class="media" src="images/scaredyCat.gif" alt="black cat with his hair standing up." />
 	{/if}
-	<div bind:this={infoPanel} class="info" on:mouseover={showMenu} on:focus={showMenu}>
+	<div bind:this={infoPanel} class="info">
 		<svg id="people">
 			<use xlink:href="images/solid.svg#users"></use>
 		</svg>
