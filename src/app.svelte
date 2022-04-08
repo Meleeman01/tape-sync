@@ -34,6 +34,8 @@
 		await media.load();
 		if (!paused) {
 			await media.play();
+			paused = true;
+			pausePlay();
 		}
 	});
 	// Server sends timestamp every three seconds
