@@ -1,6 +1,7 @@
 
 <script>
 	import {  onMount, afterUpdate } from 'svelte';
+	import chat from './components/chat';
 	export let name; //used as a prop for the app.
 	// create a look event that bubbles up and cannot be canceled
 
@@ -14,8 +15,9 @@
 	let mediaType = undefined;
 	let paused = true;
 	let muted = false;
-	let volume = 0.5;
+	let volume = localStorage.getItem('volume') ? localStorage.getItem('volume') : 0.5;
 	let controls;
+	let latency;
 	let media;
 	let infoPanel;
 	let menuVisible;
@@ -35,17 +37,14 @@
 		}
 	});
 	// Server sends timestamp every three seconds
-	// Calculate latency and update Vue component
 	socket.on('timestamp', (data) => {
 		console.log('timestamp');
 		console.log(data);
 		mediaType = data.mediaType;
 		timestamp = data.timestamp;
 		heartBeat = new Date().getTime();
+		showLatency(timestamp);
 		peopleCount = data.clientCount;
-		if (paused) {
-			media.currentTime = Math.floor(timestamp);
-		}
 	});
 	// Server emits event when client connects
 	socket.on('updateClient', async (data) => {
@@ -56,42 +55,67 @@
 		url = await data.url;
 		media.currentTime = await Math.floor(timestamp);
 	});
+	function format(seconds) {
+		if (isNaN(seconds) || seconds == undefined) return '...';
 
+		const minutes = Math.floor(seconds / 60);
+		seconds = Math.floor(seconds % 60);
+		if (seconds < 10) seconds = '0' + seconds;
+
+		return `${minutes}:${seconds}`;
+	}
 	function showMenu(e) {
-		console.log(e.target.style);
-		clearTimeout(menuVisible);
-		clearTimeout(infoVisible);
-		e.target.style.cursor = '';
-		controls.style.opacity = '1';
-		infoPanel.style.opacity = '1';
+		if (e.target !== undefined) {
+			clearTimeout(menuVisible);
+			clearTimeout(infoVisible);
+			e.target.style.cursor = '';
+			controls.style.opacity = '1';
+			infoPanel.style.opacity = '1';
 
-		menuVisible = setTimeout(() => {
-			controls.style.opacity = '0';
-			e.target.style.cursor = 'none';
-		}, 4000);
-		infoVisible = setTimeout(()=>{
-			infoPanel.style.opacity = '0';
-			e.target.style.cursor = 'none';
-		},4000);
+			menuVisible = setTimeout(() => {
+				controls.style.opacity = '0';
+				e.target.style.cursor = 'none';
+			}, 4000);
+			infoVisible = setTimeout(()=>{
+				infoPanel.style.opacity = '0';
+				e.target.style.cursor = 'none';
+			},4000);
+		}
+		
 	}
 
-	function pausePlay(e) {
+	function start() {
+		document.querySelector('.start-button').style.display = 'none';
+		document.querySelector('.start-button').style.visibility = 'hidden';
+		resync();
+		paused = false;
+	}
+
+	function storeVolume() {
+		localStorage.setItem('volume',volume);
+	}
+
+	function pausePlay() {
 		if (!paused) {
 			paused = true;
-			//e.target.paused = true;
 			console.log('were paused now');
-			console.log(e.target);
 		}
 		else {
 			console.log('were playing now');
 			paused = false;
 		}
 	}
+	function showLatency(timestamp) {
+		console.log(format(timestamp));
+		latency = format(timestamp - media.currentTime);
+	}
 
 	function resync(e) { 
 		// get the difference of the last server heart beat in seconds
 		let lastHeartBeatOffset = ((new Date().getTime() - heartBeat )/1000);
+
 		media.currentTime = timestamp+lastHeartBeatOffset;
+		showLatency();
 	}
 
 	function shrinkExpand(e) {
@@ -117,19 +141,25 @@
 	
 	onMount((e) => {
 		console.log('the component has mounted');
+
 	});
 	afterUpdate(() => {
 		console.log('the component just updated');
-		if (timestamp - time > 3) {
+		if (timestamp - time > 5) {
 			time = timestamp;
 		}
 	});
 </script>
 
-<main on:mousemove={showMenu} on:touch={showMenu} >
+<main>
 
-	{#if mediaType != undefined}
-		
+	{#if timestamp != undefined}
+	<div on:mousemove={showMenu} on:touch={showMenu} on:click|once={start}>
+		<div class="start-button">
+			<svg id="start" class="icon" >
+				<use href="/images/regular.svg#play-circle"></use>
+			</svg>
+		</div>
 		<div id="controls-container" bind:this={controls}  >
 			<progress value={(timestamp/duration) || 0} ></progress>
 			<div class="button-container">
@@ -154,13 +184,14 @@
 							{/if}
 						{/if}
 					</svg>
-					<div>
+					<div class="slider-container">
 						<input class="slider" type="range" min="0" max="1" step=".01"
-					 bind:value={volume}/>
+					 bind:value={volume} on:change={storeVolume} />
 					</div>
 				</div>
 				
 				<div class="controls-right">
+					
 					<svg class="icon" on:click={resync}>
 						<use xlink:href="images/solid.svg#redo-alt"></use>
 					</svg>
@@ -169,20 +200,32 @@
 					</svg>
 				</div>
 			</div>
+			<div class="button-container">
+				<div class="text">
+						<span>latency: {latency}</span>
+					</div>
+					<div class="text">
+						<span>-{format(duration-timestamp)}</span>
+					</div>
+			</div>
+			
 		</div>
 		{#if mediaType == 'video'}
-		<video class="media" bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click|once={pausePlay} on:click={pausePlay}>
+		<video class="media" bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused  on:click={showMenu}>
 			<track kind="captions">
 		</video> 
 		{/if}
 		{#if mediaType == 'audio'}
-			<img class="media" src="images/kikiRadio.gif" alt="black cat with his hair standing up." on:click|once={pausePlay} on:click={showMenu}/>
+			<img class="media" src="images/kikiRadio.gif" alt="black cat with his hair standing up." on:click={showMenu}/>
 			<audio bind:this={media} src={url} currentTime={time} bind:volume bind:muted bind:duration bind:paused on:click={pausePlay}>
 				<track kind="captions">
 			</audio>
 		{/if}
+	</div>
 	{:else}
+	<div>
 		<img class="media" src="images/scaredyCat.gif" alt="black cat with his hair standing up." />
+	</div>
 	{/if}
 	<div bind:this={infoPanel} class="info">
 		<svg id="people">
@@ -190,18 +233,40 @@
 		</svg>
 		<b style="color:white; font-family: sans;">{peopleCount}</b>
 	</div>
+
 </main>
 
 <style>
-	main {
+	.start-button {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 3;
+	}
+	.start-button svg {
+		fill:white;
+		width: 6rem;
+		height: 6rem;
+		margin: 0;
+	}
+	.text {
+		padding: 0 .75rem;
+	}
+	.text span{
+		color: #ccc;
+
+	}
+	main > div {
 		height: 100vh;
 		width: 100vw;
 		overflow: hidden;
+		font-family: sans-serif;
 	}
 	#controls-container {
 		width: 100%;
 		height: 100px;
-		z-index:2;
+		z-index:1;
 		background-color: rgba(0,0,0,0.2);
 		position: fixed;
 		top: 0;
@@ -232,9 +297,10 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		padding: 0 .5rem;
 	}
 	.controls-left {
-		display: flex;	
+		display: flex;
 		padding: .25rem;
 		justify-content: flex-start;
 		align-items: center;
@@ -272,6 +338,9 @@
 		.icon {
 			width: 2rem;
 			height: 2rem;
+		}
+		.slider-container {
+			width: 50%;
 		}
 	}
 	

@@ -1,7 +1,8 @@
-const cacheName = 'v3.0.0';
+const cacheName = 'v3.0.4';
 
 const cacheAssets = [
-	'index.html'
+	'images/regular.svg',
+	'images/solid.svg',
 ];
 
 self.addEventListener('install', function(e){
