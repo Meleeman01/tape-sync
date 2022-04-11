@@ -6,7 +6,7 @@
 	// create a look event that bubbles up and cannot be canceled
 
 
-	console.log('app is up');
+	console.log('app is uffp');
 	let timestamp = undefined;
 	let time = 0;
 	let heartBeat = undefined;
