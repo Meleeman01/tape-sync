@@ -18,6 +18,12 @@ function checkRepeat(repeat, count) {
 //if there's no repeat count or repeat is anything other than false, repeat ad infinitum
 }
 
+const colors = [
+	'#ff0000','#ff8700','#ffd300','#deff0a','#a1ff0a',
+	'#0aff99','#0aefff','#147df5','#580aff','#be0aff'
+];
+let clients = [];
+let messages =[];
 //self invoking function so you put the variables at the bottom.
 module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 	const videoTypes = new Set(['.ogv', '.mp4']);
@@ -284,6 +290,7 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 	
 	//connection stuffs
 	this.io.on('connection', (client) => {
+
 		this.clientCount++;
 		let index = this.mediaIndex;
 		let url = `${playlistUrl}${this.playlist[index]}`;
@@ -299,6 +306,7 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 		}
 		else url = `${playlistUrl}${this.playlist[index]}`;
 		console.log('client connected!');
+		console.log(messages);
 		client.on('disconnect', () => {
 			console.log('client left');
 			this.clientCount--; 
@@ -313,6 +321,34 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 			timestamp: timestamp,
 			duration: duration,
 			url: url
+		});
+		if (messages.length) {
+			console.log('updating chat.');
+			client.emit('updateChat',{
+				messages:messages
+			});
+		}
+		
+		client.on('chat message', (msg) => {
+			let client = clients.find(client => client.username == msg.username);
+			let color = colors.sort(function pickRandomColor(a,b) {return 0.5 - Math.random();})[0];
+			if (!client) {
+				clients = [...clients,{username:msg.username,color:color}];
+				client = clients.find(client => client.username == msg.username);
+			}
+
+			messages = [...messages,{
+				username:msg.username,
+				color:client.color,
+				comment:msg.comment
+			}];
+			
+			console.log('message: ' + msg);
+			io.emit('chat message',{
+				username:client.username,
+				color:client.color,
+				comment:msg.comment
+			});
 		});
 	});
 	setInterval(() => {
@@ -333,5 +369,10 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 		checkRepeat(repeat,playlistCount);
 		io.sockets.emit('timestamp', data);
 	}, 3000);
+	setInterval(function(){
+		console.log('clearing messages');
+		messages = [];
+	},86400000);
+	//86400000 milliseconds in a day
 };
 

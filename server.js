@@ -1,3 +1,4 @@
+
 const Koa = require('koa');
 const serve = require('koa-static');
 const Router = require('koa-router');
@@ -5,6 +6,7 @@ const send = require('koa-send');
 const range = require('koa-range');
 
 //============^koa stuffs^===================//
+
 
 require('dotenv').config();
 const argv = require('yargs-parser');
@@ -34,8 +36,6 @@ router.get('/fscreen.js', async (ctx) =>  await send(ctx,'/node_modules/fscreen/
 const mediaPlayer = require('./mediaplayer');
 const player = new mediaPlayer(io,repeat,playlistUrl);
 //console.log(player);
-
-
 
 
 server.listen(process.env.PORT);

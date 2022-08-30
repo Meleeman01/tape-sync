@@ -4,7 +4,7 @@
   "description": "watch videos together with your friends",
   "main": "index.js",
   "scripts": {
-    "start":"node server.js",
+    "start": "node server.js",
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "async-redis": "^2.0.0",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "fscreen": "^1.2.0",

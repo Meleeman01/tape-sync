@@ -1,12 +1,14 @@
 
 <script>
 	import {  onMount, afterUpdate } from 'svelte';
-	import chat from './components/chat';
+	import Chat from './components/chat';
 	export let name; //used as a prop for the app.
 	// create a look event that bubbles up and cannot be canceled
 
 
 	console.log('app is uffp');
+	let chatActive = true;
+	$:chatMessages = [];
 	let timestamp = undefined;
 	let time = 0;
 	let heartBeat = undefined;
@@ -40,8 +42,8 @@
 	});
 	// Server sends timestamp every three seconds
 	socket.on('timestamp', (data) => {
-		console.log('timestamp');
-		console.log(data);
+		//console.log('timestamp');
+		//console.log(data);
 		mediaType = data.mediaType;
 		timestamp = data.timestamp;
 		heartBeat = new Date().getTime();
@@ -56,6 +58,14 @@
 		duration = await data.duration;
 		url = await data.url;
 		media.currentTime = await Math.floor(timestamp);
+	});
+	socket.on('updateChat',async (data)=>{
+		console.log('updateChat',data);
+		chatMessages = data.messages;
+	});
+	socket.on('chat message', async (msg) =>{
+		console.log('fromserver:',msg);
+		chatMessages = [...chatMessages,msg];
 	});
 	function format(seconds) {
 		if (isNaN(seconds) || seconds == undefined) return '...';
@@ -129,15 +139,29 @@
 		}
 	}
 
-	function toggleMute(e) {
-		if(!muted) {
-			console.log('were muting.');
-			muted = true;
+	function a(e){ 
+		chatActive = !chatActive;
+		if (!chatActive) {
+			controls.style.width = '100%';
+			infoPanel.style.width = '100%';
+			media.parentElement.style.width = '100%';
 		}
 		else {
-			console.log('were unmuted');
-			muted = false;
+			controls.style.width = '80%';
+			infoPanel.style.width = '80%';
+			media.parentElement.style.width = '80%';
+			console.log(media.parentElement);
 		}
+		
+	}
+
+	function toggleMute(e) {
+		muted = !muted;
+	}
+
+	function handleChatMessage (e){
+		console.log('handling chat message',e);
+		socket.emit('chat message', e.detail);
 	}
 
 	
@@ -204,11 +228,11 @@
 			</div>
 			<div class="button-container">
 				<div class="text">
-						<span>latency: {latency}</span>
-					</div>
-					<div class="text">
-						<span>-{format(duration-timestamp)}</span>
-					</div>
+					<span>latency: {latency}</span>
+				</div>
+				<div class="text">
+					<span>-{format(duration-timestamp)}</span>
+				</div>
 			</div>
 			
 		</div>
@@ -230,12 +254,14 @@
 	</div>
 	{/if}
 	<div bind:this={infoPanel} class="info">
-		<svg id="people">
+		<svg id="people" on:click={a}>
 			<use xlink:href="images/solid.svg#users"></use>
 		</svg>
 		<b style="color:white; font-family: sans;">{peopleCount}</b>
 	</div>
-
+	{#if chatActive}
+		<Chat chats={chatMessages} on:chat={handleChatMessage}/>
+	{/if}
 </main>
 
 <style>
@@ -343,6 +369,9 @@
 		}
 		.slider-container {
 			width: 50%;
+		}
+		.slider {
+			width: 75%;
 		}
 	}
 	

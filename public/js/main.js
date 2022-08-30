@@ -1,16 +1,6 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
-
-/***/ "./node_modules/@babel/runtime/regenerator/index.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
-  \**********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
-
-
-/***/ }),
 
 /***/ "./src/app.svelte":
 /*!************************!*\
@@ -18,16 +8,13 @@ module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
-/* harmony import */ var svelte__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! svelte */ "./node_modules/svelte/index.mjs");
-/* harmony import */ var _components_chat__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/chat */ "./src/components/chat.svelte");
+/* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
+/* harmony import */ var svelte__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! svelte */ "./node_modules/svelte/index.mjs");
+/* harmony import */ var _components_chat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/chat */ "./src/components/chat.svelte");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -38,7 +25,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -48,45 +35,57 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-/* src/app.svelte generated by Svelte v3.47.0 */
+/* src/app.svelte generated by Svelte v3.49.0 */
 
-var isNaN_1 = svelte_internal__WEBPACK_IMPORTED_MODULE_1__.globals.isNaN;
+var isNaN_1 = svelte_internal__WEBPACK_IMPORTED_MODULE_0__.globals.isNaN;
 
 
 
 function add_css(target) {
-  (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append_styles)(target, "svelte-10i80u", ".start-button.svelte-10i80u.svelte-10i80u{position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);z-index:3}.start-button.svelte-10i80u svg.svelte-10i80u{fill:white;width:6rem;height:6rem;margin:0}.text.svelte-10i80u.svelte-10i80u{padding:0 .75rem}.text.svelte-10i80u span.svelte-10i80u{color:#ccc}main.svelte-10i80u>div.svelte-10i80u{height:100vh;width:100vw;overflow:hidden;font-family:sans-serif}#controls-container.svelte-10i80u.svelte-10i80u{width:100%;height:100px;z-index:1;background-color:rgba(0,0,0,0.2);position:fixed;top:0;transition:opacity 0.5s;opacity:0}#people.svelte-10i80u.svelte-10i80u{fill:white;width:2rem;height:2rem;margin-right:.2rem}.info.svelte-10i80u.svelte-10i80u{display:flex;align-items:center;justify-content:flex-start;position:fixed;z-index:2;bottom:0;border-radius:7%;height:50px;padding:0.5rem;background-color:rgba(0,0,0,0.2);transition:opacity 0.5s;opacity:0}.button-container.svelte-10i80u.svelte-10i80u{display:flex;justify-content:space-between;align-items:center;padding:0 .5rem}.controls-left.svelte-10i80u.svelte-10i80u{display:flex;padding:.25rem;justify-content:flex-start;align-items:center;flex-wrap:wrap}.controls-right.svelte-10i80u.svelte-10i80u{display:flex;justify-content:flex-end;align-items:center}.slider.svelte-10i80u.svelte-10i80u{margin:0 .25rem}.icon.svelte-10i80u.svelte-10i80u{fill:white;width:3rem;height:3rem;margin:0 .25rem}.icon.svelte-10i80u.svelte-10i80u:hover{fill:#ccc}progress.svelte-10i80u.svelte-10i80u{width:100%}.media.svelte-10i80u.svelte-10i80u{height:100%;width:100%;object-fit:contain}@media(max-width: 640px){main.svelte-10i80u.svelte-10i80u{max-width:none}.icon.svelte-10i80u.svelte-10i80u{width:2rem;height:2rem}.slider-container.svelte-10i80u.svelte-10i80u{width:50%}}");
-} // (227:1) {:else}
+  (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-ukrymk", ".start-button.svelte-ukrymk.svelte-ukrymk{position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);z-index:3}.start-button.svelte-ukrymk svg.svelte-ukrymk{fill:white;width:6rem;height:6rem;margin:0}.text.svelte-ukrymk.svelte-ukrymk{padding:0 .75rem}.text.svelte-ukrymk span.svelte-ukrymk{color:#ccc}main.svelte-ukrymk>div.svelte-ukrymk{height:100vh;width:100vw;overflow:hidden;font-family:sans-serif}#controls-container.svelte-ukrymk.svelte-ukrymk{width:100%;height:100px;z-index:1;background-color:rgba(0,0,0,0.2);position:fixed;top:0;transition:opacity 0.5s;opacity:0}#people.svelte-ukrymk.svelte-ukrymk{fill:white;width:2rem;height:2rem;margin-right:.2rem}.info.svelte-ukrymk.svelte-ukrymk{display:flex;align-items:center;justify-content:flex-start;position:fixed;z-index:2;bottom:0;border-radius:7%;height:50px;padding:0.5rem;background-color:rgba(0,0,0,0.2);transition:opacity 0.5s;opacity:0}.button-container.svelte-ukrymk.svelte-ukrymk{display:flex;justify-content:space-between;align-items:center;padding:0 .5rem}.controls-left.svelte-ukrymk.svelte-ukrymk{display:flex;padding:.25rem;justify-content:flex-start;align-items:center;flex-wrap:wrap}.controls-right.svelte-ukrymk.svelte-ukrymk{display:flex;justify-content:flex-end;align-items:center}.slider.svelte-ukrymk.svelte-ukrymk{margin:0 .25rem}.icon.svelte-ukrymk.svelte-ukrymk{fill:white;width:3rem;height:3rem;margin:0 .25rem}.icon.svelte-ukrymk.svelte-ukrymk:hover{fill:#ccc}progress.svelte-ukrymk.svelte-ukrymk{width:100%}.media.svelte-ukrymk.svelte-ukrymk{height:100%;width:100%;object-fit:contain}@media(max-width: 640px){main.svelte-ukrymk.svelte-ukrymk{max-width:none}.icon.svelte-ukrymk.svelte-ukrymk{width:2rem;height:2rem}.slider-container.svelte-ukrymk.svelte-ukrymk{width:50%}.slider.svelte-ukrymk.svelte-ukrymk{width:75%}}");
+} // (251:1) {:else}
 
 
 function create_else_block_1(ctx) {
   var div;
   return {
     c: function c() {
-      div = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div.innerHTML = "<img class=\"media svelte-10i80u\" src=\"images/scaredyCat.gif\" alt=\"black cat with his hair standing up.\"/>";
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div, "class", "svelte-10i80u");
+      div = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div.innerHTML = "<img class=\"media svelte-ukrymk\" src=\"images/scaredyCat.gif\" alt=\"black cat with his hair standing up.\"/>";
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "svelte-ukrymk");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, div, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div, anchor);
     },
-    p: svelte_internal__WEBPACK_IMPORTED_MODULE_1__.noop,
+    p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(div);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div);
     }
   };
-} // (158:1) {#if timestamp != undefined}
+} // (182:1) {#if timestamp != undefined}
 
 
-function create_if_block(ctx) {
+function create_if_block_1(ctx) {
   var div9;
   var div0;
   var t0;
@@ -121,9 +120,9 @@ function create_if_block(ctx) {
   var t10;
   var t11_value = format(
   /*duration*/
-  ctx[2] -
+  ctx[3] -
   /*timestamp*/
-  ctx[0]) + "";
+  ctx[1]) + "";
   var t11;
   var t12;
   var t13;
@@ -133,7 +132,7 @@ function create_if_block(ctx) {
   function select_block_type_1(ctx, dirty) {
     if (
     /*paused*/
-    ctx[5]) return create_if_block_7;
+    ctx[6]) return create_if_block_8;
     return create_else_block;
   }
 
@@ -143,166 +142,166 @@ function create_if_block(ctx) {
   function select_block_type_2(ctx, dirty) {
     if (
     /*muted*/
-    ctx[6]) return create_if_block_3;
+    ctx[7]) return create_if_block_4;
     if (
     /*volume*/
-    ctx[7] == 0) return create_if_block_4;
+    ctx[8] == 0) return create_if_block_5;
     if (
     /*volume*/
-    ctx[7] < 0.9) return create_if_block_5;
+    ctx[8] < 0.9) return create_if_block_6;
     if (
     /*volume*/
-    ctx[7] > 0.9) return create_if_block_6;
+    ctx[8] > 0.9) return create_if_block_7;
   }
 
   var current_block_type_1 = select_block_type_2(ctx, [-1, -1]);
   var if_block1 = current_block_type_1 && current_block_type_1(ctx);
   var if_block2 =
   /*mediaType*/
-  ctx[4] == 'video' && create_if_block_2(ctx);
+  ctx[5] == 'video' && create_if_block_3(ctx);
   var if_block3 =
   /*mediaType*/
-  ctx[4] == 'audio' && create_if_block_1(ctx);
+  ctx[5] == 'audio' && create_if_block_2(ctx);
   return {
     c: function c() {
-      div9 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div0.innerHTML = "<svg id=\"start\" class=\"icon svelte-10i80u\"><use href=\"/images/regular.svg#play-circle\"></use></svg>";
-      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div8 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      progress = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("progress");
-      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      svg1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("svg");
+      div9 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div0.innerHTML = "<svg id=\"start\" class=\"icon svelte-ukrymk\"><use href=\"/images/regular.svg#play-circle\"></use></svg>";
+      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div8 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      progress = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("progress");
+      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      svg1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("svg");
       if_block0.c();
-      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      svg2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("svg");
+      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      svg2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("svg");
       if (if_block1) if_block1.c();
-      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      input = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("input");
-      t4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      svg3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("svg");
-      use1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
-      t5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      svg4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("svg");
-      use2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
-      t6 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div7 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      span0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("span");
-      t7 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)("latency: ");
-      t8 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(
+      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      input = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("input");
+      t4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      svg3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("svg");
+      use1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("use");
+      t5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      svg4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("svg");
+      use2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("use");
+      t6 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div7 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      span0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("span");
+      t7 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)("latency: ");
+      t8 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(
       /*latency*/
-      ctx[9]);
-      t9 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div6 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      span1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("span");
-      t10 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)("-");
-      t11 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(t11_value);
-      t12 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
+      ctx[10]);
+      t9 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div6 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      span1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("span");
+      t10 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)("-");
+      t11 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t11_value);
+      t12 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
       if (if_block2) if_block2.c();
-      t13 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
+      t13 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
       if (if_block3) if_block3.c();
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div0, "class", "start-button svelte-10i80u");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "start-button svelte-ukrymk");
       progress.value = progress_value_value =
       /*timestamp*/
-      ctx[0] /
+      ctx[1] /
       /*duration*/
-      ctx[2] || 0;
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(progress, "class", "svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg1, "class", "icon svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg2, "class", "icon svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input, "class", "slider svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input, "type", "range");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input, "min", "0");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input, "max", "1");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input, "step", ".01");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div1, "class", "slider-container svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div2, "class", "controls-left svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.xlink_attr)(use1, "xlink:href", "images/solid.svg#redo-alt");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg3, "class", "icon svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.xlink_attr)(use2, "xlink:href", "images/solid.svg#expand");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg4, "class", "icon svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div3, "class", "controls-right svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div4, "class", "button-container svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(span0, "class", "svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div5, "class", "text svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(span1, "class", "svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div6, "class", "text svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div7, "class", "button-container svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div8, "id", "controls-container");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div8, "class", "svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div9, "class", "svelte-10i80u");
+      ctx[3] || 0;
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(progress, "class", "svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(svg1, "class", "icon svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(svg2, "class", "icon svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(input, "class", "slider svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(input, "type", "range");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(input, "min", "0");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(input, "max", "1");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(input, "step", ".01");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "slider-container svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "controls-left svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.xlink_attr)(use1, "xlink:href", "images/solid.svg#redo-alt");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(svg3, "class", "icon svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.xlink_attr)(use2, "xlink:href", "images/solid.svg#expand");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(svg4, "class", "icon svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "controls-right svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div4, "class", "button-container svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(span0, "class", "svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div5, "class", "text svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(span1, "class", "svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div6, "class", "text svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div7, "class", "button-container svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div8, "id", "controls-container");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div8, "class", "svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div9, "class", "svelte-ukrymk");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, div9, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div9, div0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div9, t0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div9, div8);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div8, progress);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div8, t1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div8, div4);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div4, div2);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div2, svg1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div9, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div9, div0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div9, t0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div9, div8);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div8, progress);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div8, t1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div8, div4);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div4, div2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, svg1);
       if_block0.m(svg1, null);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div2, t2);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div2, svg2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, t2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, svg2);
       if (if_block1) if_block1.m(svg2, null);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div2, t3);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div2, div1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, input);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_input_value)(input,
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, t3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, div1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, input);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_input_value)(input,
       /*volume*/
-      ctx[7]);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div4, t4);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div4, div3);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div3, svg3);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(svg3, use1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div3, t5);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div3, svg4);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(svg4, use2);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div8, t6);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div8, div7);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div7, div5);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div5, span0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(span0, t7);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(span0, t8);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div7, t9);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div7, div6);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div6, span1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(span1, t10);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(span1, t11);
+      ctx[8]);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div4, t4);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div4, div3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, svg3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(svg3, use1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, t5);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, svg4);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(svg4, use2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div8, t6);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div8, div7);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div7, div5);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, span0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(span0, t7);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(span0, t8);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div7, t9);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div7, div6);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div6, span1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(span1, t10);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(span1, t11);
       /*div8_binding*/
 
-      ctx[21](div8);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div9, t12);
+      ctx[25](div8);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div9, t12);
       if (if_block2) if_block2.m(div9, null);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div9, t13);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div9, t13);
       if (if_block3) if_block3.m(div9, null);
 
       if (!mounted) {
-        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(svg1, "click",
+        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(svg1, "click",
         /*pausePlay*/
-        ctx[16]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(svg2, "click",
+        ctx[18]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(svg2, "click",
         /*toggleMute*/
-        ctx[18]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(input, "change",
+        ctx[21]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(input, "change",
         /*input_change_input_handler*/
-        ctx[20]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(input, "input",
+        ctx[24]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(input, "input",
         /*input_change_input_handler*/
-        ctx[20]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(input, "change",
+        ctx[24]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(input, "change",
         /*storeVolume*/
-        ctx[15]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(svg3, "click",
+        ctx[17]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(svg3, "click",
         /*resync*/
-        ctx[17]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(svg4, "click", shrinkExpand), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(div9, "mousemove",
+        ctx[19]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(svg4, "click", shrinkExpand), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(div9, "mousemove",
         /*showMenu*/
-        ctx[13]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(div9, "touch",
+        ctx[15]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(div9, "touch",
         /*showMenu*/
-        ctx[13]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(div9, "click",
+        ctx[15]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(div9, "click",
         /*start*/
-        ctx[14], {
+        ctx[16], {
           once: true
         })];
         mounted = true;
@@ -311,11 +310,11 @@ function create_if_block(ctx) {
     p: function p(ctx, dirty) {
       if (dirty[0] &
       /*timestamp, duration*/
-      5 && progress_value_value !== (progress_value_value =
+      10 && progress_value_value !== (progress_value_value =
       /*timestamp*/
-      ctx[0] /
+      ctx[1] /
       /*duration*/
-      ctx[2] || 0)) {
+      ctx[3] || 0)) {
         progress.value = progress_value_value;
       }
 
@@ -341,32 +340,32 @@ function create_if_block(ctx) {
 
       if (dirty[0] &
       /*volume*/
-      128) {
-        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_input_value)(input,
+      256) {
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_input_value)(input,
         /*volume*/
-        ctx[7]);
+        ctx[8]);
       }
 
       if (dirty[0] &
       /*latency*/
-      512) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_data)(t8,
+      1024) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t8,
       /*latency*/
-      ctx[9]);
+      ctx[10]);
       if (dirty[0] &
       /*duration, timestamp*/
-      5 && t11_value !== (t11_value = format(
+      10 && t11_value !== (t11_value = format(
       /*duration*/
-      ctx[2] -
+      ctx[3] -
       /*timestamp*/
-      ctx[0]) + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_data)(t11, t11_value);
+      ctx[1]) + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t11, t11_value);
 
       if (
       /*mediaType*/
-      ctx[4] == 'video') {
+      ctx[5] == 'video') {
         if (if_block2) {
           if_block2.p(ctx, dirty);
         } else {
-          if_block2 = create_if_block_2(ctx);
+          if_block2 = create_if_block_3(ctx);
           if_block2.c();
           if_block2.m(div9, t13);
         }
@@ -377,11 +376,11 @@ function create_if_block(ctx) {
 
       if (
       /*mediaType*/
-      ctx[4] == 'audio') {
+      ctx[5] == 'audio') {
         if (if_block3) {
           if_block3.p(ctx, dirty);
         } else {
-          if_block3 = create_if_block_1(ctx);
+          if_block3 = create_if_block_2(ctx);
           if_block3.c();
           if_block3.m(div9, null);
         }
@@ -391,7 +390,7 @@ function create_if_block(ctx) {
       }
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(div9);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div9);
       if_block0.d();
 
       if (if_block1) {
@@ -400,119 +399,119 @@ function create_if_block(ctx) {
       /*div8_binding*/
 
 
-      ctx[21](null);
+      ctx[25](null);
       if (if_block2) if_block2.d();
       if (if_block3) if_block3.d();
       mounted = false;
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.run_all)(dispose);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.run_all)(dispose);
     }
   };
-} // (172:6) {:else}
+} // (196:6) {:else}
 
 
 function create_else_block(ctx) {
   var use;
   return {
     c: function c() {
-      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(use, "href", "/images/regular.svg#pause-circle");
+      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("use");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(use, "href", "/images/regular.svg#pause-circle");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, use, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, use, anchor);
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(use);
     }
   };
-} // (170:6) {#if paused}
+} // (194:6) {#if paused}
+
+
+function create_if_block_8(ctx) {
+  var use;
+  return {
+    c: function c() {
+      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("use");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(use, "href", "/images/regular.svg#play-circle");
+    },
+    m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, use, anchor);
+    },
+    d: function d(detaching) {
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(use);
+    }
+  };
+} // (208:30) 
 
 
 function create_if_block_7(ctx) {
   var use;
   return {
     c: function c() {
-      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(use, "href", "/images/regular.svg#play-circle");
+      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("use");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(use, "href", "images/solid.svg#volume-up");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, use, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, use, anchor);
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(use);
     }
   };
-} // (184:30) 
+} // (206:30) 
 
 
 function create_if_block_6(ctx) {
   var use;
   return {
     c: function c() {
-      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(use, "href", "images/solid.svg#volume-up");
+      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("use");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(use, "href", "images/solid.svg#volume-down");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, use, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, use, anchor);
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(use);
     }
   };
-} // (182:30) 
+} // (204:7) {#if volume == 0}
 
 
 function create_if_block_5(ctx) {
   var use;
   return {
     c: function c() {
-      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(use, "href", "images/solid.svg#volume-down");
+      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("use");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(use, "href", "images/solid.svg#volume-off");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, use, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, use, anchor);
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(use);
     }
   };
-} // (180:7) {#if volume == 0}
+} // (201:6) {#if muted}
 
 
 function create_if_block_4(ctx) {
   var use;
   return {
     c: function c() {
-      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(use, "href", "images/solid.svg#volume-off");
+      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("use");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(use, "href", "images/solid.svg#volume-mute");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, use, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, use, anchor);
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(use);
     }
   };
-} // (177:6) {#if muted}
+} // (239:2) {#if mediaType == 'video'}
 
 
 function create_if_block_3(ctx) {
-  var use;
-  return {
-    c: function c() {
-      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(use, "href", "images/solid.svg#volume-mute");
-    },
-    m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, use, anchor);
-    },
-    d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(use);
-    }
-  };
-} // (215:2) {#if mediaType == 'video'}
-
-
-function create_if_block_2(ctx) {
   var video;
   var track;
   var video_src_value;
@@ -521,115 +520,115 @@ function create_if_block_2(ctx) {
   var dispose;
   return {
     c: function c() {
-      video = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("video");
-      track = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("track");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(track, "kind", "captions");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(video, "class", "media svelte-10i80u");
-      if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(video.src, video_src_value =
+      video = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("video");
+      track = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("track");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(track, "kind", "captions");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(video, "class", "media svelte-ukrymk");
+      if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.src_url_equal)(video.src, video_src_value =
       /*url*/
-      ctx[3])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(video, "src", video_src_value);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(video, "currenttime",
+      ctx[4])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(video, "src", video_src_value);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(video, "currenttime",
       /*time*/
-      ctx[1]);
+      ctx[2]);
       if (
       /*duration*/
-      ctx[2] === void 0) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.add_render_callback)(function () {
+      ctx[3] === void 0) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.add_render_callback)(function () {
         return (
           /*video_durationchange_handler*/
-          ctx[24].call(video)
+          ctx[28].call(video)
         );
       });
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, video, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(video, track);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, video, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(video, track);
       /*video_binding*/
 
-      ctx[22](video);
+      ctx[26](video);
 
       if (!isNaN_1(
       /*volume*/
-      ctx[7])) {
+      ctx[8])) {
         video.volume =
         /*volume*/
-        ctx[7];
+        ctx[8];
       }
 
       video.muted =
       /*muted*/
-      ctx[6];
+      ctx[7];
 
       if (!mounted) {
-        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "volumechange",
+        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(video, "volumechange",
         /*video_volumechange_handler*/
-        ctx[23]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "durationchange",
+        ctx[27]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(video, "durationchange",
         /*video_durationchange_handler*/
-        ctx[24]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "play",
+        ctx[28]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(video, "play",
         /*video_play_pause_handler*/
-        ctx[25]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "pause",
+        ctx[29]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(video, "pause",
         /*video_play_pause_handler*/
-        ctx[25]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(video, "click",
+        ctx[29]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(video, "click",
         /*showMenu*/
-        ctx[13])];
+        ctx[15])];
         mounted = true;
       }
     },
     p: function p(ctx, dirty) {
       if (dirty[0] &
       /*url*/
-      8 && !(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(video.src, video_src_value =
+      16 && !(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.src_url_equal)(video.src, video_src_value =
       /*url*/
-      ctx[3])) {
-        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(video, "src", video_src_value);
+      ctx[4])) {
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(video, "src", video_src_value);
       }
 
       if (dirty[0] &
       /*time*/
-      2) {
-        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(video, "currenttime",
+      4) {
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(video, "currenttime",
         /*time*/
-        ctx[1]);
+        ctx[2]);
       }
 
       if (dirty[0] &
       /*volume*/
-      128 && !isNaN_1(
+      256 && !isNaN_1(
       /*volume*/
-      ctx[7])) {
+      ctx[8])) {
         video.volume =
         /*volume*/
-        ctx[7];
+        ctx[8];
       }
 
       if (dirty[0] &
       /*muted*/
-      64) {
+      128) {
         video.muted =
         /*muted*/
-        ctx[6];
+        ctx[7];
       }
 
       if (dirty[0] &
       /*paused*/
-      32 && video_is_paused !== (video_is_paused =
+      64 && video_is_paused !== (video_is_paused =
       /*paused*/
-      ctx[5])) {
+      ctx[6])) {
         video[video_is_paused ? "pause" : "play"]();
       }
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(video);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(video);
       /*video_binding*/
 
-      ctx[22](null);
+      ctx[26](null);
       mounted = false;
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.run_all)(dispose);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.run_all)(dispose);
     }
   };
-} // (220:2) {#if mediaType == 'audio'}
+} // (244:2) {#if mediaType == 'audio'}
 
 
-function create_if_block_1(ctx) {
+function create_if_block_2(ctx) {
   var img;
   var img_src_value;
   var t;
@@ -641,119 +640,165 @@ function create_if_block_1(ctx) {
   var dispose;
   return {
     c: function c() {
-      img = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("img");
-      t = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      audio = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("audio");
-      track = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("track");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(img, "class", "media svelte-10i80u");
-      if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(img.src, img_src_value = "images/kikiRadio.gif")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(img, "src", img_src_value);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(img, "alt", "black cat with his hair standing up.");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(track, "kind", "captions");
-      if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(audio.src, audio_src_value =
+      img = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("img");
+      t = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      audio = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("audio");
+      track = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("track");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(img, "class", "media svelte-ukrymk");
+      if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.src_url_equal)(img.src, img_src_value = "images/kikiRadio.gif")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(img, "src", img_src_value);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(img, "alt", "black cat with his hair standing up.");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(track, "kind", "captions");
+      if (!(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.src_url_equal)(audio.src, audio_src_value =
       /*url*/
-      ctx[3])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "src", audio_src_value);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "currenttime",
+      ctx[4])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(audio, "src", audio_src_value);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(audio, "currenttime",
       /*time*/
-      ctx[1]);
+      ctx[2]);
       if (
       /*duration*/
-      ctx[2] === void 0) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.add_render_callback)(function () {
+      ctx[3] === void 0) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.add_render_callback)(function () {
         return (
           /*audio_durationchange_handler*/
-          ctx[28].call(audio)
+          ctx[32].call(audio)
         );
       });
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, img, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, t, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, audio, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(audio, track);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, img, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, t, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, audio, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(audio, track);
       /*audio_binding*/
 
-      ctx[26](audio);
+      ctx[30](audio);
 
       if (!isNaN_1(
       /*volume*/
-      ctx[7])) {
+      ctx[8])) {
         audio.volume =
         /*volume*/
-        ctx[7];
+        ctx[8];
       }
 
       audio.muted =
       /*muted*/
-      ctx[6];
+      ctx[7];
 
       if (!mounted) {
-        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(img, "click",
+        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(img, "click",
         /*showMenu*/
-        ctx[13]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "volumechange",
+        ctx[15]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(audio, "volumechange",
         /*audio_volumechange_handler*/
-        ctx[27]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "durationchange",
+        ctx[31]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(audio, "durationchange",
         /*audio_durationchange_handler*/
-        ctx[28]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "play",
+        ctx[32]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(audio, "play",
         /*audio_play_pause_handler*/
-        ctx[29]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "pause",
+        ctx[33]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(audio, "pause",
         /*audio_play_pause_handler*/
-        ctx[29]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(audio, "click",
+        ctx[33]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(audio, "click",
         /*pausePlay*/
-        ctx[16])];
+        ctx[18])];
         mounted = true;
       }
     },
     p: function p(ctx, dirty) {
       if (dirty[0] &
       /*url*/
-      8 && !(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.src_url_equal)(audio.src, audio_src_value =
+      16 && !(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.src_url_equal)(audio.src, audio_src_value =
       /*url*/
-      ctx[3])) {
-        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "src", audio_src_value);
+      ctx[4])) {
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(audio, "src", audio_src_value);
       }
 
       if (dirty[0] &
       /*time*/
-      2) {
-        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(audio, "currenttime",
+      4) {
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(audio, "currenttime",
         /*time*/
-        ctx[1]);
+        ctx[2]);
       }
 
       if (dirty[0] &
       /*volume*/
-      128 && !isNaN_1(
+      256 && !isNaN_1(
       /*volume*/
-      ctx[7])) {
+      ctx[8])) {
         audio.volume =
         /*volume*/
-        ctx[7];
+        ctx[8];
       }
 
       if (dirty[0] &
       /*muted*/
-      64) {
+      128) {
         audio.muted =
         /*muted*/
-        ctx[6];
+        ctx[7];
       }
 
       if (dirty[0] &
       /*paused*/
-      32 && audio_is_paused !== (audio_is_paused =
+      64 && audio_is_paused !== (audio_is_paused =
       /*paused*/
-      ctx[5])) {
+      ctx[6])) {
         audio[audio_is_paused ? "pause" : "play"]();
       }
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(img);
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(t);
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(audio);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(img);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(t);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(audio);
       /*audio_binding*/
 
-      ctx[26](null);
+      ctx[30](null);
       mounted = false;
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.run_all)(dispose);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.run_all)(dispose);
+    }
+  };
+} // (262:1) {#if chatActive}
+
+
+function create_if_block(ctx) {
+  var chat;
+  var current;
+  chat = new _components_chat__WEBPACK_IMPORTED_MODULE_2__["default"]({
+    props: {
+      chats:
+      /*chatMessages*/
+      ctx[14]
+    }
+  });
+  chat.$on("chat",
+  /*handleChatMessage*/
+  ctx[22]);
+  return {
+    c: function c() {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(chat.$$.fragment);
+    },
+    m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(chat, target, anchor);
+      current = true;
+    },
+    p: function p(ctx, dirty) {
+      var chat_changes = {};
+      if (dirty[0] &
+      /*chatMessages*/
+      16384) chat_changes.chats =
+      /*chatMessages*/
+      ctx[14];
+      chat.$set(chat_changes);
+    },
+    i: function i(local) {
+      if (current) return;
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_in)(chat.$$.fragment, local);
+      current = true;
+    },
+    o: function o(local) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_out)(chat.$$.fragment, local);
+      current = false;
+    },
+    d: function d(detaching) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(chat, detaching);
     }
   };
 }
@@ -767,78 +812,132 @@ function create_fragment(ctx) {
   var t1;
   var b;
   var t2;
+  var t3;
+  var current;
+  var mounted;
+  var dispose;
 
   function select_block_type(ctx, dirty) {
     if (
     /*timestamp*/
-    ctx[0] != undefined) return create_if_block;
+    ctx[1] != undefined) return create_if_block_1;
     return create_else_block_1;
   }
 
   var current_block_type = select_block_type(ctx, [-1, -1]);
-  var if_block = current_block_type(ctx);
+  var if_block0 = current_block_type(ctx);
+  var if_block1 =
+  /*chatActive*/
+  ctx[0] && create_if_block(ctx);
   return {
     c: function c() {
-      main = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("main");
-      if_block.c();
-      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      svg = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("svg");
-      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.svg_element)("use");
-      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      b = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("b");
-      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(
+      main = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("main");
+      if_block0.c();
+      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      svg = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("svg");
+      use = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.svg_element)("use");
+      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      b = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("b");
+      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(
       /*peopleCount*/
-      ctx[12]);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.xlink_attr)(use, "xlink:href", "images/solid.svg#users");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg, "id", "people");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(svg, "class", "svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_style)(b, "color", "white");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_style)(b, "font-family", "sans");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div, "class", "info svelte-10i80u");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(main, "class", "svelte-10i80u");
+      ctx[13]);
+      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      if (if_block1) if_block1.c();
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.xlink_attr)(use, "xlink:href", "images/solid.svg#users");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(svg, "id", "people");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(svg, "class", "svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_style)(b, "color", "white");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_style)(b, "font-family", "sans");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "info svelte-ukrymk");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(main, "class", "svelte-ukrymk");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, main, anchor);
-      if_block.m(main, null);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(main, t0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(main, div);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div, svg);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(svg, use);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div, t1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div, b);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(b, t2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, main, anchor);
+      if_block0.m(main, null);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(main, t0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(main, div);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div, svg);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(svg, use);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div, t1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div, b);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(b, t2);
       /*div_binding*/
 
-      ctx[30](div);
+      ctx[34](div);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(main, t3);
+      if (if_block1) if_block1.m(main, null);
+      current = true;
+
+      if (!mounted) {
+        dispose = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(svg, "click",
+        /*a*/
+        ctx[20]);
+        mounted = true;
+      }
     },
     p: function p(ctx, dirty) {
-      if (current_block_type === (current_block_type = select_block_type(ctx, dirty)) && if_block) {
-        if_block.p(ctx, dirty);
+      if (current_block_type === (current_block_type = select_block_type(ctx, dirty)) && if_block0) {
+        if_block0.p(ctx, dirty);
       } else {
-        if_block.d(1);
-        if_block = current_block_type(ctx);
+        if_block0.d(1);
+        if_block0 = current_block_type(ctx);
 
-        if (if_block) {
-          if_block.c();
-          if_block.m(main, t0);
+        if (if_block0) {
+          if_block0.c();
+          if_block0.m(main, t0);
         }
       }
 
-      if (dirty[0] &
+      if (!current || dirty[0] &
       /*peopleCount*/
-      4096) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_data)(t2,
+      8192) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t2,
       /*peopleCount*/
-      ctx[12]);
+      ctx[13]);
+
+      if (
+      /*chatActive*/
+      ctx[0]) {
+        if (if_block1) {
+          if_block1.p(ctx, dirty);
+
+          if (dirty[0] &
+          /*chatActive*/
+          1) {
+            (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_in)(if_block1, 1);
+          }
+        } else {
+          if_block1 = create_if_block(ctx);
+          if_block1.c();
+          (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_in)(if_block1, 1);
+          if_block1.m(main, null);
+        }
+      } else if (if_block1) {
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.group_outros)();
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_out)(if_block1, 1, 1, function () {
+          if_block1 = null;
+        });
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.check_outros)();
+      }
     },
-    i: svelte_internal__WEBPACK_IMPORTED_MODULE_1__.noop,
-    o: svelte_internal__WEBPACK_IMPORTED_MODULE_1__.noop,
+    i: function i(local) {
+      if (current) return;
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_in)(if_block1);
+      current = true;
+    },
+    o: function o(local) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_out)(if_block1);
+      current = false;
+    },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(main);
-      if_block.d();
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(main);
+      if_block0.d();
       /*div_binding*/
 
-      ctx[30](null);
+      ctx[34](null);
+      if (if_block1) if_block1.d();
+      mounted = false;
+      dispose();
     }
   };
 }
@@ -861,9 +960,11 @@ function shrinkExpand(e) {
 }
 
 function instance($$self, $$props, $$invalidate) {
+  var chatMessages;
   var name = $$props.name; // create a look event that bubbles up and cannot be canceled
 
-  console.log('app is up');
+  console.log('app is uffp');
+  var chatActive = true;
   var timestamp = undefined;
   var time = 0;
   var heartBeat = undefined;
@@ -883,8 +984,8 @@ function instance($$self, $$props, $$invalidate) {
   var socket = io(); // Server emits event when media ends
 
   socket.on('newMedia', /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
@@ -895,14 +996,14 @@ function instance($$self, $$props, $$invalidate) {
 
             case 4:
               _context.t1 = url = _context.sent;
-              (0, _context.t0)(3, _context.t1);
+              (0, _context.t0)(4, _context.t1);
               _context.t2 = $$invalidate;
               _context.next = 9;
               return data.mediaType;
 
             case 9:
               _context.t3 = mediaType = _context.sent;
-              (0, _context.t2)(4, _context.t3);
+              (0, _context.t2)(5, _context.t3);
               _context.next = 13;
               return media.load();
 
@@ -916,7 +1017,7 @@ function instance($$self, $$props, $$invalidate) {
               return media.play();
 
             case 16:
-              $$invalidate(5, paused = true);
+              $$invalidate(6, paused = true);
               pausePlay();
 
             case 18:
@@ -933,18 +1034,18 @@ function instance($$self, $$props, $$invalidate) {
   }()); // Server sends timestamp every three seconds
 
   socket.on('timestamp', function (data) {
-    console.log('timestamp');
-    console.log(data);
-    $$invalidate(4, mediaType = data.mediaType);
-    $$invalidate(0, timestamp = data.timestamp);
+    //console.log('timestamp');
+    //console.log(data);
+    $$invalidate(5, mediaType = data.mediaType);
+    $$invalidate(1, timestamp = data.timestamp);
     heartBeat = new Date().getTime();
     showLatency(timestamp);
-    $$invalidate(12, peopleCount = data.clientCount);
+    $$invalidate(13, peopleCount = data.clientCount);
   }); // Server emits event when client connects
 
   socket.on('updateClient', /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(data) {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
@@ -955,28 +1056,28 @@ function instance($$self, $$props, $$invalidate) {
 
             case 4:
               _context2.t1 = mediaType = _context2.sent;
-              (0, _context2.t0)(4, _context2.t1);
+              (0, _context2.t0)(5, _context2.t1);
               _context2.t2 = $$invalidate;
               _context2.next = 9;
               return data.timestamp;
 
             case 9:
               _context2.t3 = timestamp = _context2.sent;
-              (0, _context2.t2)(0, _context2.t3);
+              (0, _context2.t2)(1, _context2.t3);
               _context2.t4 = $$invalidate;
               _context2.next = 14;
               return data.duration;
 
             case 14:
               _context2.t5 = duration = _context2.sent;
-              (0, _context2.t4)(2, _context2.t5);
+              (0, _context2.t4)(3, _context2.t5);
               _context2.t6 = $$invalidate;
               _context2.next = 19;
               return data.url;
 
             case 19:
               _context2.t7 = url = _context2.sent;
-              (0, _context2.t6)(3, _context2.t7);
+              (0, _context2.t6)(4, _context2.t7);
               _context2.t8 = $$invalidate;
               _context2.next = 24;
               return Math.floor(timestamp);
@@ -984,7 +1085,7 @@ function instance($$self, $$props, $$invalidate) {
             case 24:
               _context2.t9 = media.currentTime = _context2.sent;
               _context2.t10 = media;
-              (0, _context2.t8)(10, _context2.t9, _context2.t10);
+              (0, _context2.t8)(11, _context2.t9, _context2.t10);
 
             case 27:
             case "end":
@@ -998,20 +1099,62 @@ function instance($$self, $$props, $$invalidate) {
       return _ref2.apply(this, arguments);
     };
   }());
+  socket.on('updateChat', /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(data) {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              console.log('updateChat', data);
+              $$invalidate(14, chatMessages = data.messages);
+
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function (_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }());
+  socket.on('chat message', /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(msg) {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              console.log('fromserver:', msg);
+              $$invalidate(14, chatMessages = [].concat(_toConsumableArray(chatMessages), [msg]));
+
+            case 2:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function (_x4) {
+      return _ref4.apply(this, arguments);
+    };
+  }());
 
   function showMenu(e) {
     if (e.target !== undefined) {
       clearTimeout(menuVisible);
       clearTimeout(infoVisible);
       e.target.style.cursor = '';
-      $$invalidate(8, controls.style.opacity = '1', controls);
-      $$invalidate(11, infoPanel.style.opacity = '1', infoPanel);
+      $$invalidate(9, controls.style.opacity = '1', controls);
+      $$invalidate(12, infoPanel.style.opacity = '1', infoPanel);
       menuVisible = setTimeout(function () {
-        $$invalidate(8, controls.style.opacity = '0', controls);
+        $$invalidate(9, controls.style.opacity = '0', controls);
         e.target.style.cursor = 'none';
       }, 4000);
       infoVisible = setTimeout(function () {
-        $$invalidate(11, infoPanel.style.opacity = '0', infoPanel);
+        $$invalidate(12, infoPanel.style.opacity = '0', infoPanel);
         e.target.style.cursor = 'none';
       }, 4000);
     }
@@ -1021,7 +1164,7 @@ function instance($$self, $$props, $$invalidate) {
     document.querySelector('.start-button').style.display = 'none';
     document.querySelector('.start-button').style.visibility = 'hidden';
     resync();
-    $$invalidate(5, paused = false);
+    $$invalidate(6, paused = false);
   }
 
   function storeVolume() {
@@ -1030,119 +1173,135 @@ function instance($$self, $$props, $$invalidate) {
 
   function pausePlay() {
     if (!paused) {
-      $$invalidate(5, paused = true);
+      $$invalidate(6, paused = true);
       console.log('were paused now');
     } else {
       console.log('were playing now');
-      $$invalidate(5, paused = false);
+      $$invalidate(6, paused = false);
     }
   }
 
   function showLatency(timestamp) {
     console.log(format(timestamp));
-    $$invalidate(9, latency = format(timestamp - media.currentTime));
+    $$invalidate(10, latency = format(timestamp - media.currentTime));
   }
 
   function resync(e) {
     // get the difference of the last server heart beat in seconds
     var lastHeartBeatOffset = (new Date().getTime() - heartBeat) / 1000;
-    $$invalidate(10, media.currentTime = timestamp + lastHeartBeatOffset, media);
+    $$invalidate(11, media.currentTime = timestamp + lastHeartBeatOffset, media);
     showLatency();
   }
 
-  function toggleMute(e) {
-    if (!muted) {
-      console.log('were muting.');
-      $$invalidate(6, muted = true);
+  function a(e) {
+    $$invalidate(0, chatActive = !chatActive);
+
+    if (!chatActive) {
+      $$invalidate(9, controls.style.width = '100%', controls);
+      $$invalidate(12, infoPanel.style.width = '100%', infoPanel);
+      $$invalidate(11, media.parentElement.style.width = '100%', media);
     } else {
-      console.log('were unmuted');
-      $$invalidate(6, muted = false);
+      $$invalidate(9, controls.style.width = '80%', controls);
+      $$invalidate(12, infoPanel.style.width = '80%', infoPanel);
+      $$invalidate(11, media.parentElement.style.width = '80%', media);
+      console.log(media.parentElement);
     }
   }
 
-  (0,svelte__WEBPACK_IMPORTED_MODULE_2__.onMount)(function (e) {
+  function toggleMute(e) {
+    $$invalidate(7, muted = !muted);
+  }
+
+  function handleChatMessage(e) {
+    console.log('handling chat message', e);
+    socket.emit('chat message', e.detail);
+  }
+
+  (0,svelte__WEBPACK_IMPORTED_MODULE_1__.onMount)(function (e) {
     console.log('the component has mounted');
   });
-  (0,svelte__WEBPACK_IMPORTED_MODULE_2__.afterUpdate)(function () {
+  (0,svelte__WEBPACK_IMPORTED_MODULE_1__.afterUpdate)(function () {
     console.log('the component just updated');
 
     if (timestamp - time > 5) {
-      $$invalidate(1, time = timestamp);
+      $$invalidate(2, time = timestamp);
     }
   });
 
   function input_change_input_handler() {
-    volume = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.to_number)(this.value);
-    $$invalidate(7, volume);
+    volume = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.to_number)(this.value);
+    $$invalidate(8, volume);
   }
 
   function div8_binding($$value) {
-    svelte_internal__WEBPACK_IMPORTED_MODULE_1__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
+    svelte_internal__WEBPACK_IMPORTED_MODULE_0__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
       controls = $$value;
-      $$invalidate(8, controls);
+      $$invalidate(9, controls);
     });
   }
 
   function video_binding($$value) {
-    svelte_internal__WEBPACK_IMPORTED_MODULE_1__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
+    svelte_internal__WEBPACK_IMPORTED_MODULE_0__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
       media = $$value;
-      $$invalidate(10, media);
+      $$invalidate(11, media);
     });
   }
 
   function video_volumechange_handler() {
     volume = this.volume;
     muted = this.muted;
-    $$invalidate(7, volume);
-    $$invalidate(6, muted);
+    $$invalidate(8, volume);
+    $$invalidate(7, muted);
   }
 
   function video_durationchange_handler() {
     duration = this.duration;
-    $$invalidate(2, duration);
+    $$invalidate(3, duration);
   }
 
   function video_play_pause_handler() {
     paused = this.paused;
-    $$invalidate(5, paused);
+    $$invalidate(6, paused);
   }
 
   function audio_binding($$value) {
-    svelte_internal__WEBPACK_IMPORTED_MODULE_1__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
+    svelte_internal__WEBPACK_IMPORTED_MODULE_0__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
       media = $$value;
-      $$invalidate(10, media);
+      $$invalidate(11, media);
     });
   }
 
   function audio_volumechange_handler() {
     volume = this.volume;
     muted = this.muted;
-    $$invalidate(7, volume);
-    $$invalidate(6, muted);
+    $$invalidate(8, volume);
+    $$invalidate(7, muted);
   }
 
   function audio_durationchange_handler() {
     duration = this.duration;
-    $$invalidate(2, duration);
+    $$invalidate(3, duration);
   }
 
   function audio_play_pause_handler() {
     paused = this.paused;
-    $$invalidate(5, paused);
+    $$invalidate(6, paused);
   }
 
   function div_binding($$value) {
-    svelte_internal__WEBPACK_IMPORTED_MODULE_1__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
+    svelte_internal__WEBPACK_IMPORTED_MODULE_0__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
       infoPanel = $$value;
-      $$invalidate(11, infoPanel);
+      $$invalidate(12, infoPanel);
     });
   }
 
   $$self.$$set = function ($$props) {
-    if ('name' in $$props) $$invalidate(19, name = $$props.name);
+    if ('name' in $$props) $$invalidate(23, name = $$props.name);
   };
 
-  return [timestamp, time, duration, url, mediaType, paused, muted, volume, controls, latency, media, infoPanel, peopleCount, showMenu, start, storeVolume, pausePlay, resync, toggleMute, name, input_change_input_handler, div8_binding, video_binding, video_volumechange_handler, video_durationchange_handler, video_play_pause_handler, audio_binding, audio_volumechange_handler, audio_durationchange_handler, audio_play_pause_handler, div_binding];
+  $: $$invalidate(14, chatMessages = []);
+
+  return [chatActive, timestamp, time, duration, url, mediaType, paused, muted, volume, controls, latency, media, infoPanel, peopleCount, chatMessages, showMenu, start, storeVolume, pausePlay, resync, a, toggleMute, handleChatMessage, name, input_change_input_handler, div8_binding, video_binding, video_volumechange_handler, video_durationchange_handler, video_play_pause_handler, audio_binding, audio_volumechange_handler, audio_durationchange_handler, audio_play_pause_handler, div_binding];
 }
 
 var App = /*#__PURE__*/function (_SvelteComponent) {
@@ -1156,14 +1315,14 @@ var App = /*#__PURE__*/function (_SvelteComponent) {
     _classCallCheck(this, App);
 
     _this = _super.call(this);
-    (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.init)(_assertThisInitialized(_this), options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_1__.safe_not_equal, {
-      name: 19
+    (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.init)(_assertThisInitialized(_this), options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__.safe_not_equal, {
+      name: 23
     }, add_css, [-1, -1]);
     return _this;
   }
 
   return _createClass(App);
-}(svelte_internal__WEBPACK_IMPORTED_MODULE_1__.SvelteComponent);
+}(svelte_internal__WEBPACK_IMPORTED_MODULE_0__.SvelteComponent);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
@@ -1175,12 +1334,12 @@ var App = /*#__PURE__*/function (_SvelteComponent) {
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
+/* harmony import */ var svelte__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! svelte */ "./node_modules/svelte/index.mjs");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1191,7 +1350,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -1201,10 +1360,400 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-/* src/components/chat.svelte generated by Svelte v3.47.0 */
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+/* src/components/chat.svelte generated by Svelte v3.49.0 */
+
+
+
+
+function add_css(target) {
+  (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1eltfmu", "h2.svelte-1eltfmu,p.svelte-1eltfmu{color:whitesmoke;margin-left:.7rem;margin-right:.7rem}.input.svelte-1eltfmu{margin-bottom:1rem}.chat-messages.svelte-1eltfmu{display:inline;word-break:break-all;height:700px;overflow-y:scroll}.chat-window.svelte-1eltfmu{display:flex;flex-direction:column;justify-content:space-between;align-items:center;background-color:rgba(25, 25, 25, 0.5);overflow-y:scroll;width:20%;height:100%;z-index:4;position:fixed;right:0;top:0}");
+}
+
+function get_each_context(ctx, list, i) {
+  var child_ctx = ctx.slice();
+  child_ctx[11] = list[i];
+  return child_ctx;
+} // (48:3) {#if chats}
+
+
+function create_if_block(ctx) {
+  var t0_value =
+  /*chats*/
+  ctx[0].length + "";
+  var t0;
+  var t1;
+  var p;
+  var t3;
+  var each_1_anchor;
+  var each_value =
+  /*chats*/
+  ctx[0];
+  var each_blocks = [];
+
+  for (var i = 0; i < each_value.length; i += 1) {
+    each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+  }
+
+  return {
+    c: function c() {
+      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t0_value);
+      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      p = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("p");
+      p.textContent = "true";
+      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+
+      for (var _i = 0; _i < each_blocks.length; _i += 1) {
+        each_blocks[_i].c();
+      }
+
+      each_1_anchor = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.empty)();
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(p, "class", "svelte-1eltfmu");
+    },
+    m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, t0, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, t1, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, p, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, t3, anchor);
+
+      for (var _i2 = 0; _i2 < each_blocks.length; _i2 += 1) {
+        each_blocks[_i2].m(target, anchor);
+      }
+
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, each_1_anchor, anchor);
+    },
+    p: function p(ctx, dirty) {
+      if (dirty &
+      /*chats*/
+      1 && t0_value !== (t0_value =
+      /*chats*/
+      ctx[0].length + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t0, t0_value);
+
+      if (dirty &
+      /*chats*/
+      1) {
+        each_value =
+        /*chats*/
+        ctx[0];
+
+        var _i3;
+
+        for (_i3 = 0; _i3 < each_value.length; _i3 += 1) {
+          var child_ctx = get_each_context(ctx, each_value, _i3);
+
+          if (each_blocks[_i3]) {
+            each_blocks[_i3].p(child_ctx, dirty);
+          } else {
+            each_blocks[_i3] = create_each_block(child_ctx);
+
+            each_blocks[_i3].c();
+
+            each_blocks[_i3].m(each_1_anchor.parentNode, each_1_anchor);
+          }
+        }
+
+        for (; _i3 < each_blocks.length; _i3 += 1) {
+          each_blocks[_i3].d(1);
+        }
+
+        each_blocks.length = each_value.length;
+      }
+    },
+    d: function d(detaching) {
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(t0);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(t1);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(p);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(t3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_each)(each_blocks, detaching);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(each_1_anchor);
+    }
+  };
+} // (51:3) {#each chats as chat}
+
+
+function create_each_block(ctx) {
+  var p;
+  var b;
+  var t0_value =
+  /*chat*/
+  ctx[11].username + "";
+  var t0;
+  var t1;
+  var t2_value =
+  /*chat*/
+  ctx[11].comment + "";
+  var t2;
+  return {
+    c: function c() {
+      p = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("p");
+      b = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("b");
+      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t0_value);
+      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(": ");
+      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t2_value);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_style)(b, "color",
+      /*chat*/
+      ctx[11].color);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(p, "class", "svelte-1eltfmu");
+    },
+    m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, p, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(p, b);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(b, t0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(b, t1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(p, t2);
+    },
+    p: function p(ctx, dirty) {
+      if (dirty &
+      /*chats*/
+      1 && t0_value !== (t0_value =
+      /*chat*/
+      ctx[11].username + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t0, t0_value);
+
+      if (dirty &
+      /*chats*/
+      1) {
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_style)(b, "color",
+        /*chat*/
+        ctx[11].color);
+      }
+
+      if (dirty &
+      /*chats*/
+      1 && t2_value !== (t2_value =
+      /*chat*/
+      ctx[11].comment + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t2, t2_value);
+    },
+    d: function d(detaching) {
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(p);
+    }
+  };
+}
+
+function create_fragment(ctx) {
+  var div3;
+  var div1;
+  var h2;
+  var t1;
+  var hr;
+  var t2;
+  var div0;
+  var t3;
+  var div2;
+  var input;
+  var t4;
+  var button0;
+  var t6;
+  var textarea;
+  var t7;
+  var button1;
+  var mounted;
+  var dispose;
+  var if_block =
+  /*chats*/
+  ctx[0] && create_if_block(ctx);
+  return {
+    c: function c() {
+      div3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      h2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("h2");
+      h2.textContent = "chat";
+      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      hr = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("hr");
+      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      if (if_block) if_block.c();
+      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      input = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("input");
+      t4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      button0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("button");
+      button0.textContent = "save";
+      t6 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      textarea = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("textarea");
+      t7 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      button1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("button");
+      button1.textContent = "submit";
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(h2, "class", "svelte-1eltfmu");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "chat-messages svelte-1eltfmu");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_style)(div1, "width", "100%");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(input, "type", "text");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(input, "name", "username");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "input svelte-1eltfmu");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "chat-window svelte-1eltfmu");
+    },
+    m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div3, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, div1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, h2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, t1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, hr);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, t2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, div0);
+      if (if_block) if_block.m(div0, null);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, t3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, div2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, input);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_input_value)(input,
+      /*username*/
+      ctx[1]);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, t4);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, button0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, t6);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, textarea);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_input_value)(textarea,
+      /*comment*/
+      ctx[2]);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, t7);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, button1);
+      /*div3_binding*/
+
+      ctx[9](div3);
+
+      if (!mounted) {
+        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(input, "input",
+        /*input_input_handler*/
+        ctx[7]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(button0, "click",
+        /*handleUsername*/
+        ctx[6]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(textarea, "input",
+        /*textarea_input_handler*/
+        ctx[8]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(button1, "click",
+        /*submitMessage*/
+        ctx[4]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(div3, "keypress",
+        /*handleKeyDown*/
+        ctx[5])];
+        mounted = true;
+      }
+    },
+    p: function p(ctx, _ref) {
+      var _ref2 = _slicedToArray(_ref, 1),
+          dirty = _ref2[0];
+
+      if (
+      /*chats*/
+      ctx[0]) {
+        if (if_block) {
+          if_block.p(ctx, dirty);
+        } else {
+          if_block = create_if_block(ctx);
+          if_block.c();
+          if_block.m(div0, null);
+        }
+      } else if (if_block) {
+        if_block.d(1);
+        if_block = null;
+      }
+
+      if (dirty &
+      /*username*/
+      2 && input.value !==
+      /*username*/
+      ctx[1]) {
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_input_value)(input,
+        /*username*/
+        ctx[1]);
+      }
+
+      if (dirty &
+      /*comment*/
+      4) {
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_input_value)(textarea,
+        /*comment*/
+        ctx[2]);
+      }
+    },
+    i: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
+    o: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
+    d: function d(detaching) {
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div3);
+      if (if_block) if_block.d();
+      /*div3_binding*/
+
+      ctx[9](null);
+      mounted = false;
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.run_all)(dispose);
+    }
+  };
+}
+
+function instance($$self, $$props, $$invalidate) {
+  var _$$props$chats = $$props.chats,
+      chats = _$$props$chats === void 0 ? [] : _$$props$chats;
+  var dispatch = (0,svelte__WEBPACK_IMPORTED_MODULE_1__.createEventDispatcher)();
+  var username = localStorage.username ? localStorage.username : '';
+  var comment;
+  var chatWindow;
+
+  function submitMessage() {
+    console.log(chats);
+    console.log(comment);
+
+    if (!username) {
+      $$invalidate(1, username = 'anon');
+    }
+
+    if (comment) {
+      dispatch('chat', {
+        username: username,
+        comment: comment
+      });
+      $$invalidate(2, comment = '');
+    }
+  }
+
+  function handleKeyDown(e) {
+    console.log(chatWindow.scrollHeight);
+    chatWindow.scrollTo(0, document.body.scrollHeight + 100);
+
+    if (e.key == 'Enter' && comment.trim() != '') {
+      submitMessage();
+    }
+  }
+
+  function handleUsername() {
+    console.log(username);
+    localStorage.setItem('username', username);
+  }
+
+  (0,svelte__WEBPACK_IMPORTED_MODULE_1__.afterUpdate)(function () {
+    console.log('chat updated');
+  }); //chatWindow.scrollTo(0,document.body.scrollHeight + 100);
+
+  function input_input_handler() {
+    username = this.value;
+    $$invalidate(1, username);
+  }
+
+  function textarea_input_handler() {
+    comment = this.value;
+    $$invalidate(2, comment);
+  }
+
+  function div3_binding($$value) {
+    svelte_internal__WEBPACK_IMPORTED_MODULE_0__.binding_callbacks[$$value ? 'unshift' : 'push'](function () {
+      chatWindow = $$value;
+      $$invalidate(3, chatWindow);
+    });
+  }
+
+  $$self.$$set = function ($$props) {
+    if ('chats' in $$props) $$invalidate(0, chats = $$props.chats);
+  };
+
+  return [chats, username, comment, chatWindow, submitMessage, handleKeyDown, handleUsername, input_input_handler, textarea_input_handler, div3_binding];
+}
 
 var Chat = /*#__PURE__*/function (_SvelteComponent) {
   _inherits(Chat, _SvelteComponent);
@@ -1217,7 +1766,9 @@ var Chat = /*#__PURE__*/function (_SvelteComponent) {
     _classCallCheck(this, Chat);
 
     _this = _super.call(this);
-    (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.init)(_assertThisInitialized(_this), options, null, null, svelte_internal__WEBPACK_IMPORTED_MODULE_0__.safe_not_equal, {});
+    (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.init)(_assertThisInitialized(_this), options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__.safe_not_equal, {
+      chats: 0
+    }, add_css);
     return _this;
   }
 
@@ -1228,777 +1779,12 @@ var Chat = /*#__PURE__*/function (_SvelteComponent) {
 
 /***/ }),
 
-/***/ "./node_modules/regenerator-runtime/runtime.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/regenerator-runtime/runtime.js ***!
-  \*****************************************************/
-/***/ ((module) => {
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var runtime = (function (exports) {
-  "use strict";
-
-  var Op = Object.prototype;
-  var hasOwn = Op.hasOwnProperty;
-  var undefined; // More compressible than void 0.
-  var $Symbol = typeof Symbol === "function" ? Symbol : {};
-  var iteratorSymbol = $Symbol.iterator || "@@iterator";
-  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
-  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-
-  function define(obj, key, value) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-    return obj[key];
-  }
-  try {
-    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
-    define({}, "");
-  } catch (err) {
-    define = function(obj, key, value) {
-      return obj[key] = value;
-    };
-  }
-
-  function wrap(innerFn, outerFn, self, tryLocsList) {
-    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
-    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
-    var generator = Object.create(protoGenerator.prototype);
-    var context = new Context(tryLocsList || []);
-
-    // The ._invoke method unifies the implementations of the .next,
-    // .throw, and .return methods.
-    generator._invoke = makeInvokeMethod(innerFn, self, context);
-
-    return generator;
-  }
-  exports.wrap = wrap;
-
-  // Try/catch helper to minimize deoptimizations. Returns a completion
-  // record like context.tryEntries[i].completion. This interface could
-  // have been (and was previously) designed to take a closure to be
-  // invoked without arguments, but in all the cases we care about we
-  // already have an existing method we want to call, so there's no need
-  // to create a new function object. We can even get away with assuming
-  // the method takes exactly one argument, since that happens to be true
-  // in every case, so we don't have to touch the arguments object. The
-  // only additional allocation required is the completion record, which
-  // has a stable shape and so hopefully should be cheap to allocate.
-  function tryCatch(fn, obj, arg) {
-    try {
-      return { type: "normal", arg: fn.call(obj, arg) };
-    } catch (err) {
-      return { type: "throw", arg: err };
-    }
-  }
-
-  var GenStateSuspendedStart = "suspendedStart";
-  var GenStateSuspendedYield = "suspendedYield";
-  var GenStateExecuting = "executing";
-  var GenStateCompleted = "completed";
-
-  // Returning this object from the innerFn has the same effect as
-  // breaking out of the dispatch switch statement.
-  var ContinueSentinel = {};
-
-  // Dummy constructor functions that we use as the .constructor and
-  // .constructor.prototype properties for functions that return Generator
-  // objects. For full spec compliance, you may wish to configure your
-  // minifier not to mangle the names of these two functions.
-  function Generator() {}
-  function GeneratorFunction() {}
-  function GeneratorFunctionPrototype() {}
-
-  // This is a polyfill for %IteratorPrototype% for environments that
-  // don't natively support it.
-  var IteratorPrototype = {};
-  define(IteratorPrototype, iteratorSymbol, function () {
-    return this;
-  });
-
-  var getProto = Object.getPrototypeOf;
-  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-  if (NativeIteratorPrototype &&
-      NativeIteratorPrototype !== Op &&
-      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
-    // This environment has a native %IteratorPrototype%; use it instead
-    // of the polyfill.
-    IteratorPrototype = NativeIteratorPrototype;
-  }
-
-  var Gp = GeneratorFunctionPrototype.prototype =
-    Generator.prototype = Object.create(IteratorPrototype);
-  GeneratorFunction.prototype = GeneratorFunctionPrototype;
-  define(Gp, "constructor", GeneratorFunctionPrototype);
-  define(GeneratorFunctionPrototype, "constructor", GeneratorFunction);
-  GeneratorFunction.displayName = define(
-    GeneratorFunctionPrototype,
-    toStringTagSymbol,
-    "GeneratorFunction"
-  );
-
-  // Helper for defining the .next, .throw, and .return methods of the
-  // Iterator interface in terms of a single ._invoke method.
-  function defineIteratorMethods(prototype) {
-    ["next", "throw", "return"].forEach(function(method) {
-      define(prototype, method, function(arg) {
-        return this._invoke(method, arg);
-      });
-    });
-  }
-
-  exports.isGeneratorFunction = function(genFun) {
-    var ctor = typeof genFun === "function" && genFun.constructor;
-    return ctor
-      ? ctor === GeneratorFunction ||
-        // For the native GeneratorFunction constructor, the best we can
-        // do is to check its .name property.
-        (ctor.displayName || ctor.name) === "GeneratorFunction"
-      : false;
-  };
-
-  exports.mark = function(genFun) {
-    if (Object.setPrototypeOf) {
-      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
-    } else {
-      genFun.__proto__ = GeneratorFunctionPrototype;
-      define(genFun, toStringTagSymbol, "GeneratorFunction");
-    }
-    genFun.prototype = Object.create(Gp);
-    return genFun;
-  };
-
-  // Within the body of any async function, `await x` is transformed to
-  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-  // `hasOwn.call(value, "__await")` to determine if the yielded value is
-  // meant to be awaited.
-  exports.awrap = function(arg) {
-    return { __await: arg };
-  };
-
-  function AsyncIterator(generator, PromiseImpl) {
-    function invoke(method, arg, resolve, reject) {
-      var record = tryCatch(generator[method], generator, arg);
-      if (record.type === "throw") {
-        reject(record.arg);
-      } else {
-        var result = record.arg;
-        var value = result.value;
-        if (value &&
-            typeof value === "object" &&
-            hasOwn.call(value, "__await")) {
-          return PromiseImpl.resolve(value.__await).then(function(value) {
-            invoke("next", value, resolve, reject);
-          }, function(err) {
-            invoke("throw", err, resolve, reject);
-          });
-        }
-
-        return PromiseImpl.resolve(value).then(function(unwrapped) {
-          // When a yielded Promise is resolved, its final value becomes
-          // the .value of the Promise<{value,done}> result for the
-          // current iteration.
-          result.value = unwrapped;
-          resolve(result);
-        }, function(error) {
-          // If a rejected Promise was yielded, throw the rejection back
-          // into the async generator function so it can be handled there.
-          return invoke("throw", error, resolve, reject);
-        });
-      }
-    }
-
-    var previousPromise;
-
-    function enqueue(method, arg) {
-      function callInvokeWithMethodAndArg() {
-        return new PromiseImpl(function(resolve, reject) {
-          invoke(method, arg, resolve, reject);
-        });
-      }
-
-      return previousPromise =
-        // If enqueue has been called before, then we want to wait until
-        // all previous Promises have been resolved before calling invoke,
-        // so that results are always delivered in the correct order. If
-        // enqueue has not been called before, then it is important to
-        // call invoke immediately, without waiting on a callback to fire,
-        // so that the async generator function has the opportunity to do
-        // any necessary setup in a predictable way. This predictability
-        // is why the Promise constructor synchronously invokes its
-        // executor callback, and why async functions synchronously
-        // execute code before the first await. Since we implement simple
-        // async functions in terms of async generators, it is especially
-        // important to get this right, even though it requires care.
-        previousPromise ? previousPromise.then(
-          callInvokeWithMethodAndArg,
-          // Avoid propagating failures to Promises returned by later
-          // invocations of the iterator.
-          callInvokeWithMethodAndArg
-        ) : callInvokeWithMethodAndArg();
-    }
-
-    // Define the unified helper method that is used to implement .next,
-    // .throw, and .return (see defineIteratorMethods).
-    this._invoke = enqueue;
-  }
-
-  defineIteratorMethods(AsyncIterator.prototype);
-  define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
-    return this;
-  });
-  exports.AsyncIterator = AsyncIterator;
-
-  // Note that simple async functions are implemented on top of
-  // AsyncIterator objects; they just return a Promise for the value of
-  // the final result produced by the iterator.
-  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
-    if (PromiseImpl === void 0) PromiseImpl = Promise;
-
-    var iter = new AsyncIterator(
-      wrap(innerFn, outerFn, self, tryLocsList),
-      PromiseImpl
-    );
-
-    return exports.isGeneratorFunction(outerFn)
-      ? iter // If outerFn is a generator, return the full iterator.
-      : iter.next().then(function(result) {
-          return result.done ? result.value : iter.next();
-        });
-  };
-
-  function makeInvokeMethod(innerFn, self, context) {
-    var state = GenStateSuspendedStart;
-
-    return function invoke(method, arg) {
-      if (state === GenStateExecuting) {
-        throw new Error("Generator is already running");
-      }
-
-      if (state === GenStateCompleted) {
-        if (method === "throw") {
-          throw arg;
-        }
-
-        // Be forgiving, per 25.3.3.3.3 of the spec:
-        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
-        return doneResult();
-      }
-
-      context.method = method;
-      context.arg = arg;
-
-      while (true) {
-        var delegate = context.delegate;
-        if (delegate) {
-          var delegateResult = maybeInvokeDelegate(delegate, context);
-          if (delegateResult) {
-            if (delegateResult === ContinueSentinel) continue;
-            return delegateResult;
-          }
-        }
-
-        if (context.method === "next") {
-          // Setting context._sent for legacy support of Babel's
-          // function.sent implementation.
-          context.sent = context._sent = context.arg;
-
-        } else if (context.method === "throw") {
-          if (state === GenStateSuspendedStart) {
-            state = GenStateCompleted;
-            throw context.arg;
-          }
-
-          context.dispatchException(context.arg);
-
-        } else if (context.method === "return") {
-          context.abrupt("return", context.arg);
-        }
-
-        state = GenStateExecuting;
-
-        var record = tryCatch(innerFn, self, context);
-        if (record.type === "normal") {
-          // If an exception is thrown from innerFn, we leave state ===
-          // GenStateExecuting and loop back for another invocation.
-          state = context.done
-            ? GenStateCompleted
-            : GenStateSuspendedYield;
-
-          if (record.arg === ContinueSentinel) {
-            continue;
-          }
-
-          return {
-            value: record.arg,
-            done: context.done
-          };
-
-        } else if (record.type === "throw") {
-          state = GenStateCompleted;
-          // Dispatch the exception by looping back around to the
-          // context.dispatchException(context.arg) call above.
-          context.method = "throw";
-          context.arg = record.arg;
-        }
-      }
-    };
-  }
-
-  // Call delegate.iterator[context.method](context.arg) and handle the
-  // result, either by returning a { value, done } result from the
-  // delegate iterator, or by modifying context.method and context.arg,
-  // setting context.delegate to null, and returning the ContinueSentinel.
-  function maybeInvokeDelegate(delegate, context) {
-    var method = delegate.iterator[context.method];
-    if (method === undefined) {
-      // A .throw or .return when the delegate iterator has no .throw
-      // method always terminates the yield* loop.
-      context.delegate = null;
-
-      if (context.method === "throw") {
-        // Note: ["return"] must be used for ES3 parsing compatibility.
-        if (delegate.iterator["return"]) {
-          // If the delegate iterator has a return method, give it a
-          // chance to clean up.
-          context.method = "return";
-          context.arg = undefined;
-          maybeInvokeDelegate(delegate, context);
-
-          if (context.method === "throw") {
-            // If maybeInvokeDelegate(context) changed context.method from
-            // "return" to "throw", let that override the TypeError below.
-            return ContinueSentinel;
-          }
-        }
-
-        context.method = "throw";
-        context.arg = new TypeError(
-          "The iterator does not provide a 'throw' method");
-      }
-
-      return ContinueSentinel;
-    }
-
-    var record = tryCatch(method, delegate.iterator, context.arg);
-
-    if (record.type === "throw") {
-      context.method = "throw";
-      context.arg = record.arg;
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    var info = record.arg;
-
-    if (! info) {
-      context.method = "throw";
-      context.arg = new TypeError("iterator result is not an object");
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    if (info.done) {
-      // Assign the result of the finished delegate to the temporary
-      // variable specified by delegate.resultName (see delegateYield).
-      context[delegate.resultName] = info.value;
-
-      // Resume execution at the desired location (see delegateYield).
-      context.next = delegate.nextLoc;
-
-      // If context.method was "throw" but the delegate handled the
-      // exception, let the outer generator proceed normally. If
-      // context.method was "next", forget context.arg since it has been
-      // "consumed" by the delegate iterator. If context.method was
-      // "return", allow the original .return call to continue in the
-      // outer generator.
-      if (context.method !== "return") {
-        context.method = "next";
-        context.arg = undefined;
-      }
-
-    } else {
-      // Re-yield the result returned by the delegate method.
-      return info;
-    }
-
-    // The delegate iterator is finished, so forget it and continue with
-    // the outer generator.
-    context.delegate = null;
-    return ContinueSentinel;
-  }
-
-  // Define Generator.prototype.{next,throw,return} in terms of the
-  // unified ._invoke helper method.
-  defineIteratorMethods(Gp);
-
-  define(Gp, toStringTagSymbol, "Generator");
-
-  // A Generator should always return itself as the iterator object when the
-  // @@iterator function is called on it. Some browsers' implementations of the
-  // iterator prototype chain incorrectly implement this, causing the Generator
-  // object to not be returned from this call. This ensures that doesn't happen.
-  // See https://github.com/facebook/regenerator/issues/274 for more details.
-  define(Gp, iteratorSymbol, function() {
-    return this;
-  });
-
-  define(Gp, "toString", function() {
-    return "[object Generator]";
-  });
-
-  function pushTryEntry(locs) {
-    var entry = { tryLoc: locs[0] };
-
-    if (1 in locs) {
-      entry.catchLoc = locs[1];
-    }
-
-    if (2 in locs) {
-      entry.finallyLoc = locs[2];
-      entry.afterLoc = locs[3];
-    }
-
-    this.tryEntries.push(entry);
-  }
-
-  function resetTryEntry(entry) {
-    var record = entry.completion || {};
-    record.type = "normal";
-    delete record.arg;
-    entry.completion = record;
-  }
-
-  function Context(tryLocsList) {
-    // The root entry object (effectively a try statement without a catch
-    // or a finally block) gives us a place to store values thrown from
-    // locations where there is no enclosing try statement.
-    this.tryEntries = [{ tryLoc: "root" }];
-    tryLocsList.forEach(pushTryEntry, this);
-    this.reset(true);
-  }
-
-  exports.keys = function(object) {
-    var keys = [];
-    for (var key in object) {
-      keys.push(key);
-    }
-    keys.reverse();
-
-    // Rather than returning an object with a next method, we keep
-    // things simple and return the next function itself.
-    return function next() {
-      while (keys.length) {
-        var key = keys.pop();
-        if (key in object) {
-          next.value = key;
-          next.done = false;
-          return next;
-        }
-      }
-
-      // To avoid creating an additional object, we just hang the .value
-      // and .done properties off the next function object itself. This
-      // also ensures that the minifier will not anonymize the function.
-      next.done = true;
-      return next;
-    };
-  };
-
-  function values(iterable) {
-    if (iterable) {
-      var iteratorMethod = iterable[iteratorSymbol];
-      if (iteratorMethod) {
-        return iteratorMethod.call(iterable);
-      }
-
-      if (typeof iterable.next === "function") {
-        return iterable;
-      }
-
-      if (!isNaN(iterable.length)) {
-        var i = -1, next = function next() {
-          while (++i < iterable.length) {
-            if (hasOwn.call(iterable, i)) {
-              next.value = iterable[i];
-              next.done = false;
-              return next;
-            }
-          }
-
-          next.value = undefined;
-          next.done = true;
-
-          return next;
-        };
-
-        return next.next = next;
-      }
-    }
-
-    // Return an iterator with no values.
-    return { next: doneResult };
-  }
-  exports.values = values;
-
-  function doneResult() {
-    return { value: undefined, done: true };
-  }
-
-  Context.prototype = {
-    constructor: Context,
-
-    reset: function(skipTempReset) {
-      this.prev = 0;
-      this.next = 0;
-      // Resetting context._sent for legacy support of Babel's
-      // function.sent implementation.
-      this.sent = this._sent = undefined;
-      this.done = false;
-      this.delegate = null;
-
-      this.method = "next";
-      this.arg = undefined;
-
-      this.tryEntries.forEach(resetTryEntry);
-
-      if (!skipTempReset) {
-        for (var name in this) {
-          // Not sure about the optimal order of these conditions:
-          if (name.charAt(0) === "t" &&
-              hasOwn.call(this, name) &&
-              !isNaN(+name.slice(1))) {
-            this[name] = undefined;
-          }
-        }
-      }
-    },
-
-    stop: function() {
-      this.done = true;
-
-      var rootEntry = this.tryEntries[0];
-      var rootRecord = rootEntry.completion;
-      if (rootRecord.type === "throw") {
-        throw rootRecord.arg;
-      }
-
-      return this.rval;
-    },
-
-    dispatchException: function(exception) {
-      if (this.done) {
-        throw exception;
-      }
-
-      var context = this;
-      function handle(loc, caught) {
-        record.type = "throw";
-        record.arg = exception;
-        context.next = loc;
-
-        if (caught) {
-          // If the dispatched exception was caught by a catch block,
-          // then let that catch block handle the exception normally.
-          context.method = "next";
-          context.arg = undefined;
-        }
-
-        return !! caught;
-      }
-
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        var record = entry.completion;
-
-        if (entry.tryLoc === "root") {
-          // Exception thrown outside of any try block that could handle
-          // it, so set the completion value of the entire function to
-          // throw the exception.
-          return handle("end");
-        }
-
-        if (entry.tryLoc <= this.prev) {
-          var hasCatch = hasOwn.call(entry, "catchLoc");
-          var hasFinally = hasOwn.call(entry, "finallyLoc");
-
-          if (hasCatch && hasFinally) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            } else if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else if (hasCatch) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            }
-
-          } else if (hasFinally) {
-            if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else {
-            throw new Error("try statement without catch or finally");
-          }
-        }
-      }
-    },
-
-    abrupt: function(type, arg) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc <= this.prev &&
-            hasOwn.call(entry, "finallyLoc") &&
-            this.prev < entry.finallyLoc) {
-          var finallyEntry = entry;
-          break;
-        }
-      }
-
-      if (finallyEntry &&
-          (type === "break" ||
-           type === "continue") &&
-          finallyEntry.tryLoc <= arg &&
-          arg <= finallyEntry.finallyLoc) {
-        // Ignore the finally entry if control is not jumping to a
-        // location outside the try/catch block.
-        finallyEntry = null;
-      }
-
-      var record = finallyEntry ? finallyEntry.completion : {};
-      record.type = type;
-      record.arg = arg;
-
-      if (finallyEntry) {
-        this.method = "next";
-        this.next = finallyEntry.finallyLoc;
-        return ContinueSentinel;
-      }
-
-      return this.complete(record);
-    },
-
-    complete: function(record, afterLoc) {
-      if (record.type === "throw") {
-        throw record.arg;
-      }
-
-      if (record.type === "break" ||
-          record.type === "continue") {
-        this.next = record.arg;
-      } else if (record.type === "return") {
-        this.rval = this.arg = record.arg;
-        this.method = "return";
-        this.next = "end";
-      } else if (record.type === "normal" && afterLoc) {
-        this.next = afterLoc;
-      }
-
-      return ContinueSentinel;
-    },
-
-    finish: function(finallyLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.finallyLoc === finallyLoc) {
-          this.complete(entry.completion, entry.afterLoc);
-          resetTryEntry(entry);
-          return ContinueSentinel;
-        }
-      }
-    },
-
-    "catch": function(tryLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc === tryLoc) {
-          var record = entry.completion;
-          if (record.type === "throw") {
-            var thrown = record.arg;
-            resetTryEntry(entry);
-          }
-          return thrown;
-        }
-      }
-
-      // The context.catch method must only be called with a location
-      // argument that corresponds to a known catch block.
-      throw new Error("illegal catch attempt");
-    },
-
-    delegateYield: function(iterable, resultName, nextLoc) {
-      this.delegate = {
-        iterator: values(iterable),
-        resultName: resultName,
-        nextLoc: nextLoc
-      };
-
-      if (this.method === "next") {
-        // Deliberately forget the last sent value so that we don't
-        // accidentally pass it on to the delegate.
-        this.arg = undefined;
-      }
-
-      return ContinueSentinel;
-    }
-  };
-
-  // Regardless of whether this script is executing as a CommonJS module
-  // or not, return the runtime object so that we can declare the variable
-  // regeneratorRuntime in the outer scope, which allows this module to be
-  // injected easily by `bin/regenerator --include-runtime script.js`.
-  return exports;
-
-}(
-  // If this script is executing as a CommonJS module, use module.exports
-  // as the regeneratorRuntime namespace. Otherwise create a new empty
-  // object. Either way, the resulting object will be used to initialize
-  // the regeneratorRuntime variable at the top of this file.
-   true ? module.exports : 0
-));
-
-try {
-  regeneratorRuntime = runtime;
-} catch (accidentalStrictMode) {
-  // This module should not be running in strict mode, so the above
-  // assignment should always work unless something is misconfigured. Just
-  // in case runtime.js accidentally runs in strict mode, in modern engines
-  // we can explicitly access globalThis. In older engines we can escape
-  // strict mode using a global Function call. This could conceivably fail
-  // if a Content Security Policy forbids using Function, but in that case
-  // the proper solution is to fix the accidental strict mode problem. If
-  // you've misconfigured your bundler to force strict mode and applied a
-  // CSP to forbid Function, and you're not willing to fix either of those
-  // problems, please detail your unique predicament in a GitHub issue.
-  if (typeof globalThis === "object") {
-    globalThis.regeneratorRuntime = runtime;
-  } else {
-    Function("r", "regeneratorRuntime = r")(runtime);
-  }
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/svelte/index.mjs":
 /*!***************************************!*\
   !*** ./node_modules/svelte/index.mjs ***!
   \***************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SvelteComponent": () => (/* reexport safe */ _internal_index_mjs__WEBPACK_IMPORTED_MODULE_0__.SvelteComponentDev),
@@ -2025,7 +1811,6 @@ __webpack_require__.r(__webpack_exports__);
   \************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "HtmlTag": () => (/* binding */ HtmlTag),
@@ -2101,7 +1886,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "escape": () => (/* binding */ escape),
 /* harmony export */   "escape_attribute_value": () => (/* binding */ escape_attribute_value),
 /* harmony export */   "escape_object": () => (/* binding */ escape_object),
-/* harmony export */   "escaped": () => (/* binding */ escaped),
 /* harmony export */   "exclude_internal_props": () => (/* binding */ exclude_internal_props),
 /* harmony export */   "fix_and_destroy_block": () => (/* binding */ fix_and_destroy_block),
 /* harmony export */   "fix_and_outro_and_destroy_block": () => (/* binding */ fix_and_outro_and_destroy_block),
@@ -2136,6 +1920,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "is_empty": () => (/* binding */ is_empty),
 /* harmony export */   "is_function": () => (/* binding */ is_function),
 /* harmony export */   "is_promise": () => (/* binding */ is_promise),
+/* harmony export */   "is_void": () => (/* binding */ is_void),
 /* harmony export */   "listen": () => (/* binding */ listen),
 /* harmony export */   "listen_dev": () => (/* binding */ listen_dev),
 /* harmony export */   "loop": () => (/* binding */ loop),
@@ -2203,11 +1988,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "validate_each_keys": () => (/* binding */ validate_each_keys),
 /* harmony export */   "validate_slots": () => (/* binding */ validate_slots),
 /* harmony export */   "validate_store": () => (/* binding */ validate_store),
+/* harmony export */   "validate_void_dynamic_element": () => (/* binding */ validate_void_dynamic_element),
 /* harmony export */   "xlink_attr": () => (/* binding */ xlink_attr)
 /* harmony export */ });
 function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
 
-function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
 
 function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
 
@@ -2219,13 +2005,13 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
-function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
+function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get.bind(); } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
 
 function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -2235,7 +2021,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3035,13 +2821,13 @@ function find_comment(nodes, text, start) {
   return nodes.length;
 }
 
-function claim_html_tag(nodes) {
+function claim_html_tag(nodes, is_svg) {
   // find html opening tag
   var start_index = find_comment(nodes, 'HTML_TAG_START', 0);
   var end_index = find_comment(nodes, 'HTML_TAG_END', start_index);
 
   if (start_index === end_index) {
-    return new HtmlTagHydration();
+    return new HtmlTagHydration(undefined, is_svg);
   }
 
   init_claim_info(nodes);
@@ -3065,7 +2851,7 @@ function claim_html_tag(nodes) {
     _iterator.f();
   }
 
-  return new HtmlTagHydration(claimed_nodes);
+  return new HtmlTagHydration(claimed_nodes, is_svg);
 }
 
 function set_data(text, data) {
@@ -3187,9 +2973,14 @@ function toggle_class(element, name, toggle) {
 }
 
 function custom_event(type, detail) {
-  var bubbles = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      _ref$bubbles = _ref.bubbles,
+      bubbles = _ref$bubbles === void 0 ? false : _ref$bubbles,
+      _ref$cancelable = _ref.cancelable,
+      cancelable = _ref$cancelable === void 0 ? false : _ref$cancelable;
+
   var e = document.createEvent('CustomEvent');
-  e.initCustomEvent(type, bubbles, false, detail);
+  e.initCustomEvent(type, bubbles, cancelable, detail);
   return e;
 }
 
@@ -3200,8 +2991,12 @@ function query_selector_all(selector) {
 
 var HtmlTag = /*#__PURE__*/function () {
   function HtmlTag() {
+    var is_svg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
     _classCallCheck(this, HtmlTag);
 
+    this.is_svg = false;
+    this.is_svg = is_svg;
     this.e = this.n = null;
   }
 
@@ -3216,7 +3011,7 @@ var HtmlTag = /*#__PURE__*/function () {
       var anchor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
       if (!this.e) {
-        this.e = element(target.nodeName);
+        if (this.is_svg) this.e = svg_element(target.nodeName);else this.e = element(target.nodeName);
         this.t = target;
         this.c(html);
       }
@@ -3261,9 +3056,11 @@ var HtmlTagHydration = /*#__PURE__*/function (_HtmlTag) {
   function HtmlTagHydration(claimed_nodes) {
     var _this;
 
+    var is_svg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
     _classCallCheck(this, HtmlTagHydration);
 
-    _this = _super.call(this);
+    _this = _super.call(this, is_svg);
     _this.e = _this.n = null;
     _this.l = claimed_nodes;
     return _this;
@@ -3357,9 +3154,9 @@ function create_rule(node, a, b, duration, delay, ease, fn) {
   var name = "__svelte_".concat(hash(rule), "_").concat(uid);
   var doc = get_root_for_style(node);
 
-  var _ref = managed_styles.get(doc) || create_style_information(doc, node),
-      stylesheet = _ref.stylesheet,
-      rules = _ref.rules;
+  var _ref2 = managed_styles.get(doc) || create_style_information(doc, node),
+      stylesheet = _ref2.stylesheet,
+      rules = _ref2.rules;
 
   if (!rules[name]) {
     rules[name] = true;
@@ -3530,21 +3327,31 @@ function onDestroy(fn) {
 function createEventDispatcher() {
   var component = get_current_component();
   return function (type, detail) {
+    var _ref3 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        _ref3$cancelable = _ref3.cancelable,
+        cancelable = _ref3$cancelable === void 0 ? false : _ref3$cancelable;
+
     var callbacks = component.$$.callbacks[type];
 
     if (callbacks) {
       // TODO are there situations where events could be dispatched
       // in a server (non-DOM) environment?
-      var event = custom_event(type, detail);
+      var event = custom_event(type, detail, {
+        cancelable: cancelable
+      });
       callbacks.slice().forEach(function (fn) {
         fn.call(component, event);
       });
+      return !event.defaultPrevented;
     }
+
+    return true;
   };
 }
 
 function setContext(key, context) {
   get_current_component().$$.context.set(key, context);
+  return context;
 }
 
 function getContext(key) {
@@ -3740,6 +3547,8 @@ function transition_out(block, local, detach, callback) {
       }
     });
     block.o(local);
+  } else if (callback) {
+    callback();
   }
 }
 
@@ -3759,16 +3568,16 @@ function create_in_transition(node, fn, params) {
   }
 
   function go() {
-    var _ref2 = config || null_transition,
-        _ref2$delay = _ref2.delay,
-        delay = _ref2$delay === void 0 ? 0 : _ref2$delay,
-        _ref2$duration = _ref2.duration,
-        duration = _ref2$duration === void 0 ? 300 : _ref2$duration,
-        _ref2$easing = _ref2.easing,
-        easing = _ref2$easing === void 0 ? identity : _ref2$easing,
-        _ref2$tick = _ref2.tick,
-        tick = _ref2$tick === void 0 ? noop : _ref2$tick,
-        css = _ref2.css;
+    var _ref4 = config || null_transition,
+        _ref4$delay = _ref4.delay,
+        delay = _ref4$delay === void 0 ? 0 : _ref4$delay,
+        _ref4$duration = _ref4.duration,
+        duration = _ref4$duration === void 0 ? 300 : _ref4$duration,
+        _ref4$easing = _ref4.easing,
+        easing = _ref4$easing === void 0 ? identity : _ref4$easing,
+        _ref4$tick = _ref4.tick,
+        tick = _ref4$tick === void 0 ? noop : _ref4$tick,
+        css = _ref4.css;
 
     if (css) animation_name = create_rule(node, 0, 1, duration, delay, easing, css, uid++);
     tick(0, 1);
@@ -3832,16 +3641,16 @@ function create_out_transition(node, fn, params) {
   group.r += 1;
 
   function go() {
-    var _ref3 = config || null_transition,
-        _ref3$delay = _ref3.delay,
-        delay = _ref3$delay === void 0 ? 0 : _ref3$delay,
-        _ref3$duration = _ref3.duration,
-        duration = _ref3$duration === void 0 ? 300 : _ref3$duration,
-        _ref3$easing = _ref3.easing,
-        easing = _ref3$easing === void 0 ? identity : _ref3$easing,
-        _ref3$tick = _ref3.tick,
-        tick = _ref3$tick === void 0 ? noop : _ref3$tick,
-        css = _ref3.css;
+    var _ref5 = config || null_transition,
+        _ref5$delay = _ref5.delay,
+        delay = _ref5$delay === void 0 ? 0 : _ref5$delay,
+        _ref5$duration = _ref5.duration,
+        duration = _ref5$duration === void 0 ? 300 : _ref5$duration,
+        _ref5$easing = _ref5.easing,
+        easing = _ref5$easing === void 0 ? identity : _ref5$easing,
+        _ref5$tick = _ref5.tick,
+        tick = _ref5$tick === void 0 ? noop : _ref5$tick,
+        css = _ref5.css;
 
     if (css) animation_name = create_rule(node, 1, 0, duration, delay, easing, css);
     var start_time = now() + delay;
@@ -3924,16 +3733,16 @@ function create_bidirectional_transition(node, fn, params, intro) {
   }
 
   function go(b) {
-    var _ref4 = config || null_transition,
-        _ref4$delay = _ref4.delay,
-        delay = _ref4$delay === void 0 ? 0 : _ref4$delay,
-        _ref4$duration = _ref4.duration,
-        duration = _ref4$duration === void 0 ? 300 : _ref4$duration,
-        _ref4$easing = _ref4.easing,
-        easing = _ref4$easing === void 0 ? identity : _ref4$easing,
-        _ref4$tick = _ref4.tick,
-        tick = _ref4$tick === void 0 ? noop : _ref4$tick,
-        css = _ref4.css;
+    var _ref6 = config || null_transition,
+        _ref6$delay = _ref6.delay,
+        delay = _ref6$delay === void 0 ? 0 : _ref6$delay,
+        _ref6$duration = _ref6.duration,
+        duration = _ref6$duration === void 0 ? 300 : _ref6$duration,
+        _ref6$easing = _ref6.easing,
+        easing = _ref6$easing === void 0 ? identity : _ref6$easing,
+        _ref6$tick = _ref6.tick,
+        tick = _ref6$tick === void 0 ? noop : _ref6$tick,
+        css = _ref6.css;
 
     var program = {
       start: now() + delay,
@@ -4278,6 +4087,12 @@ function get_spread_object(spread_props) {
 
 
 var boolean_attributes = new Set(['allowfullscreen', 'allowpaymentrequest', 'async', 'autofocus', 'autoplay', 'checked', 'controls', 'default', 'defer', 'disabled', 'formnovalidate', 'hidden', 'ismap', 'loop', 'multiple', 'muted', 'nomodule', 'novalidate', 'open', 'playsinline', 'readonly', 'required', 'reversed', 'selected']);
+var void_element_names = /^(?:area|base|br|col|command|embed|hr|img|input|keygen|link|meta|param|source|track|wbr)$/;
+
+function is_void(name) {
+  return void_element_names.test(name) || name.toLowerCase() === '!doctype';
+}
+
 var invalid_attribute_name_character = /(?:[\t-\r "'\/=>\xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFDD0-\uFDEF\uFEFF\uFFFE\uFFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F\uDBBF\uDBFF][\uDFFE\uDFFF])/; // https://html.spec.whatwg.org/multipage/syntax.html#attributes-2
 // https://infra.spec.whatwg.org/#noncharacter
 
@@ -4355,22 +4170,35 @@ function merge_ssr_styles(style_attribute, style_directive) {
   return style_object;
 }
 
-var escaped = {
-  '"': '&quot;',
-  "'": '&#39;',
-  '&': '&amp;',
-  '<': '&lt;',
-  '>': '&gt;'
-};
+var ATTR_REGEX = /[&"]/g;
+var CONTENT_REGEX = /[&<]/g;
+/**
+ * Note: this method is performance sensitive and has been optimized
+ * https://github.com/sveltejs/svelte/pull/5701
+ */
 
-function escape(html) {
-  return String(html).replace(/["'&<>]/g, function (match) {
-    return escaped[match];
-  });
+function escape(value) {
+  var is_attr = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var str = String(value);
+  var pattern = is_attr ? ATTR_REGEX : CONTENT_REGEX;
+  pattern.lastIndex = 0;
+  var escaped = '';
+  var last = 0;
+
+  while (pattern.test(str)) {
+    var i = pattern.lastIndex - 1;
+    var ch = str[i];
+    escaped += str.substring(last, i) + (ch === '&' ? '&amp;' : ch === '"' ? '&quot;' : '&lt;');
+    last = i + 1;
+  }
+
+  return escaped + str.substring(last);
 }
 
 function escape_attribute_value(value) {
-  return typeof value === 'string' ? escape(value) : value;
+  // keep booleans, null, and undefined for the sake of `spread`
+  var should_escape = typeof value === 'string' || value && _typeof(value) === 'object';
+  return should_escape ? escape(value, true) : value;
 }
 
 function escape_object(obj) {
@@ -4442,11 +4270,11 @@ function create_ssr_component(fn) {
     render: function render() {
       var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-      var _ref5 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-          _ref5$$$slots = _ref5.$$slots,
-          $$slots = _ref5$$$slots === void 0 ? {} : _ref5$$$slots,
-          _ref5$context = _ref5.context,
-          context = _ref5$context === void 0 ? new Map() : _ref5$context;
+      var _ref7 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+          _ref7$$$slots = _ref7.$$slots,
+          $$slots = _ref7$$$slots === void 0 ? {} : _ref7$$$slots,
+          _ref7$context = _ref7.context,
+          context = _ref7$context === void 0 ? new Map() : _ref7$context;
 
       on_destroy = [];
       var result = {
@@ -4474,7 +4302,7 @@ function create_ssr_component(fn) {
 
 function add_attribute(name, value, _boolean) {
   if (value == null || _boolean && !value) return '';
-  var assignment = _boolean && value === true ? '' : "=\"".concat(escape_attribute_value(value.toString()), "\"");
+  var assignment = _boolean && value === true ? '' : "=\"".concat(escape(value, true), "\"");
   return " ".concat(name).concat(assignment);
 }
 
@@ -4743,8 +4571,10 @@ var SvelteComponent = /*#__PURE__*/function () {
 
 function dispatch_dev(type, detail) {
   document.dispatchEvent(custom_event(type, Object.assign({
-    version: '3.47.0'
-  }, detail), true));
+    version: '3.49.0'
+  }, detail), {
+    bubbles: true
+  }));
 }
 
 function append_dev(target, node) {
@@ -4891,8 +4721,16 @@ function validate_slots(name, slot, keys) {
 }
 
 function validate_dynamic_element(tag) {
-  if (tag && typeof tag !== 'string') {
+  var is_string = typeof tag === 'string';
+
+  if (tag && !is_string) {
     throw new Error('<svelte:element> expects "this" attribute to be a string.');
+  }
+}
+
+function validate_void_dynamic_element(tag) {
+  if (tag && is_void(tag)) {
+    throw new Error("<svelte:element this=\"".concat(tag, "\"> is self-closing and cannot have content."));
   }
 }
 /**
@@ -5021,18 +4859,6 @@ function loop_guard(timeout) {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -5063,9 +4889,8 @@ function loop_guard(timeout) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
