@@ -5,10 +5,21 @@ const Router = require('koa-router');
 const send = require('koa-send');
 const range = require('koa-range');
 
+
+
 //============^koa stuffs^===================//
 
 
 require('dotenv').config();
+
+//adds option for redis
+const redis = process.env.USE_REDIS ? require('redis').createClient() : undefined;
+
+if (redis) {
+	redis.on('error', (err) => console.log('Redis Client Error', err));
+	redis.connect();
+}
+
 const argv = require('yargs-parser');
 
 
@@ -34,7 +45,7 @@ router.get('/fscreen.js', async (ctx) =>  await send(ctx,'/node_modules/fscreen/
 
 
 const mediaPlayer = require('./mediaplayer');
-const player = new mediaPlayer(io,repeat,playlistUrl);
+const player = new mediaPlayer(io,repeat,playlistUrl,redis);
 //console.log(player);
 
 

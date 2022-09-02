@@ -25,7 +25,7 @@ const colors = [
 let clients = [];
 let messages =[];
 //self invoking function so you put the variables at the bottom.
-module.exports = function mediaPlayer(io,repeat,playlistUrl) {
+module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 	const videoTypes = new Set(['.ogv', '.mp4']);
 	const audioTypes = new Set(['.mp3', '.flac', '.oga', '.wav']);
 	const ambiguousTypes = new Set(['.webm', '.ogg']); // These can be either audio or video
@@ -289,8 +289,14 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 
 	
 	//connection stuffs
-	this.io.on('connection', (client) => {
-
+	this.io.on('connection', async (client) => {
+		//because i'm too lazy to make an async function.
+		if (process.env.USE_REDIS) {
+			console.log('redis!');
+			messages = JSON.parse(await redis.get('messages'));
+		}
+		
+		
 		this.clientCount++;
 		let index = this.mediaIndex;
 		let url = `${playlistUrl}${this.playlist[index]}`;
@@ -329,7 +335,8 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 			});
 		}
 		
-		client.on('chat message', (msg) => {
+		client.on('chat message', async (msg) => {
+
 			let client = clients.find(client => client.username == msg.username);
 			let color = colors.sort(function pickRandomColor(a,b) {return 0.5 - Math.random();})[0];
 			if (!client) {
@@ -342,6 +349,9 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 				color:client.color,
 				comment:msg.comment
 			}];
+			if (process.env.USE_REDIS) {
+				await redis.set('messages',JSON.stringify(messages));
+			}
 			
 			console.log('message: ' + msg);
 			io.emit('chat message',{
@@ -369,9 +379,12 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 		checkRepeat(repeat,playlistCount);
 		io.sockets.emit('timestamp', data);
 	}, 3000);
-	setInterval(function(){
+	setInterval(async function(){
 		console.log('clearing messages');
 		messages = [];
+		if(process.env.USE_REDIS){
+			await redis.set('messages',JSON.stringify(messages));
+		}
 	},86400000);
 	//86400000 milliseconds in a day
 };
