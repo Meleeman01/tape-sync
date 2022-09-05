@@ -294,6 +294,9 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 		if (process.env.USE_REDIS) {
 			console.log('redis!');
 			messages = JSON.parse(await redis.get('messages'));
+			if (!messages) {
+				messages = [];
+			}
 		}
 		
 		
@@ -343,12 +346,12 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 				clients = [...clients,{username:msg.username,color:color}];
 				client = clients.find(client => client.username == msg.username);
 			}
-
 			messages = [...messages,{
 				username:msg.username,
 				color:client.color,
 				comment:msg.comment
 			}];
+			
 			if (process.env.USE_REDIS) {
 				await redis.set('messages',JSON.stringify(messages));
 			}

@@ -31,6 +31,13 @@
 		console.log(username);
 		localStorage.setItem('username',username);
 	}
+	function close() {
+		dispatch('chat-close');
+	}
+	function scrollTop(){
+		console.log('scroll to top.');
+		chatWindow.scrollTo(0,-1);
+	}
 
 	afterUpdate(() => {
 		console.log('chat updated');
@@ -41,7 +48,12 @@
 
 <div bind:this={chatWindow} class="chat-window" on:keypress={handleKeyDown}>
 	<div style="width:100%;">
-		<h2>chat</h2>
+		<div class="input-row">
+			<h2>chat</h2> 
+			<svg on:click={close} id="close">
+				<use xlink:href="images/regular.svg#window-close"></use>
+			</svg>
+		</div>
 	 <hr />
 	 <div class="chat-messages">
 	 	
@@ -55,10 +67,20 @@
 	</div>
 	 
 	 <div  class="input">
-	 	 <input bind:value={username} type="text" name="username">
-	 	 <button on:click={handleUsername}>save</button>
-		 <textarea bind:value={comment}></textarea>
-		 <button on:click={submitMessage}>submit</button>
+	 	<div style="display:flex; justify-content: flex-end;">
+	 		<button style="display: flex; align-items: center;" on:click={scrollTop}>back to top <svg  id="back-to-top">
+				<use xlink:href="images/solid.svg#arrow-up"></use>
+			</svg></button>
+	 	</div>
+	 	<div class="input-row">
+	 		<input style="margin-right:5px;" bind:value={username} type="text" name="username" placeholder="username">
+	 	 	<button on:click={handleUsername}>save</button>
+	 	</div>
+	 	 <div class="input-row" style="align-items: flex-end;">
+	 	 	<textarea style="margin-right:5px;" bind:value={comment}></textarea>
+		 	<button on:click={submitMessage}>submit</button>
+	 	 </div>
+		 
 	 </div>
 </div>
 
@@ -66,6 +88,17 @@
 	@font-face {
 		font-family: 'Montserrat';
 		src: url(fonts/static/Montserrat-SemiBold.ttf);
+	}
+	#close {
+		fill:#ff595e;
+		width: 2rem;
+		height: 2rem;
+		margin-right: .2rem;
+	}
+	#back-to-top {
+		fill: black;
+		width: 1rem;
+		height: 1rem;
 	}
 	h2, p{
 		color: whitesmoke;
@@ -76,8 +109,21 @@
 	b{
 		font-weight: 700;
 	}
+	input,button,textarea {
+		font-family: 'Montserrat';
+	}
+	button {
+		border-radius: 5px;
+		padding: .25rem;
+	}
+	
 	.input {
 		margin-bottom: 1rem;
+	}
+	.input-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 	.chat-messages {
 		display: inline;
@@ -98,5 +144,19 @@
 		position: fixed;
 		right: 0;
 		top: 0;
+	}
+	@media screen and ( max-width: 1340px) {
+		.chat-window {
+			width: 30%;
+		}
+	}
+	@media screen and (max-width:894px) {
+		.chat-window {
+			width: 100%;
+			height:30%;
+			top: unset;
+			bottom: 0;
+		}
+
 	}
 </style>

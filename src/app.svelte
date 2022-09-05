@@ -7,7 +7,7 @@
 
 
 	console.log('app is uffp');
-	let chatActive = true;
+	let chatActive = false;
 	$:chatMessages = [];
 	let timestamp = undefined;
 	let time = 0;
@@ -139,18 +139,31 @@
 		}
 	}
 
-	function a(e){ 
+	function toggleChat(e){ 
 		chatActive = !chatActive;
-		if (!chatActive) {
+		console.log(document.body.clientWidth);
+		let clientWidth = document.body.clientWidth;
+		if (!chatActive ) {
 			controls.style.width = '100%';
 			infoPanel.style.width = '100%';
 			media.parentElement.style.width = '100%';
 		}
-		else {
+		else if(clientWidth > 1340) {
 			controls.style.width = '80%';
 			infoPanel.style.width = '80%';
 			media.parentElement.style.width = '80%';
 			console.log(media.parentElement);
+		}
+		else if(clientWidth < 1340 && clientWidth > 894) {
+			controls.style.width = '70%';
+			infoPanel.style.width = '70%';
+			media.parentElement.style.width = '70%';
+			console.log(media.parentElement);
+		}
+		else if (clientWidth < 894) {
+			controls.style.width = '100%';
+			infoPanel.style.width = '100%';
+			media.parentElement.style.width = '100%';
 		}
 		
 	}
@@ -254,13 +267,13 @@
 	</div>
 	{/if}
 	<div bind:this={infoPanel} class="info">
-		<svg id="people" on:click={a}>
+		<svg id="people" on:click={toggleChat}>
 			<use xlink:href="images/solid.svg#users"></use>
 		</svg>
 		<b style="color:white; font-family: sans;">{peopleCount}</b>
 	</div>
 	{#if chatActive}
-		<Chat chats={chatMessages} on:chat={handleChatMessage}/>
+		<Chat chats={chatMessages} on:chat={handleChatMessage} on:chat-close={toggleChat}/>
 	{/if}
 </main>
 
@@ -307,6 +320,10 @@
 		height: 2rem;
 		margin-right: .2rem;
 	}
+	#people:hover {
+		fill: #ccc;
+		cursor: pointer;
+	}
 	.info {
 		display: flex;
 	align-items: center;
@@ -314,7 +331,6 @@
 	position: fixed;
 	z-index: 2;
 	bottom: 0;
-	border-radius: 7%;
 	height: 50px;
 	padding: 0.5rem;
 	background-color: rgba(0,0,0,0.2);
