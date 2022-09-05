@@ -46,8 +46,6 @@
 	 <div class="chat-messages">
 	 	
 	 	{#if chats}
-	 	{chats.length}
-	 	<p>true</p>
 	 	{#each chats as chat}
 	 		<p><b style="color:{chat.color}">{chat.username}: </b>{chat.comment}</p>
 	 	{/each}
@@ -65,10 +63,18 @@
 </div>
 
 <style>
+	@font-face {
+		font-family: 'Montserrat';
+		src: url(fonts/static/Montserrat-SemiBold.ttf);
+	}
 	h2, p{
 		color: whitesmoke;
 		margin-left:.7rem;
 		margin-right: .7rem;
+		font-family: 'Montserrat';
+	}
+	b{
+		font-weight: 700;
 	}
 	.input {
 		margin-bottom: 1rem;

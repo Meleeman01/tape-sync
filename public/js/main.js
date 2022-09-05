@@ -1408,7 +1408,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function add_css(target) {
-  (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1eltfmu", "h2.svelte-1eltfmu,p.svelte-1eltfmu{color:whitesmoke;margin-left:.7rem;margin-right:.7rem}.input.svelte-1eltfmu{margin-bottom:1rem}.chat-messages.svelte-1eltfmu{display:inline;word-break:break-all;height:700px;overflow-y:scroll}.chat-window.svelte-1eltfmu{display:flex;flex-direction:column;justify-content:space-between;align-items:center;background-color:rgba(25, 25, 25, 0.5);overflow-y:scroll;width:20%;height:100%;z-index:4;position:fixed;right:0;top:0}");
+  (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-z5g25f", "@font-face{font-family:'Montserrat';src:url(fonts/static/Montserrat-SemiBold.ttf)}h2.svelte-z5g25f,p.svelte-z5g25f{color:whitesmoke;margin-left:.7rem;margin-right:.7rem;font-family:'Montserrat'}b.svelte-z5g25f{font-weight:700}.input.svelte-z5g25f{margin-bottom:1rem}.chat-messages.svelte-z5g25f{display:inline;word-break:break-all;height:700px;overflow-y:scroll}.chat-window.svelte-z5g25f{display:flex;flex-direction:column;justify-content:space-between;align-items:center;background-color:rgba(25, 25, 25, 0.5);overflow-y:scroll;width:20%;height:100%;z-index:4;position:fixed;right:0;top:0}");
 }
 
 function get_each_context(ctx, list, i) {
@@ -1419,13 +1419,6 @@ function get_each_context(ctx, list, i) {
 
 
 function create_if_block(ctx) {
-  var t0_value =
-  /*chats*/
-  ctx[0].length + "";
-  var t0;
-  var t1;
-  var p;
-  var t3;
   var each_1_anchor;
   var each_value =
   /*chats*/
@@ -1438,25 +1431,13 @@ function create_if_block(ctx) {
 
   return {
     c: function c() {
-      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t0_value);
-      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-      p = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("p");
-      p.textContent = "true";
-      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-
       for (var _i = 0; _i < each_blocks.length; _i += 1) {
         each_blocks[_i].c();
       }
 
       each_1_anchor = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.empty)();
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(p, "class", "svelte-1eltfmu");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, t0, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, t1, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, p, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, t3, anchor);
-
       for (var _i2 = 0; _i2 < each_blocks.length; _i2 += 1) {
         each_blocks[_i2].m(target, anchor);
       }
@@ -1464,12 +1445,6 @@ function create_if_block(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, each_1_anchor, anchor);
     },
     p: function p(ctx, dirty) {
-      if (dirty &
-      /*chats*/
-      1 && t0_value !== (t0_value =
-      /*chats*/
-      ctx[0].length + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t0, t0_value);
-
       if (dirty &
       /*chats*/
       1) {
@@ -1501,15 +1476,11 @@ function create_if_block(ctx) {
       }
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(t0);
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(t1);
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(p);
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(t3);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_each)(each_blocks, detaching);
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(each_1_anchor);
     }
   };
-} // (51:3) {#each chats as chat}
+} // (49:3) {#each chats as chat}
 
 
 function create_each_block(ctx) {
@@ -1534,7 +1505,8 @@ function create_each_block(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_style)(b, "color",
       /*chat*/
       ctx[11].color);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(p, "class", "svelte-1eltfmu");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(b, "class", "svelte-z5g25f");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(p, "class", "svelte-z5g25f");
     },
     m: function m(target, anchor) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, p, anchor);
@@ -1614,13 +1586,13 @@ function create_fragment(ctx) {
       t7 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
       button1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("button");
       button1.textContent = "submit";
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(h2, "class", "svelte-1eltfmu");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "chat-messages svelte-1eltfmu");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(h2, "class", "svelte-z5g25f");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "chat-messages svelte-z5g25f");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_style)(div1, "width", "100%");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(input, "type", "text");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(input, "name", "username");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "input svelte-1eltfmu");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "chat-window svelte-1eltfmu");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "input svelte-z5g25f");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "chat-window svelte-z5g25f");
     },
     m: function m(target, anchor) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div3, anchor);
