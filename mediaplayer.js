@@ -293,7 +293,13 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 		//because i'm too lazy to make an async function.
 		if (process.env.USE_REDIS) {
 			console.log('redis!');
-			messages = JSON.parse(await redis.get('messages'));
+			try{
+				messages = JSON.parse(await redis.get('messages'));
+			}
+			catch(err) {
+				console.log(err);
+			}
+			
 			if (!messages) {
 				messages = [];
 			}
@@ -345,6 +351,10 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 			if (!client) {
 				clients = [...clients,{username:msg.username,color:color}];
 				client = clients.find(client => client.username == msg.username);
+			}
+
+			if (messages.length > parseInt(process.env.CHAT_LIMIT)) {
+				messages.shift();
 			}
 			messages = [...messages,{
 				username:msg.username,

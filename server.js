@@ -13,10 +13,18 @@ const range = require('koa-range');
 require('dotenv').config();
 
 //adds option for redis
-const redis = process.env.USE_REDIS ? require('redis').createClient() : undefined;
+const redis = process.env.USE_REDIS ? require('redis').createClient(
+	{url:`redis://:${process.env.REDIS_AUTH}@localhost:6379`,}
+) : undefined;
 
 if (redis) {
 	redis.on('error', (err) => console.log('Redis Client Error', err));
+	if (process.env.REDIS_AUTH) {
+		console.log('authentication supplied.');
+	}
+	else {
+		console.warn('no auth supplied.');
+	}
 	redis.connect();
 }
 
