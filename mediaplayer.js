@@ -33,6 +33,7 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 	this.mediaIndex = 0;
 	this.mediaTypes = [];
 	this.startTime = null;
+	this.elapsedTime = null;
 	this.filesProcessed = 0;
 	this.playlistCount = 0;
 	this.clientCount = 0;
@@ -91,7 +92,6 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 
 	console.log("Loaded playlist:", this.playlist);
 
-	this.breakpoints = new Array(this.playlist.length);
 	this.mediaLengths = new Array(this.playlist.length);
 
 	function isValidMediaFile (file) {
@@ -149,67 +149,68 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 	};
 
 	// Compute video end times
-	this.setBreakpoints = () => {
-		let totalTime = 0;
-		this.breakpoints = this.mediaLengths.map((currentVal) => {
-			return totalTime += currentVal;
-		});
+	// this.setBreakpoints = () => {
+	// 	let totalTime = 0;
+	// 	this.breakpoints = this.mediaLengths.map((currentVal) => {
+	// 		return totalTime += currentVal;
+	// 	});
+	// };
+
+	// Compute video end times
+	this.previous = function() {
+		console.log("previous");
+		this.mediaIndex--;
+		if(this.mediaIndex < 0){
+			this.mediaIndex = this.playlist.length - 1;
+		}
+		
+		this.emitNewMediaEvent()   ; 
+	};
+	this.next = () => {
+		console.log("next");
+		this.mediaIndex++;
+		if(this.mediaIndex >= this.playlist.length){
+			this.mediaIndex = 0;
+			this.playlistCount++;
+		}
+		this.emitNewMediaEvent();
+	};
+	this.emitNewMediaEvent = () => {
+		this.startTime = new Date();
+		let url = `${playlistUrl}${this.playlist[this.mediaIndex]}`;
+		//if were in m3u mode were passing an object so we have to fetch the url from the object
+		if (argv.m3u) {
+			//check the url for a remote http string
+			if (this.playlist[this.mediaIndex]['url'].startsWith('http')) {
+				url = `${this.playlist[this.mediaIndex]['url']}`;
+			}
+			else {
+				//else its a local file 
+				url = `${playlistUrl}${this.playlist[this.mediaIndex]['url']}`;
+			}
+			
+		}
+		const mediaType = this.mediaTypes[this.mediaIndex];
+		const duration = this.mediaLengths[this.mediaIndex];
+		const data = {
+			url: url,
+			duration: duration,
+			mediaType: mediaType
+		};
+
+		this.io.sockets.emit('newMedia', data);
 	};
 
 	this.startTimers = () => {
 		this.startTime = new Date(); // Start main timer
-
-		for (let index = 0; index < this.breakpoints.length; index++) {
-			let breakpointMillisecs = this.breakpoints[index] * 1000;
-
-			// Set timers to update mediaIndex and notify users of next URL in playlist
-			if (index === (this.breakpoints.length - 1)) {
-				setTimeout(() => {
-					// Emit socket event here
-					this.mediaIndex = 0;
-					emitNewMediaEvent();
-					this.restartTimers();
-				}, breakpointMillisecs);
-			} else {
-				setTimeout(() => {
-					// Emit socket event here
-					this.mediaIndex++;
-					emitNewMediaEvent();
-				}, breakpointMillisecs);
-			}
-		}
-
-		const emitNewMediaEvent = () => {
-			
-			let url = `${playlistUrl}${this.playlist[this.mediaIndex]}`;
-			//if were in m3u mode were passing an object so we have to fetch the url from the object
-			if (argv.m3u) {
-				//check the url for a remote http string
-				if (this.playlist[this.mediaIndex]['url'].startsWith('http')) {
-					url = `${this.playlist[this.mediaIndex]['url']}`;
-				}
-				else {
-					//else its a local file 
-					url = `${playlistUrl}${this.playlist[this.mediaIndex]['url']}`;
-				}
-				
-			}
-			const mediaType = this.mediaTypes[this.mediaIndex];
-			const duration = this.mediaLengths[this.mediaIndex];
-			const data = {
-				url: url,
-				duration: duration,
-				mediaType: mediaType
-			};
-
-			//on new media event, count each time the index is at zero.
-			if (this.mediaIndex == 0) {
-				this.playlistCount++;
-			}
-			this.io.sockets.emit('newMedia', data);
-		};
 	};
-
+	this.tick = () => {
+		this.elapsedTime = (new Date() - this.startTime)/1000;
+		if (this.elapsedTime >=  this.mediaLengths[this.mediaIndex]) {
+			this.startTime = new Date();
+			this.next();
+		}
+	};
 	this.restartTimers = () => {
 		this.startTimers();
 	};
@@ -223,7 +224,6 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 			this.mediaLengths[index] = parseFloat(duration);
 			this.filesProcessed++;
 			if (this.filesProcessed === this.mediaLengths.length) {
-				this.setBreakpoints();
 				this.startTimers();
 			}
 		});
@@ -233,7 +233,6 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 		this.mediaLengths[index] = file.duration;
 		this.filesProcessed++;
 		if (this.filesProcessed === this.mediaLengths.length) {
-			this.setBreakpoints();
 			this.startTimers();
 		}
 	};
@@ -256,33 +255,24 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 	};
 
 	this.getTimestamp = () => {
-		let timePassed = (new Date() - this.startTime)/1000;
-		for (let index = 0; index < this.breakpoints.length; index++) {
-			if (timePassed <= this.breakpoints[index]) {
-				let videoStartTime = this.breakpoints[index - 1] || 0;
-				let timestamp = timePassed - videoStartTime;
-				
-				//if were in m3u mode were passing an object so we have to fetch the url from the object
-				if (argv.m3u) {
-					//check if the url is remote
-					if (this.playlist[index]['url'].startsWith('http')) {
-						console.log(`watching file ${this.playlist[index]['url']}; ${timestamp}s`);
-					}
-					//else include localhost for the person watching the backend of this app.
-					
-					else {
-						//this assumes all files will be in the public folder.
-						console.log(`watching file ${playlistUrl}${this.playlist[index]['url']}; ${timestamp}s`);
-					}
-				}
-				else {
-					console.log(`watching file ${playlistUrl}${this.playlist[index]}; ${timestamp}s`);
-				}
-				
+		this.elapsedTime = (new Date() - this.startTime)/1000;
 
-				return timestamp;
+		let timestamp = this.elapsedTime;
+		//if were in m3u mode were passing an object so we have to fetch the url from the object
+		if (argv.m3u) {
+			//check if the url is remote
+			if (this.playlist[this.mediaIndex]['url'].startsWith('http')) {
+				console.log(`watching file ${this.playlist[this.mediaIndex]['url']}; ${timestamp}s`);
 			}
+			//else include localhost for the person watching the backend of this app.
+			else console.log(`watching file ${playlistUrl}${this.playlist[this.mediaIndex]['url']}; ${timestamp}s`);
 		}
+		else {
+			console.log(`watching file ${playlistUrl}${this.playlist[this.mediaIndex]}; ${timestamp}s`);
+		}
+
+		return timestamp;
+		
 	};
 
 	this.init();
@@ -392,6 +382,7 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 		checkRepeat(repeat,playlistCount);
 		io.sockets.emit('timestamp', data);
 	}, 3000);
+	setInterval(() =>{ this.tick();},500);
 	setInterval(async function(){
 		console.log('clearing messages');
 		messages = [];

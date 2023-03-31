@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+const backendControl = require('./backendControl');
 require('dotenv').config();
 
 //adds option for redis
@@ -47,3 +47,4 @@ const io = require('socket.io')(server);
 const mediaPlayer = require('./mediaplayer');
 const player = new mediaPlayer(io,repeat,playlistUrl,redis);
 
+//backendControl(io,MediaPlayer);
