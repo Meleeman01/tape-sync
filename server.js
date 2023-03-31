@@ -1,14 +1,5 @@
-
-const Koa = require('koa');
-const serve = require('koa-static');
-const Router = require('koa-router');
-const send = require('koa-send');
-const range = require('koa-range');
-
-
-
-//============^koa stuffs^===================//
-
+const express = require('express');
+const app = express();
 
 require('dotenv').config();
 
@@ -28,34 +19,31 @@ if (redis) {
 	redis.connect();
 }
 
-const argv = require('yargs-parser');
 
 
-const app = new Koa();
-const router = new Router();
-
-app
-	.use(range)
-	.use(router.routes())
-	.use(router.allowedMethods())
-	.use(serve('./public'));
-//load svg sprites from font awesome
-const server = require('http').createServer(app.callback());
-const io = require('socket.io')(server);
-const repeat = process.env.REPEAT;
-const playlistUrl = process.env.URL || 'http://localhost:3000';
-
-router.get('/', async (ctx) => {
-	await send(ctx,'/public/index.html');
+// Basic Middleware
+app.use(express.static(__dirname + '/public'));
+// svg Sprites from Font Awesome
+app.use(express.static(__dirname + '/node_modules/@fortawesome/fontawesome-free/sprites'));
+// Basic Routes
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + '/public/views/index.html');
 });
 
-router.get('/fscreen.js', async (ctx) =>  await send(ctx,'/node_modules/fscreen/dist/fscreen.esm.js'));
+//load svg sprites from font awesome
 
+
+const repeat = process.env.REPEAT;
+const playlistUrl = process.env.URL || 'http://localhost:3001';
+
+app.get('/fscreen.js', (req, res) => res.sendFile(__dirname + '/node_modules/fscreen/dist/fscreen.esm.js'));
+
+// Start server
+const server = app.listen(process.env.PORT, () => {
+	console.log(`Server listening on port: ${process.env.PORT}`);
+});
+const io = require('socket.io')(server);
 
 const mediaPlayer = require('./mediaplayer');
 const player = new mediaPlayer(io,repeat,playlistUrl,redis);
-//console.log(player);
 
-
-server.listen(process.env.PORT);
-console.log(`listening on port ${process.env.PORT}`);
