@@ -33,8 +33,7 @@ app.get('/', (req, res) => {
 //load svg sprites from font awesome
 
 
-const repeat = process.env.REPEAT;
-const playlistUrl = process.env.URL || 'http://localhost:3001';
+
 
 app.get('/fscreen.js', (req, res) => res.sendFile(__dirname + '/node_modules/fscreen/dist/fscreen.esm.js'));
 
@@ -44,7 +43,6 @@ const server = app.listen(process.env.PORT, () => {
 });
 const io = require('socket.io')(server);
 
-const mediaPlayer = require('./mediaplayer');
-const player = new mediaPlayer(io,repeat,playlistUrl,redis);
 
-//backendControl(io,MediaPlayer);
+
+backendControl(io,redis);

@@ -38,10 +38,13 @@
 		console.log('scroll to top.');
 		chatWindow.scrollTo(0,-1);
 	}
+	onMount(()=>{
+		console.log('chat mounted.');
+		chatWindow.scrollTo(0,document.body.scrollHeight + 100);
+	});
 
 	afterUpdate(() => {
 		console.log('chat updated');
-		//chatWindow.scrollTo(0,document.body.scrollHeight + 100);
 	});
 
 </script>

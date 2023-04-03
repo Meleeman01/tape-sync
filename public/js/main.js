@@ -1077,7 +1077,7 @@ function get_each_context(ctx, list, i) {
   return child_ctx;
 }
 
-// (60:3) {#if chats}
+// (63:3) {#if chats}
 function create_if_block(ctx) {
   var each_1_anchor;
   var each_value = /*chats*/ctx[0];
@@ -1127,7 +1127,7 @@ function create_if_block(ctx) {
   };
 }
 
-// (61:3) {#each chats as chat}
+// (64:3) {#each chats as chat}
 function create_each_block(ctx) {
   var p;
   var b;
@@ -1363,10 +1363,13 @@ function instance($$self, $$props, $$invalidate) {
     console.log('scroll to top.');
     chatWindow.scrollTo(0, -1);
   }
+  (0,svelte__WEBPACK_IMPORTED_MODULE_1__.onMount)(function () {
+    console.log('chat mounted.');
+    chatWindow.scrollTo(0, document.body.scrollHeight + 100);
+  });
   (0,svelte__WEBPACK_IMPORTED_MODULE_1__.afterUpdate)(function () {
     console.log('chat updated');
-  }); //chatWindow.scrollTo(0,document.body.scrollHeight + 100);
-
+  });
   function input_input_handler() {
     username = this.value;
     $$invalidate(1, username);

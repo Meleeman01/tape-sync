@@ -5,27 +5,8 @@ const m3uParser = require('m3u8-parser');
 
 
 //*=============Requires ffmpeg to run===================================================*\\
-// Stop server depending on value given from REPEAT constant
-function checkRepeat(repeat, count) {
-	if (repeat == count) {
-		console.log('we have played through the list '+count+' times');
-		process.exit('bye bye!');
-	}
-	else if (repeat==='false'&& count == 1) {
-		console.log('we have played through the list');
-		process.exit('bye bye!');
-	}
-//if there's no repeat count or repeat is anything other than false, repeat ad infinitum
-}
 
-const colors = [
-	'#ff0000','#ff8700','#ffd300','#deff0a','#a1ff0a',
-	'#0aff99','#0aefff','#147df5','#580aff','#be0aff'
-];
-let clients = [];
-let messages =[];
-//self invoking function so you put the variables at the bottom.
-module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
+module.exports = function mediaPlayer(io,repeat,playlistUrl) {
 	const videoTypes = new Set(['.ogv', '.mp4']);
 	const audioTypes = new Set(['.mp3', '.flac', '.oga', '.wav']);
 	const ambiguousTypes = new Set(['.webm', '.ogg']); // These can be either audio or video
@@ -149,12 +130,6 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 	};
 
 	// Compute video end times
-	// this.setBreakpoints = () => {
-	// 	let totalTime = 0;
-	// 	this.breakpoints = this.mediaLengths.map((currentVal) => {
-	// 		return totalTime += currentVal;
-	// 	});
-	// };
 
 	// Compute video end times
 	this.previous = function() {
@@ -274,122 +249,9 @@ module.exports = function mediaPlayer(io,repeat,playlistUrl,redis) {
 		return timestamp;
 		
 	};
-
+	setInterval(()=>{
+		this.tick();
+	},500);
 	this.init();
-
-	
-	//connection stuffs
-	this.io.on('connection', async (client) => {
-		//because i'm too lazy to make an async function.
-		if (process.env.USE_REDIS) {
-			console.log('redis!');
-			try{
-				messages = JSON.parse(await redis.get('messages'));
-			}
-			catch(err) {
-				console.log(err);
-			}
-			
-			if (!messages) {
-				messages = [];
-			}
-		}
-		
-		
-		this.clientCount++;
-		let index = this.mediaIndex;
-		let url = `${playlistUrl}${this.playlist[index]}`;
-		if (argv.m3u) {
-		//if the url is remote, don't append the project root url
-			if (url.startsWith('http')) {
-				url = `${this.playlist[index]['url']}`;
-			}
-			else {
-				url = `${playlistUrl} ${this.playlist[index]['url'].substring(6)}`;
-				console.log(url);
-			}
-		}
-		else url = `${playlistUrl}${this.playlist[index]}`;
-		console.log('client connected!');
-		console.log(messages);
-		client.on('disconnect', () => {
-			console.log('client left');
-			this.clientCount--; 
-		});
-
-		const timestamp = this.getTimestamp;
-		const mediaType = this.mediaTypes[index];
-		const duration = this.mediaLengths[index];
-
-		client.emit('updateClient', {
-			mediaType: mediaType,
-			timestamp: timestamp,
-			duration: duration,
-			url: url
-		});
-		if (messages.length) {
-			console.log('updating chat.');
-			client.emit('updateChat',{
-				messages:messages
-			});
-		}
-		
-		client.on('chat message', async (msg) => {
-
-			let client = clients.find(client => client.username == msg.username);
-			let color = colors.sort(function pickRandomColor(a,b) {return 0.5 - Math.random();})[0];
-			if (!client) {
-				clients = [...clients,{username:msg.username,color:color}];
-				client = clients.find(client => client.username == msg.username);
-			}
-
-			if (messages.length > parseInt(process.env.CHAT_LIMIT)) {
-				messages.shift();
-			}
-			messages = [...messages,{
-				username:msg.username,
-				color:client.color,
-				comment:msg.comment
-			}];
-			
-			if (process.env.USE_REDIS) {
-				await redis.set('messages',JSON.stringify(messages));
-			}
-			
-			console.log('message: ' + msg);
-			io.emit('chat message',{
-				username:client.username,
-				color:client.color,
-				comment:msg.comment
-			});
-		});
-	});
-	setInterval(() => {
-		console.log('timestamp emit');
-		let index = this.mediaIndex;
-		let total = this.playlist.length;
-		let timestamp = this.getTimestamp();
-		let mediaType = this.mediaTypes[index];
-		let playlistCount = this.playlistCount;
-		let count = this.clientCount;
-		let data = {
-			humanReadableIndex: index + 1,
-			mediaType: mediaType,
-			timestamp: timestamp,
-			totalFiles: total,
-			clientCount: count
-		};
-		checkRepeat(repeat,playlistCount);
-		io.sockets.emit('timestamp', data);
-	}, 3000);
-	setInterval(() =>{ this.tick();},500);
-	setInterval(async function(){
-		console.log('clearing messages');
-		messages = [];
-		if(process.env.USE_REDIS){
-			await redis.set('messages',JSON.stringify(messages));
-		}
-	},86400000);
-	//86400000 milliseconds in a day
 };
 
