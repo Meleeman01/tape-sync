@@ -13,5 +13,5 @@ module.exports = function Chat(redis) {
 		if(process.env.USE_REDIS){
 			await redis.set('messages',JSON.stringify(this.messages));
 		}
-	},3000);
+	},86400000);
 };
